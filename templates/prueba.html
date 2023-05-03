@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tarjetas con imagen, título y párrafo</title>
+	<style>
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+		
+		.card {
+			width: calc(33.33% - 20px);
+			margin-bottom: 20px;
+			box-shadow: 0 0 10px rgba(0,0,0,.2);
+			border: 1px solid #000;
+			border-radius: 5px;
+			overflow: hidden;
+			transition: all .3s ease-in-out;
+		}
+		
+		.card:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 10px 20px rgba(0,0,0,.2);
+		}
+		
+		.card img {
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+		}
+		
+		.card-content {
+			padding: 20px;
+		}
+		
+		.card-title {
+			font-size: 20px;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+		
+		.card-text {
+			font-size: 16px;
+			line-height: 1.5;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<img src="https://picsum.photos/400/200" alt="Imagen 1">
+			<div class="card-content">
+				<h2 class="card-title">Título de la tarjeta 1</h2>
+				<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada finibus felis, eu dignissim elit faucibus id. Aliquam erat volutpat. Nulla eget nulla vel mauris semper ultrices. Donec euismod, quam quis luctus malesuada, velit velit luctus augue, eu efficitur augue est at leo. Nam sit amet lacus a urna pretium pellentesque eget nec sapien.</p>
+			</div>
+		</div>
+		
+		<div class="card">
+			<img src="https://picsum.photos/400/200" alt="Imagen 2">
+			<div class="card-content">
+				<h2 class="card-title">Título de la tarjeta 2</h2>
+				<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada finibus felis, eu dignissim elit faucibus id. Aliquam erat volutpat. Nulla eget nulla vel mauris semper ultrices. Donec euismod, quam quis luctus malesuada, velit velit luctus augue, eu efficitur augue est at leo. Nam sit amet lacus a urna pretium pellentesque eget nec sapien.</p>
+			</div>
+		</div>
+		
+		<div class="card">
+			<img src="https://picsum.photos/400/200" alt="Imagen 3">
+			<div class="card-content">
+				<h2 class="card-title">Título de la tarjeta 3</h2>
+				<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada fin
