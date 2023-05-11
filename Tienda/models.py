@@ -54,6 +54,8 @@ class Vehiculo(models.Model):
     precio_total = models.IntegerField()
     costo_reserva = models.IntegerField()
     titulo = models.CharField(max_length=100)
+    precio_total = models.DecimalField(max_digits=10, decimal_places=2, default=0)  # Agregado el campo precio_total
+    descuento = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     
     def __str__(self):
         return self.marca + ' ' + self.modelo
@@ -72,6 +74,8 @@ class Repuesto(models.Model):
     modelo_adecuado = models.CharField(max_length=50)
     foto = models.ImageField(upload_to='repuestos', blank=True, null=True)
     titulo = models.CharField(max_length=100)
+    precio_total = models.DecimalField(max_digits=10, decimal_places=2, default=0)  # Agregado el campo precio_total
+    descuento = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     def __str__(self):
         return self.nombre
@@ -97,3 +101,52 @@ class Aprobacion(models.Model):
     
     def __str__(self):
         return self.documento.nombre + ' - ' + self.vendedor.nombre
+    
+class Factura(models.Model):
+    numero_factura = models.CharField(max_length=100)
+    fecha = models.DateField()
+    cliente = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return self.numero_factura
+
+
+class DetalleFactura(models.Model):
+    factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
+    vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE)
+    cantidad = models.IntegerField()
+    precio_unitario = models.DecimalField(max_digits=10, decimal_places=2)
+    descuento = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+
+    def __str__(self):
+        return f"Detalle de factura {self.factura.numero_factura}"
+
+
+
+class DetalleVenta(models.Model):
+    vehiculo = models.ForeignKey(Vehiculo, on_delete=models.CASCADE)
+    vendedor = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    fecha_venta = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Detalle de venta del vehículo {self.vehiculo.modelo}"
+
+
+class Ingreso(models.Model):
+    fecha = models.DateField()
+    proveedor = models.CharField(max_length=100)
+    total = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"Ingreso {self.id}"
+
+
+class DetalleIngreso(models.Model):
+    ingreso = models.ForeignKey(Ingreso, on_delete=models.CASCADE)
+    repuesto = models.ForeignKey(Repuesto, on_delete=models.CASCADE)
+    cantidad = models.IntegerField()
+    precio_unitario = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"Detalle de ingreso {self.ingreso.id}"
