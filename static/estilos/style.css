@@ -1,0 +1,1370 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+/* NAVBAR ACA*/
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+body
+{
+    height: 100vh;
+    width: 100%;
+    position: relative;   /*****************************************/
+    background: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.contenedorNav{
+    position:  absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background:#fff;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0,0.05);
+
+}
+
+.logo{
+    color: #333;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em ;
+}
+
+.grupo{
+    display: flex;
+    align-content: center;
+}
+
+.contenedorNav ul {   
+    position: relative;
+    display: flex;
+    gap: 30px ;
+}
+
+
+.contenedorNav ul li {
+    list-style:inside   ;
+}
+
+.contenedorNav ul li a {
+    position: relative;
+    text-decoration: none;
+    font-size: 1em ;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.2 em ;
+
+}
+
+.contenedorNav ul li a::before{
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: #333;
+    transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+    transform-origin: right;
+} 
+
+.contenedorNav ul li a:hover::before{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.menuToggle{
+    position: relative;
+    display: none;
+}
+
+.carrito{
+    
+    font-size: 1.5em;
+    cursor: pointer ;
+}
+
+/* responsividad para el NAVBAR */
+@media (max-width: 750px)
+{
+    .menuToggle{
+        position:relative;
+        display: block;
+        font-size: 2em;
+        cursor: pointer ;
+        transform: translateX(15px);
+        z-index: 10;
+    }
+    .contenedorNav .navegacion
+    {
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        left: 100%;
+    }
+
+    .contenedorNav.open .navegacion{
+        
+        top: 80px;
+        opacity: 1;
+        visibility: visible;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        width: 100%;
+        height: calc(100vh - 80px);
+        padding: 40px;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+
+    }
+
+    .contenedorNav.open .navegacion li a {
+        font-size: 1.23em;
+    }
+}
+
+@media (max-width: 210px){
+    .contenedorNav{
+        margin-top: -60px;
+    }
+}
+
+/* BANNER inicial aca*/
+
+.contenedor-banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.contenedor-banner .banner{
+    background: linear-gradient(-55deg, #6ddcda 29%, #19334b 29.1% ,#d63031 68%, #4186ac 68.1%);
+    border-radius: 5px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap:wrap;
+    box-shadow: 0 5px 10px #0005;
+    overflow: hidden;
+    width: 100%;             /*ancho banner*/
+}
+
+.contenedor-banner .banner .img-banner1{
+    flex: 1 1 250px;
+    padding: 15px;
+    text-align: center;
+}
+
+.contenedor-banner .banner .img-banner1 img{
+    width: 80%;
+}
+
+.contenedor-banner .banner .contenido-banner{
+    flex: 1 1 250px;
+    text-align: center;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.contenedor-banner .banner .contenido-banner span{
+    color: #eee;
+    font-size: 25px;
+}
+
+.contenedor-banner .banner .contenido-banner h3{
+    color: #fff;
+    font-size: 40px;
+}
+
+.contenedor-banner .banner .contenido-banner p{
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 0;
+}
+
+.contenedor-banner .banner .img-banner2{
+    bottom: -33px;
+    padding: 10px;
+    flex: 1 1 250px;
+}
+
+.contenedor-banner .banner .img-banner2 img{
+    width: 100%;
+}
+
+
+
+
+
+
+/*SLIDER CARDS DE AUTOS INCIO*/
+
+.slider-inicio{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    width: 95%;
+}
+
+/* texto zona 'encuentra tu auto y todo lo que necesitas, mas linea separadora de abajo*/
+.texto{
+    background: linear-gradient(100deg, #bdf0ef 10%, #a7c8e6 10.1% ,#88bbea 90%);
+    margin: 40px auto;
+    padding: 10px;
+    text-align: center;
+    width: 80%;
+    background-color: #f2eded;
+    
+}
+.texto h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
+    color: rgb(255, 254, 254);
+    margin: 20px;
+    font-size: 25px;
+}
+.texto p{
+    width: 60%;
+    padding: 20px;
+    margin: auto;
+    line-height: 30px;
+    text-transform: uppercase;
+    font-size: 15px;
+
+}
+
+.texto h1{                        /* Con esto, dibujo una barra por debajo de x cosa, en este caso el h1*/
+    display: inline-block;
+    position: relative;
+}
+
+.texto h1::after{                 /* luego hago el after del h1 */
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(202, 255, 155);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.6s ease-out;
+}
+
+
+.texto h1:hover::after{           /* hover+after y fin barra animada por debajo de h1 */
+    transform: scaleX(1);
+    transform-origin: bottom left;
+} 
+/* responsividad texto zona 'encuentra tu auto y todo lo que necesitas, mas linea separadora de abajo*/
+
+@media(max-width: 768px)
+{
+    
+    .texto{
+        align-content: center;
+        text-align: center;
+        font-size: 20px;
+        margin:0;
+        width: 100%;
+    }.texto h1{
+        font-size: 25px;
+    }
+    .texto p{
+        font-size: 15px;
+        width: 100%;
+    }
+    .linea-separadora h1{
+        font-size: 20px;
+    }
+}
+
+@media(max-width:300px)
+{
+    
+    .texto{
+        align-content: center;
+        text-align: center;
+        margin:0;
+        width: 100%;
+    }.texto h1{
+        font-size: 15px;
+        text-align: center;
+        padding-left: 17px;
+    }
+    .texto p{
+        font-size: 12px;
+        width: 100vw;
+        padding-right: 60px;
+        line-height: 20px;
+    }
+    .linea-separadora h1{
+        font-size: 15px;
+    }
+}
+
+
+
+
+
+
+.linea-separadora{   /* linea negra separadora sider banner*/
+    width: 100%;
+    height: 60px;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    border-bottom: 2px solid #111111;
+}
+
+.linea-separadora p  {  
+    font-size: 40px;
+    margin: 0 5px;
+    cursor: pointer;
+    color: #555;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    line-height: 19px;
+    text-align: center;
+    border-radius: 3px;
+}
+
+/*  flechas para mover productos slider autos  Y EL DE REPUESTOS ES EL 2 , MAS HOVER */
+
+.glider-prev:hover{
+    background: #222;
+    color: white;
+}
+
+.glider-next:hover{
+    background: #222;
+    color: white;
+
+}
+
+
+.glider-prev2:hover{
+    background: #222;
+    color: white;
+    cursor: pointer;
+}
+
+.glider-next2:hover{
+    background: #222;
+    color: white;
+    cursor: pointer;
+
+}
+
+/* Cards slider*/
+
+
+
+
+.cardslider-autos{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    margin: 0px 20px;
+    position: relative;
+}
+
+.p-img-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    border-radius: 16px;
+
+}
+
+.p-img a,
+.p-img{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.p-img a img{
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: contain;
+    animation: fade 0.6s;
+    
+}
+
+.p-img-lado{
+    display: none;
+}
+
+.p-img-container:hover .p-img-lado{
+    display: block;
+}
+
+.p-img-container:hover .p-img-frente{
+    display: none;
+}
+
+@keyframes fade{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+/* titulo marca-modelo precio y boton ver detalle de las cajas de seccion slider auto*/
+
+.p-textocaja{
+    margin-top: 5px;
+    width: 100%;
+}
+
+.marca-modelo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.marca-modelo span{
+    color: #acacac;
+    font-size: 0.9em;
+    margin: 5px 0px;
+}
+
+.titulo-slidercard{
+    color:#333333;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all ease 0.3s;
+}
+
+.titulo-slidercard:hover{
+    color: #111111;
+    opacity: 0.7;
+    transition: all ease 0.3s;
+}
+
+.cartel-precio{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.cartel-precio .p-precio{
+    font-size: 1.3rem;
+    color: #333333;
+    font-weight: 700;
+}
+
+.cartel-precio .btn-verdetalle {
+    color: orange;
+    margin: 0px 5px;
+    font-weight: 600;
+}
+.cartel-precio .btn-verdetalle:hover{
+    text-decoration: underline;
+}
+
+/*cartel descuento pequeño dentro de card de autos*/
+
+.cartel-descuento{
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    width: 65px;
+    height: 24px;
+    color: white;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    z-index: 100;
+    border-radius: 5px;
+}
+
+.slider-btns{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 30px auto 10px auto;
+    padding: 0px 10px;
+}
+
+.slider-btns button{
+    position: static !important;
+    transform: translate(0,0);
+    background-color: #f3f3f3;
+    width: 80px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+}
+
+.slider-btns button span{
+    font-weight: bold;
+    padding: 10px 15px 10px 10px;
+    position: relative;
+    text-decoration: none;
+}
+
+.slider-btns button span::before,
+.slider-btns button span::after{
+    border-right: 2px solid;
+    display: block;
+    height: 8px;
+    margin-top: -6px;
+    position: absolute;
+    transform: rotate(135deg);
+    right: 10px;
+    top: 50%;
+    width: 0;
+    content: '';
+}
+
+.slider-btns button span::after{
+    margin-top: -1px;
+    transform: rotate(45deg);
+}
+
+.slider-btns .glider-prev span{
+    transform: rotate(-180deg);
+}
+
+.slider-btns .glider-prev2 span{            /*.glider-prev2 recordar el 2 es el glider repuestos*/
+    transform: rotate(-180deg); 
+}
+/*tamaño mediano para cards botones de movimiento img etc*/
+@media(max-width: 500px){
+    .cardslider-autos{
+        margin: 0px 10px;
+    }
+    .slider-inicio{
+        width: 100%;
+    }
+    .btn-verdetalle{
+        font-size: 10px;
+    }
+    .p-img a,
+    .p-img{
+        height: 200px;
+    }
+    .cartel-precio .p-precio{
+        font-size: 1.1rem;
+    }
+    .p-img-container:hover .p-img-lado{
+        display: none;
+    }
+    .p-img-container:hover .p-img-frente{
+        display: block;
+    }
+}
+
+/*imagen y boton mover slder en tamaño minimo*/
+@media (max-width:320px){
+    .p-img a,
+    .p-img{
+        height: 190px;
+    }
+    .slider-btns{
+        padding: 0;
+        height: 40px;
+        width: 140px;
+    }
+}
+
+
+
+.logo{
+    max-height:50px;
+    width: auto;
+}
+
+
+/********************************************************************************************/
+.card-wrapper{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.imagen{
+    width: 100%;
+    display: block;
+}
+.img-display{
+    overflow: hidden;
+}
+.img-showcase{
+    display: flex;
+    width: 100%;
+    transition: all 0.5s ease;
+}
+.img-showcase img{
+    min-width: 100%;
+}
+.img-select{
+    display: flex;
+}
+.img-item{
+    margin: 0.3rem;
+}
+.img-item:nth-child(1),
+.img-item:nth-child(2),
+.img-item:nth-child(3){
+    margin-right: 0;
+}
+.img-item:hover{
+    opacity: 0.8;
+}
+.product-content{
+    padding: 2rem 1rem;
+}
+.product-title{
+    font-size: 3rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    position: relative;
+    color: #12263a;
+    margin: 1rem 0;
+}
+.product-title::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 80px;
+    background: #12263a;
+}
+.product-link{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    background: #256eff;
+    color: #fff;
+    padding: 0 0.3rem;
+    transition: all 0.5s ease;
+}
+.product-link:hover{
+    opacity: 0.9;
+}
+.product-rating{
+    color: #ffc107;
+}
+.product-rating span{
+    font-weight: 600;
+    color: #252525;
+}
+.product-price{
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.product-price span{
+    font-weight: 400;
+}
+.last-price span{
+    color: #f64749;
+    text-decoration: line-through;
+}
+.new-price span{
+    color: #256eff;
+}
+.product-detail h2{
+    text-transform: capitalize;
+    color: #12263a;
+    padding-bottom: 0.6rem;
+}
+.product-detail p{
+    font-size: 0.9rem;
+    padding: 0.3rem;
+    opacity: 0.8;
+}
+.product-detail ul{
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+.product-detail ul li{
+    margin: 0;
+    list-style: none;
+    background: url(shoes_images/checked.png) left center no-repeat;
+    background-size: 18px;
+    padding-left: 1.7rem;
+    margin: 0.4rem 0;
+    font-weight: 600;
+    opacity: 0.9;
+}
+.product-detail ul li span{
+    font-weight: 400;
+}
+.purchase-info{
+    margin: 1.5rem 0;
+}
+.purchase-info input,
+.purchase-info .btn{
+    border: 1.5px solid #ddd;
+    border-radius: 25px;
+    text-align: center;
+    padding: 0.45rem 0.8rem;
+    outline: 0;
+    margin-right: 0.2rem;
+    margin-bottom: 1rem;
+}
+.purchase-info input{
+    width: 60px;
+}
+.purchase-info .btn{
+    cursor: pointer;
+    color: #fff;
+}
+.purchase-info .btn:first-of-type{
+    background: #256eff;
+}
+.purchase-info .btn:last-of-type{
+    background: #f64749;
+}
+.purchase-info .btn:hover{
+    opacity: 0.9;
+}
+.social-links{
+    display: flex;
+    align-items: center;
+}
+.social-links a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: #000;
+    border: 1px solid #000;
+    margin: 0 0.2rem;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.5s ease;
+}
+.social-links a:hover{
+    background: #000;
+    border-color: transparent;
+    color: #fff;
+}
+
+@media screen and (min-width: 992px){
+    .card{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5rem;
+    }
+    .card-wrapper{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .product-imgs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .product-content{
+        padding-top: 0;
+    }
+}
+
+/*banner de abajo*/
+.banner-abajo{
+    position: relative;
+    background: url(/IMG/repuestos.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50%;
+    width: 100%;
+    overflow: hidden;
+
+}
+
+.contenedor-bannerbajo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgb(10, 6, 6);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.contenedor-bannerbajo h1{
+    font-size: 30px;
+}
+
+.contenedor-bannerbajo h1 span{
+    border: 6px solid rgb(176, 227, 199);
+    padding: 6px 14px;
+    display: inline-block;
+}
+
+.cen{
+    margin: 20px;
+    margin-bottom: 56px;
+    display: block;
+    font-size: 26px;
+    color: #b5e743
+}
+
+.btn-bannerbajo{
+    color: #fbfbfb;
+    padding: 10px 24px;
+    background: #3d3a3a;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: .6s;
+}
+
+.btn-bannerbajo:hover{
+    opacity: 0.6 ;
+}
+
+@media (max-width:768px){
+    .banner-abajo{
+        font-weight: 100;
+        font-size: 30px;
+        margin: auto;
+    }
+    .contenedor-bannerbajo h1{
+        font-size: 20px;
+    }
+
+   .cen{
+    font-size: 12px;
+    text-align:center;
+   }
+    
+    .btn-bannerbajo{
+        font-size: 5px;
+        font-size: 8px;
+    }
+}
+
+
+
+/* FOOTER FEO */
+footer{
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 2rem 8%;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.logofooter{
+    height: 70px;
+    margin-bottom: 1rem;
+    margin-left: 570px;
+    align-content: center;
+}
+
+
+.container-iconos-sociales, .footer-menu-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+
+}
+
+.social-iconos{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border: 1px solid white;
+    background-image: url(/IMG/coche-azul.jpg);
+    background-position: center;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    margin: 1rem;
+}
+
+.social-iconos:hover{
+    background-color: black;
+    filter: invert(1);
+}
+
+.social-iconos:nth-of-type(2){
+    background-image: url(/IMG/coche-azul.jpg);
+}
+.social-iconos:nth-of-type(3){
+    background-image: url(/IMG/coche-azul.jpg);
+}
+.social-iconos:nth-of-type(4){
+    background-image: url(/IMG/coche-azul.jpg);
+}
+
+.footer-menu-container{
+    list-style-type: none;
+    color: white;
+    font-size: 18px;
+}
+
+.item-menu{
+    margin: 1rem 1.5rem;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.menu-item:hover{
+    opacity: 1;
+}
+
+.copyrgt{
+    color: white ;
+    opacity: 0.3;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CONTENEDOR DE FORMULARIO MAS ADD DEL PRINCIPIO*/
+
+  .container {
+    background-image: url('/IMG/caminohd-fondo.jpg');
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .form-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1em;
+    color: #fff;
+  }
+
+
+  .form-container {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    background-color: rgba(0, 0, 0,0.2);
+    border-radius: 20px;
+    border: 2px solid #ccc;
+    overflow: hidden;
+    margin: 120px;
+    max-width: 30%;
+  }
+  
+  .form-container h2 {
+    margin-bottom: 10px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #fff;
+  } 
+  
+  .form-group select {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-out;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0062cc;
+  }
+  
+  .form-group:nth-child(1) select,
+  .form-group:nth-child(2) select {
+    border-top-right-radius: 20px;
+  }
+  
+  .form-group:nth-child(1) select,
+  .form-group:nth-child(3) select {
+    border-top-left-radius: 20px;
+  }
+  
+  .form-group:nth-last-child(1) select,
+  .form-group:nth-last-child(2) select {
+    border-bottom-right-radius: 20px;
+  }
+
+.form-group:nth-last-child(1) select,
+.form-group:nth-last-child(2) select {
+  border-bottom-right-radius: 20px;
+}
+
+.form-group:nth-last-child(1) select,
+.form-group:nth-last-child(3) select {
+  border-bottom-left-radius: 20px;
+}
+
+
+.form-group:nth-child(2) {
+    grid-area: marca;
+  }
+
+.form-group:nth-child(3) {
+    grid-area: modelo;
+  }
+
+.form-group:nth-child(4) {
+    grid-area: anno-min;
+  }
+  
+  .form-group:nth-child(5) {
+    grid-area: anno-max;
+  }
+
+
+
+
+  /* ADDDDDDDDDDDD*/
+  .ad-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    margin: auto;
+    width: calc(45% - 30px);
+    border-radius: 10px;
+}
+
+  .ad-image {
+    border-radius: 10px;
+    width: 100%;
+  }
+
+
+
+  /* MEDIA QERYS PARA TODO ESTE CONTAINER, PADRE, FORM-CONTAINER Y AD-CONTAINER*/
+  @media (max-width: 768px) {
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .ad-container {
+      width: 100%;
+      margin: 10px 0;
+    }
+    
+    .form-container {
+      width: 90%;
+      margin: 10px auto;
+      padding: 10px;
+      display: contents;
+    }
+    
+    .form-container form {
+        width: 100%;
+    }
+
+    .form-title{
+        margin: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .form-group button {
+        width: 80%;
+        margin: 35px;
+      }
+  
+    .form-group select { 
+      width: 95%;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  
+    .form-group:nth-child(1),
+    .form-group:nth-child(2) {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
+    .form-group:nth-child(3),
+    .form-group:nth-child(4) {
+      width: 50%;
+      margin-right: 20px;
+      margin-bottom: 10px;
+    }
+  
+    .form-group:nth-last-child(1) {
+      margin-right: 0;
+    }
+  }
+  
+
+  
+/* slide de logos marcas  */
+
+@keyframes slide {
+    from {
+        transform: translateX(0); 
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+.logos{
+    overflow: hidden;
+    padding: 60px 0;
+    background: white;
+    white-space: nowrap;
+    position: relative;
+}  
+
+.logos::before,
+.logos::after{
+    position: absolute;
+    top: 0;
+    width: 100%; /* */
+    height: 100%;
+    content: "";
+    z-index: 2;
+}
+
+.logos::before{
+    left: 0;
+    background: linear-gradient(to left, rgba(255,255,255,0),white) ;
+}
+
+.logos::before{
+    right: 0;
+    background: linear-gradient(to right, rgba(255,255,255,0),white) ;
+}
+
+
+.logos:hover .logos-slide { 
+    animation-play-state: paused;
+}
+
+.logos-slide{
+    display: inline-block;
+    animation: 90s slide infinite linear;
+}
+
+.logos-slide img{
+    height: 50px;
+    margin: 0 40px;
+}
+
+
+
+
+/*   iconons sociales en el footer con efecto*/
+
+.flecha-vermas{
+    position: relative;
+    background-color: rgb(109, 147, 224);
+    color: rgb(92, 87, 87);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    width: 150px;
+    height: 40px;
+    transition: 0.5s;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.flecha-vermas span{
+    position: relative;
+    z-index: 1;
+}
+.flecha-vermas:hover{
+    letter-spacing:0.25em;
+    color: var(--clr);
+    background: var(--clr);
+    box-shadow: 0 0 35px var(--clr);
+}
+
+.flecha-vermas:before{
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background:rgb(240, 235, 237);   
+}
+
+
+
+
+
+
+
+
+
+
+
+/*  ul lista de iconos en las cards, n personas etc.*/
+
+.cardslider-autos .lista-card {
+    display: grid;  
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.cardslider-autos .lista-card-item {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+.cardslider-autos .lista-card-item ion-icon {
+    font-size: 20px;
+    color: var(--carolina-blue);
+    --ionicon-stroke-width: 38px;
+}
+
+
+.cardslider-autos .lista-card-texto {
+    color: var(--independence);
+    font-size: var(--fs-6);
+}
+  
+
+
+
+
+/* categorias tipos de vehiculos esferas */
+
+
+.categorias{
+    background-color: #ffffff;
+    width: 100%;
+}
+
+
+.categorias .wrapper{
+    width: 50%;
+    margin:20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 23px;
+    flex-direction: column;
+}
+
+.categorias .wrapper .container-categorias{
+    display: flex;
+    gap: 35px;
+}
+
+.categorias .wrapper .container-categorias .cat{
+    width: 170px;
+    height: 170px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 100%;
+}
+
+.categorias .wrapper .container-categorias .cat img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.categorias .wrapper .container-categorias .cat img img {
+    transition: transform 0.9s ease;
+  }
+  
+  .categorias .wrapper .container-categorias .cat img:hover {
+    transform: translatey(5px);
+  }

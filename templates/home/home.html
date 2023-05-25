@@ -1,0 +1,629 @@
+{% load static %}
+<!-- =========================hare el block content nuevametne======================== -->
+<!-- =========================PAGINA HOME COMPLETA======================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nav bar pero responsiva mejorada</title>
+    <!--  estilos css -->
+    <link rel="stylesheet" href="{% static '/AutoPortal/static/css/estilos.css' %}" type="text/css">  
+	<link rel="stylesheet" href="{% static '/AutoPortal/static/css/glider.min.css' %}">
+    
+</head>
+<body>
+<!-- ========================= BARRA DE NAVEGACION END ======================== -->
+    <header>
+        <div class="contenedorNav">
+            <img src="{% static '/AutoPortal/static/images/imagenes_nuevas/logo.PNG' %}" class="logo" alt="">
+            <div class="grupo">
+                <ul class="navegacion">
+                    <li><a href="#">Ver Vehiculos</a></li>
+                    <li><a href="#">Ver Repuestos</a></li>
+                    <li><a href="#">Ingresar</a></li>
+                    <li><a href="#">Registrate</a></li>
+                    <a href="#"><ion-icon name="cart-outline" class="carrito"></ion-icon></a>
+                </ul>
+                <ion-icon name="menu-outline" class="menuToggle"></ion-icon>
+            </div>
+        </div>    
+    </header>
+<!-- ========================= FIN BARRA DE NAVEGACION ===========================================================-->
+
+
+<<<<<<< HEAD
+<h1>Lista de vehículos</h1>
+    <ul>
+        {% for vehiculo in vehiculos %}
+        <li>{{ vehiculo.marca }} {{ vehiculo.modelo }} - Precio: {{ vehiculo.precio_total }}</li>
+        {% endfor %}
+    </ul>
+
+<!-- ========================= PROBANDO PROBANDO ========================= -->
+=======
+<!-- ========================= BANNER PANTALLA PRINCIPAL =======================-->
+<div class="contenedor-banner">
+    <div class="banner">
+        <div class="img-banner1">
+            <img src="{% static '/AutoPortal/AutoPortal_Main/static/images/imagenes_nuevas/logosinfondo.png' %}" alt=""> 
+        </div>
+        <div class="contenido-banner">  
+            <span>Bienvenido</span>
+            <h3>AutoPortal</h3>
+            <p>Vehiculos / Vehiculos adaptados / Refacciones y mas.</p>    
+        </div>
+        <div class="img-banner2">
+            <img src="/IMG/Car driving-rafiki.png" alt="">
+        </div>
+    </div>
+</div>
+<!-- ========================= FIN BANNER PANTALLA PRINCIPAL ======================================================= -->
+>>>>>>> 76d0e5b66bce37300933d08126039cc021c91f5c
+
+
+<!-- ========================= SLIDER AUTOS PANTALLA PRINCIPAL =======================-->
+<div>
+
+    <section class="slider-inicio">
+        <div class="texto">
+            <h1>Todas las soluciones para tus necesidades automotrices en un solo lugar.</h1>
+            <p> Bienvenido a nuestra tienda en línea, 
+                donde encontrarás una amplia selección de vehículos y refacciones de alta calidad a precios competitivos. Nuestro 
+                equipo de expertos está siempre a tu disposición para ayudarte a encontrar el producto adecuado para ti. Explora 
+                nuestro catálogo en línea y descubre todo lo que tenemos para ofrecerte. ¡Haz de tu experiencia automotriz algo más 
+                fácil y confiable con nosotros!</p>
+        </div>
+        <div class="linea-separadora">
+            <h1>Vehiculos mas vistos</h1>    <!-- ==cambiara a boton==-->
+            <p></p>
+        </div>
+
+
+        <div class="slider-btns">
+            <button aria-label="Previous" class="glider-prev">
+                <span></span>
+            </button>
+            <button aria-label="Next" class="glider-next">
+                <span>
+
+                </span>
+            </button>
+        </div>
+
+
+        <div class="glider-contain">
+            <div class="glider">
+              
+                <div class="cardslider-autos">
+           
+                    <!--pequeño cartel de descuento % pagina principal-->
+                    <span class="cartel-descuento"> -8% </span>
+        
+                    <div class="p-img-container">
+                        <div class="p-img">
+                            <a href="#">
+                                <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
+                                <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                            </a>    
+                        </div>
+                    </div>
+                    <div class="p-textocaja">
+                        <div class="marca-modelo">
+                            <span>marca</span>
+                        </div>
+                        <a href="#" class="titulo-slidercard" >
+                            descripcion de modelo auto año
+                        </a>
+                        <div class="cartel-precio">
+                            <span class="p-precio">$10.000.000</span>
+                            <a href="#" class="btn-verdetalle"> Ver detalle </a>
+                        </div>
+                    </div>
+                </div>
+              
+            
+
+            <div class="cardslider-autos">
+           
+                <!--pequeño cartel de descuento % pagina principal-->
+                <span class="cartel-descuento"> -8% </span>
+    
+                <div class="p-img-container">
+                    <div class="p-img">
+                        <a href="#">
+                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
+                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                        </a>    
+                    </div>
+                </div>
+                <div class="p-textocaja">
+                    <div class="marca-modelo">
+                        <span>marca</span>
+                    </div>
+                    <a href="#" class="titulo-slidercard" >
+                        descripcion de modelo auto año
+                    </a>
+                    <div class="cartel-precio">
+                        <span class="p-precio">$10.000.000</span>
+                        <a href="#" class="btn-verdetalle"> Ver detalle </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cardslider-autos">
+           
+                <!--pequeño cartel de descuento % pagina principal-->
+                <span class="cartel-descuento"> -8% </span>
+    
+                <div class="p-img-container">
+                    <div class="p-img">
+                        <a href="#">
+                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
+                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                        </a>    
+                    </div>
+                </div>
+                <div class="p-textocaja">
+                    <div class="marca-modelo">
+                        <span>marca</span>
+                    </div>
+                    <a href="#" class="titulo-slidercard" >
+                        descripcion de modelo auto año
+                    </a>
+                    <div class="cartel-precio">
+                        <span class="p-precio">$10.000.000</span>
+                        <a href="#" class="btn-verdetalle"> Ver detalle </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cardslider-autos">
+           
+                <!--pequeño cartel de descuento % pagina principal-->
+                <span class="cartel-descuento"> -8% </span>
+    
+                <div class="p-img-container">
+                    <div class="p-img">
+                        <a href="#">
+                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
+                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                        </a>    
+                    </div>
+                </div>
+                <div class="p-textocaja">
+                    <div class="marca-modelo">
+                        <span>marca</span>
+                    </div>
+                    <a href="#" class="titulo-slidercard" >
+                        descripcion de modelo auto año
+                    </a>
+                    <div class="cartel-precio">
+                        <span class="p-precio">$10.000.000</span>
+                        <a href="#" class="btn-verdetalle"> Ver detalle </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cardslider-autos">
+           
+                <!--pequeño cartel de descuento % pagina principal-->
+                <span class="cartel-descuento"> -8% </span>
+    
+                <div class="p-img-container">
+                    <div class="p-img">
+                        <a href="#">
+                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
+                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                        </a>    
+                    </div>
+                </div>
+                <div class="p-textocaja">
+                    <div class="marca-modelo">
+                        <span>marca</span>
+                    </div>
+                    <a href="#" class="titulo-slidercard" >
+                        descripcion de modelo auto año
+                    </a>
+                    <div class="cartel-precio">
+                        <span class="p-precio">$10.000.000</span>
+                        <a href="#" class="btn-verdetalle"> Ver detalle </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cardslider-autos">
+           
+                <!--pequeño cartel de descuento % pagina principal-->
+                <span class="cartel-descuento"> -8% </span>
+    
+                <div class="p-img-container">
+                    <div class="p-img">
+                        <a href="#">
+                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
+                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                        </a>    
+                    </div>
+                </div>
+                <div class="p-textocaja">
+                    <div class="marca-modelo">
+                        <span>marca</span>
+                    </div>
+                    <a href="#" class="titulo-slidercard" >
+                        descripcion de modelo auto año
+                    </a>
+                    <div class="cartel-precio">
+                        <span class="p-precio">$10.000.000</span>
+                        <a href="#" class="btn-verdetalle"> Ver detalle </a>
+                    </div>
+                </div>  
+            </div>
+          
+                 </div>
+        </div>
+    </section>
+</div>
+<!-- ========================= FIN SLIDER AUTOS PANTALLA PRINCIPAL ======================================================= -->
+
+
+<div class="banner-abajo">
+    <div class="contenedor-bannerbajo">
+        <h1><span>Todas tus marcas favoritas</span></h1>
+        <span class="cen">Encuentra repuestos de variedad de marcas</span>
+        <a  class="btn-bannerbajo" href="#">Ver todo repuestos</a>   <!-- ==cambiara a boton==-->
+    </div>
+
+</div>
+
+
+
+<div>
+
+    <section class="slider-inicio">
+       
+        <div class="linea-separadora">
+            <h1>Repuestos mas vistos</h1>
+            <p></p>
+        </div>
+
+
+        <div class="slider-btns">
+            <button aria-label="Previous" class="glider-prev2" >
+                <span></span>
+            </button>
+            <button aria-label="Next" class="glider-next2">
+                <span></span>
+            </button>
+        </div>
+
+
+        <div class="glider-contain">
+            <div class="glider2">
+              
+                <div class="cardslider-autos">
+           
+                    <!--pequeño cartel de descuento % pagina principal-->
+                    <span class="cartel-descuento"> -8% </span>
+        
+                    <div class="p-img-container">
+                        <div class="p-img">
+                            <a href="#">
+                                <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
+                                <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                            </a>    
+                        </div>
+                    </div>
+                    <div class="p-textocaja">
+                        <div class="marca-modelo">
+                            <span>marca</span>
+                        </div>
+                        <a href="#" class="titulo-slidercard" >
+                            descripcion de modelo auto año
+                        </a>
+                        <div class="cartel-precio">
+                            <span class="p-precio">$10.000.000</span>
+                            <a href="#" class="btn-verdetalle"> Ver detalle </a>
+                        </div>
+                    </div>
+                </div>
+              
+            
+
+            <div class="cardslider-autos">
+           
+                <!--pequeño cartel de descuento % pagina principal-->
+                <span class="cartel-descuento"> -8% </span>
+    
+                <div class="p-img-container">
+                    <div class="p-img">
+                        <a href="#">
+                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
+                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                        </a>    
+                    </div>
+                </div>
+                <div class="p-textocaja">
+                    <div class="marca-modelo">
+                        <span>marca</span>
+                    </div>
+                    <a href="#" class="titulo-slidercard" >
+                        descripcion de modelo auto año
+                    </a>
+                    <div class="cartel-precio">
+                        <span class="p-precio">$10.000.000</span>
+                        <a href="#" class="btn-verdetalle"> Ver detalle </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cardslider-autos">
+           
+                <!--pequeño cartel de descuento % pagina principal-->
+                <span class="cartel-descuento"> -8% </span>
+    
+                <div class="p-img-container">
+                    <div class="p-img">
+                        <a href="#">
+                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
+                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                        </a>    
+                    </div>
+                </div>
+                <div class="p-textocaja">
+                    <div class="marca-modelo">
+                        <span>marca</span>
+                    </div>
+                    <a href="#" class="titulo-slidercard" >
+                        descripcion de modelo auto año
+                    </a>
+                    <div class="cartel-precio">
+                        <span class="p-precio">$10.000.000</span>
+                        <a href="#" class="btn-verdetalle"> Ver detalle </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cardslider-autos">
+           
+                <!--pequeño cartel de descuento % pagina principal-->
+                <span class="cartel-descuento"> -8% </span>
+    
+                <div class="p-img-container">
+                    <div class="p-img">
+                        <a href="#">
+                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
+                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                        </a>    
+                    </div>
+                </div>
+                <div class="p-textocaja">
+                    <div class="marca-modelo">
+                        <span>marca</span>
+                    </div>
+                    <a href="#" class="titulo-slidercard" >
+                        descripcion de modelo auto año
+                    </a>
+                    <div class="cartel-precio">
+                        <span class="p-precio">$10.000.000</span>
+                        <a href="#" class="btn-verdetalle"> Ver detalle </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cardslider-autos">
+           
+                <!--pequeño cartel de descuento % pagina principal-->
+                <span class="cartel-descuento"> -8% </span>
+    
+                <div class="p-img-container">
+                    <div class="p-img">
+                        <a href="#">
+                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
+                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                        </a>    
+                    </div>
+                </div>
+                <div class="p-textocaja">
+                    <div class="marca-modelo">
+                        <span>marca</span>
+                    </div>
+                    <a href="#" class="titulo-slidercard" >
+                        descripcion de modelo auto año
+                    </a>
+                    <div class="cartel-precio">
+                        <span class="p-precio">$10.000.000</span>
+                        <a href="#" class="btn-verdetalle"> Ver detalle </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cardslider-autos">
+           
+                <!--pequeño cartel de descuento % pagina principal-->
+                <span class="cartel-descuento"> -8% </span>
+    
+                <div class="p-img-container">
+                    <div class="p-img">
+                        <a href="#">
+                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
+                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                        </a>    
+                    </div>
+                </div>
+                <div class="p-textocaja">
+                    <div class="marca-modelo">
+                        <span>marca</span>
+                    </div>
+                    <a href="#" class="titulo-slidercard" >
+                        descripcion de modelo auto año
+                    </a>
+                    <div class="cartel-precio">
+                        <span class="p-precio">$10.000.000</span>
+                        <a href="#" class="btn-verdetalle"> Ver detalle </a>
+                    </div>
+                </div>  
+            </div>
+          
+                 </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- *** BARRA DE NAVEGACION SCRIPTS **** -->
+    <script type="module" src="{% static 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js' %}"></script>
+    <script nomodule src="{% static 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js' %}"></script>
+    
+    <script>
+        let navegacion = document.querySelector('.navegacion');
+        let menuToggle = document.querySelector('.menuToggle');
+        let contenedorNav = document.querySelector('.contenedorNav');
+
+        menuToggle.onclick = function(){
+            contenedorNav.classList.toggle('open')
+        }
+    </script>
+<!--  *** BARRA DE NAVEGACION SCRIPTS END *** -->
+
+
+<!-- *** script del grider ***  -->
+<script src="{% static '/static/js/glider.min.js' %}"> </script>
+
+
+<script>  
+    new Glider(document.querySelector('.glider'), {
+        slidesToScroll: 1,
+        slidesToShow: 4,
+        draggable: true,
+        dots: '.dots',
+        arrows: {
+          prev: '.glider-prev',
+          next: '.glider-next'
+        },
+        responsive: [
+        {
+          // screens greater than >= 775px
+          breakpoint: 1200,
+          settings: {
+            // Set to `auto` and provide item width to adjust to viewport
+            slidesToShow: 4,
+            slidesToScroll: 2,
+          }
+        },{
+          // screens greater than >= 1024px
+          breakpoint: 900,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          }
+        },{
+            // screens greater than >= 1024px
+            breakpoint: 640,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+            }
+          },{
+            // screens greater than >= 1024px
+            breakpoint: 300,
+            settings: {
+              slidesToShow: 1.5,
+              slidesToScroll: 1,
+            }
+          },{
+            // screens greater than >= 1024px
+            breakpoint: 0,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            }
+          },
+      ]
+      });
+</script>
+
+<script>  // este glider es del 2do slider, de repuestos.
+    new Glider(document.querySelector('.glider2'), {
+        slidesToScroll: 1,
+        slidesToShow: 4,
+        draggable: true,
+        dots: '.dots',
+        arrows: {
+          prev: '.glider-prev2',
+          next: '.glider-next2'
+        },
+        responsive: [
+        {
+          // screens greater than >= 775px
+          breakpoint: 1200,
+          settings: {
+            // Set to `auto` and provide item width to adjust to viewport
+            slidesToShow: 4,
+            slidesToScroll: 2,
+          }
+        },{
+          // screens greater than >= 1024px
+          breakpoint: 900,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          }
+        },{
+            // screens greater than >= 1024px
+            breakpoint: 640,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+            }
+          },{
+            // screens greater than >= 1024px
+            breakpoint: 300,
+            settings: {
+              slidesToShow: 1.5,
+              slidesToScroll: 1,
+            }
+          },{
+            // screens greater than >= 1024px
+            breakpoint: 0,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            }
+          },
+      ]
+      });
+</script>
+<!-- *** FIN DE script del grider ***  -->
+    <footer>
+        <img src="/IMG/logo.PNG" alt="Logo" class="logofooter">
+        <div class="container-iconos-sociales">
+            <a href="" class="social-iconos"></a>
+            <a href="" class="social-iconos"></a>
+            <a href="" class="social-iconos"></a>
+            <a href="" class="social-iconos"></a>
+            <a href="" class="social-iconos"></a>
+        </div>
+        <ul class="footer-menu-container">
+            <li class="item-menu">Legal</li>
+            <li class="item-menu">Cockies</li>
+            <li class="item-menu">Privacidad</li>
+            <li class="item-menu">Reembolsos</li>
+            <li class="item-menu">Contacto</li>
+        </ul>
+        <span class="copyrgt" >&copy;2023, AutoPortal. Todos los derechos reservados </span>
+    </footer>
+
+</body>
+    
+
+</html>
+

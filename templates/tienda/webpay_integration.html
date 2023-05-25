@@ -1,0 +1,442 @@
+{% extends '../layout/frontend.html' %} {% load static %}
+
+{% block content %}
+
+<h1>Lista de vehículos</h1>
+    <ul>
+        {% for vehiculo in vehiculos %}
+        <li>{{ vehiculo.marca }} {{ vehiculo.modelo }} - Precio: {{ vehiculo.precio_total }}</li>
+        {% endfor %}
+    </ul>
+
+<!-- ========================= PROBANDO PROBANDO ========================= -->
+
+<!-- ========================= EMPIEZA banner aca ========================= -->
+
+<div class="banner">
+	<div class="banner-text">
+	  <h1>Autoportal</h1>
+	  <p>Bienvenido a nuestro portal de automóviles y repuestos</p>
+	</div>
+  </div>
+  <style>
+	.banner {
+	  background-image: url("/static/images/autosbanner.jpg");
+	  background-size: cover;
+	  height: 550px;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+	
+	.banner-text {
+	  text-align: center;
+	  color: #fff;
+	  font-family: Arial, sans-serif;
+	  font-size: 48px;
+	  font-weight: bold;
+	  text-shadow: 2px 2px #000;
+	  padding: 20px;
+	}
+	
+	.banner-text p {
+	  font-size: 24px;
+	  font-weight: normal;
+	  margin-top: 20px;
+	}
+	
+	@media only screen and (max-width: 600px) {
+	  .banner {
+		height: 250px;
+	  }
+	  
+	  .banner-text {
+		font-size: 36px;
+		padding: 10px;
+	  }
+	  
+	  .banner-text p {
+		font-size: 18px;
+	  }
+	}
+	</style>
+	  
+
+<!-- ========================= termina banner  ========================= -->
+
+<style>
+	/* Estilos para el section */
+	.sectionn {
+		background-color: #fffffffe;
+		padding: 50px 0;
+		text-align: center;
+	}
+
+	.h22 {
+		font-size: 36px;
+		font-weight: bold;
+		margin-bottom: 50px;
+		text-transform: uppercase;
+	}
+
+	/* Estilos para el slider */
+	.slick-slider {
+		margin: 0 auto;
+		max-width: 900px;
+	}
+
+	.slick-slide {
+		text-align: center;
+	}
+
+	.imgg {
+		max-width: 100%;
+		height: auto;
+	}
+
+	.h33 {
+		font-size: 24px;
+		margin-top: 20px;
+	}
+
+	.h44 {
+		font-size: 18px;
+		font-weight: normal;
+		margin-top: 10px;
+	}
+
+	.pp {
+		font-size: 14px;
+		margin-top: 20px;
+		line-height: 1.5;
+	}
+</style>
+<script>
+	$(document).ready(function(){
+		// Inicializamos el slider con las opciones que queremos
+		$('.slider').slick({
+			arrows: true,
+			dots: true,
+			autoplay: true,
+			autoplaySpeed: 5000
+		});
+	});
+</script>
+<section class="sectionn">
+	<h2 class="h22">Novedades</h2>
+	<div class="slider">
+		<div>
+			<img class="imgg" src="/static/images/autosbanner.jpg">
+			<h3 class="h33">Título de la primera imagen</h3>
+			<h4>Subtítulo de la primera imagen</h4>
+			<p>Pequeño párrafo de la primera imagen</p>
+		</div>
+		<div>
+			<img class="imgg" src="/static/images/autosbanner.jpg">
+			<h3 class="h33">Título de la segunda imagen</h3>
+			<h4 class="h44">Subtítulo de la segunda imagen</h4>
+			<p class="pp">Pequeño párrafo de la segunda imagen</p>
+		</div>
+	</div>
+</section>
+
+
+
+<!-- ========================= SEPARADOR CON BOTON DE VER AUTOS// ========================= -->
+
+<div style="background-color: #79bacc; border-top: 1px solid gold; border-bottom: 1px solid gold; padding: 10px; margin-bottom:40px;">
+	<span style="float: left; font-weight: bold; font-size: 1.8em; margin-left:160px; color:#ffffff;">Automoviles</span>
+	<button style="float: right; margin-right: 150px;"  type="button" class="btn btn-primary" > Ver todo</button>
+	<div style="clear: both;"></div>
+</div>	
+<!-- ========================= SEPARADOR CON BOTON DE VER AUTOS// ========================= -->
+
+
+
+<!-- ========================= SLIDER MARCAS AUTOS// ========================= -->
+<div class="slideer">
+	<div class="slide-track">
+		<div class="slide">
+			<img src="{% static './images/logo-autos/logo-audi.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-autos/logo-bmw.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-autos/logo-ford.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-autos/logo-kia.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-autos/logo-mercedes.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-autos/logo-nissan.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-autos/logo-peugeot.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-autos/logo-mazda.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-autos/logo-mercedes.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-autos/logo-mitsu-jpg.png' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-autos/logo-mahindra.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-autos/logo-dodge.hpg.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-autos/logo-chevrolet.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-autos/logo-peugeot.jpg' %}" alt="">
+		</div>
+	</div>
+</div>
+<!-- ========================= SLIDER MARCAS AUTOS// ========================= -->
+
+
+
+<!-- ========================= CARDS autos // ========================= -->
+
+<style>
+	.card-container {
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: space-between;
+	}
+	.card {
+	  width: 22%;
+	  margin-bottom: 20px;
+	  margin-left: 20px;
+	  margin-right: 20px;
+	  padding: 10px;
+	  border: 1px solid #000;
+	  border-radius: 5px;
+	  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+	  transition: transform 0.3s ease-in-out;
+	}
+	.card:hover {
+	  transform: translateY(-10px);
+	}
+	.card img {
+	  width: 100%;
+	  border-radius: 5px;
+	  margin-bottom: 10px;
+	}
+	.card h3 {
+	  font-size: 1.2rem;
+	  font-weight: bold;
+	  margin-bottom: 10px;
+	}
+	.card p {
+	  font-size: 1rem;
+	  line-height: 1.2;
+	}
+  </style>
+
+<div class="card-container">
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+  </div>
+  <div class="card-container">
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+  </div>
+
+
+<!-- =========================FIN  CARDS autos  // ========================= -->
+
+
+
+
+<!-- ========================= SEPARADOR REPUESTOS BOTON VER MAS // ========================= -->
+<div style="background-color: #79bacc; border-top: 1px solid gold; border-bottom: 1px solid gold; padding: 10px; margin-bottom:40px;">
+	<span style="float: left; font-weight: bold; font-size: 1.8em; margin-left:160px; color:#ffffff;">Repuestos</span>
+	<button style="float: right; margin-right: 150px;"  type="button" class="btn btn-primary" > Ver todo</button>
+	<div style="clear: both;"></div>
+</div>	
+<!-- ========================= SEPARADOR REPUESTOS BOTON VER MAS // ========================= -->
+
+
+
+
+<!-- ========================= SLIDER DE MARCAS DE REPUESTOS // ========================= -->
+
+<div class="slideer">
+	<div class="slide-track">
+		<div class="slide">
+			<img src="{% static './images/logo-repuestos/logo-airtex.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-repuestos/logo-bosh.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-repuestos/logo-contintental.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-repuestos/logo-depo.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-repuestos/logo-echlin.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-repuestos/logo-facet.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-repuestos/logo-luk.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-repuestos/logo-mando.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-repuestos/logo-monroe.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-repuestos/logo-stp.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-repuestos/logo-valeo.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-repuestos/logo-mercedes.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-repuestos/logo-nissan.jpg' %}" alt="">
+		</div>
+		<div class="slide">
+			<img src="{% static './images/logo-repuestos/logo-peugeot.jpg' %}" alt="">
+		</div>
+	</div>
+</div>
+<!-- ========================= SLIDER DE MARCAS DE REPUESTOS // ========================= -->
+
+
+
+<!-- ========================= CARDS de repuwestos // ========================= -->
+
+<style>
+	.card-container {
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: space-between;
+	}
+	.card {
+	  width: 22%;
+	  margin-bottom: 20px;
+	  padding: 10px;
+	  border: 1px solid #000;
+	  border-radius: 5px;
+	  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+	  transition: transform 0.3s ease-in-out;
+	}
+	.card:hover {
+	  transform: translateY(-10px);
+	}
+	.card img {
+	  width: 100%;
+	  border-radius: 5px;
+	  margin-bottom: 10px;
+	}
+	.card h3 {
+	  font-size: 1.2rem;
+	  font-weight: bold;
+	  margin-bottom: 10px;
+	}
+	.card p {
+	  font-size: 1rem;
+	  line-height: 1.2;
+	}
+  </style>
+
+<div class="card-container">
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+  </div>
+  <div class="card-container">
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+	<div class="card">
+	  <img src="https://via.placeholder.com/300x200" alt="Imagen de ejemplo">
+	  <h3>Título de ejemplo</h3>
+	  <p>Descripción de ejemplo.</p>
+	</div>
+  </div>
+<!-- ========================= FIN CARDS de repuestos // ========================= -->
+
+
+{% endblock %}

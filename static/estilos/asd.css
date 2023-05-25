@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+/* NAVBAR ACA*/
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+body
+{
+    height: 100vh;
+    width: 100%;
+    position: relative;   /*****************************************/
+    background: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+.container-recom{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    padding: 0 20px; /* Margen horizontal en los costados */
+}
+.cardslider-autos{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    margin: 40px 20px;
+    position: relative;
+}
+
+
+.cardslider-autos .lista-card {
+    display: grid;  
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.cardslider-autos .lista-card-item {
+    padding: 0 10px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+.cardslider-autos .lista-card-item ion-icon {
+    font-size: 20px;
+    
+    color:rgb(138, 27, 241);
+    --ionicon-stroke-width: 38px;
+}
+
+
+.cardslider-autos .lista-card-texto {
+    color: var(--independence);
+    font-size: var(--fs-6);
+}
+
+.p-img-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    border-radius: 16px;
+
+}
+
+.p-img a,
+.p-img{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.p-img a img{
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: contain;
+    animation: fade 0.6s;
+    
+}
+
+.p-img-lado{
+    display: none;
+}
+
+.p-img-container:hover .p-img-lado{
+    display: block;
+}
+
+.p-img-container:hover .p-img-frente{
+    display: none;
+}
+
+@keyframes fade{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+/* titulo marca-modelo precio y boton ver detalle de las cajas de seccion slider auto*/
+
+.p-textocaja{
+    margin-top: 5px;
+    width: 100%;
+}
+
+.marca-modelo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.marca-modelo span{
+    color: #acacac;
+    font-size: 0.9em;
+    margin: 5px 0px;
+    font-weight: 600;
+    text-transform: uppercase;
+    
+}
+
+.titulo-slidercard{
+    color:#333333;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all ease 0.3s;
+}
+
+.titulo-slidercard:hover{
+    color: #111111;
+    opacity: 0.7;
+    transition: all ease 0.3s;
+}
+
+.cartel-precio{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin: 0 auto;
+    padding: 0 20px;        
+}
+
+.cartel-precio .p-precio{
+    background-color: rgb(240, 242, 231);
+    padding: 8px;
+    border-radius: 40%;
+    font-size: 1 rem;
+    color: #333333;
+    font-weight: 600;
+    
+}
+
+.cartel-precio .btn-verdetalle {
+    color: orange;
+    margin: 0px 5px;
+    font-weight: 600;
+}
+.cartel-precio .btn-verdetalle:hover{
+    text-decoration: underline;
+}
+
+/*cartel descuento pequeño dentro de card de autos*/
+
+.cartel-descuento{
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    width: 65px;
+    height: 24px;
+    color: white;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    z-index: 100;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+.linea-separadora{   /* linea negra separadora sider banner*/
+    width: 100%;
+    height: 60px;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    border-bottom: 5px solid #e0e62e;
+}
+
+
+.linea-separadora2{   /* linea negra separadora sider banner*/
+    width: 100%;
+    height: 60px;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    border-bottom: 5px solid #bfeb32;
+}
+
+
+.linea-separadora3{   /* linea negra separadora sider banner*/
+    width: 100%;
+    height: 60px;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    border-bottom: 5px solid #7af63de2;
+}
+
+
+.header-mas{
+    text-align: center;
+    background-color: rgb(240, 238, 234);
+    width: 100%;
+    height: 150px;
+    margin: 20px auto;
+    padding-top: 22px;
+}
+
+.header-mas span{
+    font-weight: 500;
+    color: rgb(208, 40, 40);
+}
+
+.header-mas p{
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+
+
+
+/* <ul class="breadcrumb">
+  <li><a href="#">Home</a> <span class="divider">/</span></li>
+  <li><a href="#">Library</a> <span class="divider">/</span></li>
+  <li class="active">Data</li>
+</ul> */
+
+/* marcar paginacion
+
+
+ <div class="pagination">
+  <ul>
+    <li><a href="#">Prev</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">Next</a></li>
+  </ul>
+</div> 
+
+
+aca otro con el boton de la pagina actual donde se esta, oscurecido
+
+<div class="pagination">
+  <ul>
+    <li class="disabled"><a href="#">&laquo;</a></li>
+    <li class="active"><a href="#">1</a></li>
+    ...
+  </ul>
+</div>
+
+*/
+
+
+
+
+
+
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+  
+.submenu.open {
+    max-height: 500px; /* Ajusta esta altura según tus necesidades */
+}
