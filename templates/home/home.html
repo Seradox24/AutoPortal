@@ -1,32 +1,134 @@
 {% load static %}
-<!-- =========================hare el block content nuevametne======================== -->
-<!-- =========================PAGINA HOME COMPLETA======================== -->
+<!-- =========================PAGINA HOME======================== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nav bar pero responsiva mejorada</title>
+    <title>Bienvenido Autoportal Inicio</title>
     <!--  estilos css -->
-    <link rel="stylesheet" href="{% static '/AutoPortal/static/css/estilos.css' %}" type="text/css">  
-	<link rel="stylesheet" href="{% static '/AutoPortal/static/css/glider.min.css' %}">
+    <link rel="stylesheet" href="{% static '/estilos/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/estilos/glider.min.css' %}">
+    <link rel="stylesheet" href="{% static '/estilos/boostrap/responsive.css' %}">
     
 </head>
 <body>
 <!-- ========================= BARRA DE NAVEGACION END ======================== -->
     <header>
         <div class="contenedorNav">
-            <img src="{% static '/AutoPortal/static/images/imagenes_nuevas/logo.PNG' %}" class="logo" alt="">
+            <a href=""><img src="{% static '/IMG/logo.PNG' %}" class="logo" alt=""></a>
             <div class="grupo">
-                <ul class="navegacion">
-                    <li><a href="#">Ver Vehiculos</a></li>
-                    <li><a href="#">Ver Repuestos</a></li>
-                    <li><a href="#">Ingresar</a></li>
-                    <li><a href="#">Registrate</a></li>
-                    <a href="#"><ion-icon name="cart-outline" class="carrito"></ion-icon></a>
-                </ul>
-                <ion-icon name="menu-outline" class="menuToggle"></ion-icon>
+                <nav>
+                    <ul class="navegacion">
+                        <li>
+                            <a href="#">Tiendas</a>
+                            <ul class="submenu">
+                                <li><a href="">Vehiculos</a></li>
+                                <li><a href="">Repuestos</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Categorias vehiculos</a>
+                            <ul class="submenu">
+                                <li><a href="">Autos</a></li>
+                                <li><a href="">Camionetas</a></li>
+                                <li><a href="">Motocicleta</a></li>
+                                <li><a href="">Furgones</a></li>
+                                <li><a href="">SUVs</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Marcas</a>
+                            <ul class="submenu">
+                                <li><a href="">Ford</a></li>
+                                <li><a href="">Manza</a></li>
+                                <li><a href="">Nissan</a></li>
+                                <li><a href="">Peogeot</a></li>
+                                <li><a href="">Audi</a></li>
+                                <li><a href="">BMW</a></li>
+                                <li><a href="">Yamaha</a></li>
+                                <li><a href="">Toyota</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Ingresar</a></li>  
+                         <!--carrito-->
+                        <li>
+                            <div class="cart-icon">
+                                <ion-icon name="cart-outline" onclick="showCart(this),toggleCarrito(this)" class="cart"></ion-icon>
+                                <p class="count-product">0</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="cart-products" id="products-id">
+                                <!-- <p class="close-btn" onclick="closeBtn()">X</p> mejor no-->
+                                <!-- lo siguiente es como se veria, borrar cuando pongamos la bd-->
+                                <h3>Repuestos en carrito: </h3>
+                                <hr>
+                                <div class="card-items">
+                                    <div class="item">
+                                        <img src="{% static '/IMG/chevrolet1.png' %}" alt="">
+                                        <div class="item-content">
+                                            <h5>producto a a a a a a a  a  a a aaa a  a</h5>
+                                            <h5 class="cart-price">$40.000</h5>
+                                            <h6>Cantida: 3</h6>
+                                        </div>
+                                        <span><ion-icon name="trash-outline"></ion-icon></span>
+                                    </div>
+                    
+                                    <div class="item">
+                                        <img src="{% static '/IMG/chevrolet2.png' %}" alt="">
+                                        <div class="item-content">
+                                            <h5>producto a a a a a a a  a  a a aaa a  a</h5>
+                                            <h5 class="cart-price">$ 40.000</h5>
+                                            <h6>Cantidad: 3</h6>
+                                        </div>
+                                        <span class="delete-product" data-id=""><ion-icon name="trash-outline"></ion-icon></span>
+                                    </div> 
+                                </div>
+                                <h2 class="total-p">Total: $<strong class="price-total">0</strong></h2>
+                            </div>
+                        </li>   
+                        <li >       
+                            <img src="{% static '/IMG/images/usuario.jpg' %}" alt="" class="user-pic" onclick="toggleMenu()" >
+                        </li>    
+                        <div class="sub-menu-wrap" id="subMenu" >
+                            <div class="sub-menu">
+                                <div class="user-info">
+                                    <img src="{% static '/IMG/images/usuario.jpg' %}" alt="">
+                                    <h3>nombre</h2>
+                                </div>
+                                <hr>
+                                <a href="" class="sub-menu-link">
+                                    <img src="{% static '/IMG/images/profile.png' %}" alt="">
+                                    <p>Perfil</p>
+                                    <span>></span>
+                                </a>
+                                <a href="" class="sub-menu-link">
+                                    <img src="{% static '/IMG/images/profile.png' %}" alt="">
+                                    <p>Ordenes</p>
+                                    <span>></span>
+                                </a>
+                                <a href="" class="sub-menu-link">
+                                    <img src="{% static '/IMG/images/setting.png' %}" alt="">
+                                    <p>Historial</p>
+                                    <span>></span>
+                                </a>
+                                <a href="" class="sub-menu-link">
+                                    <img src="{% static '/IMG/images/help.png' %}" alt="">
+                                    <p>Direcciones</p>
+                                    <span>></span>
+                                </a>
+                                <a href="" class="sub-menu-link">
+                                    <img src="{% static '/IMG/images/logout.png' %}" alt="">
+                                    <p>Cerrar sesion</p>
+                                    <span>></span>
+                                </a>
+                            </div>
+                        </div>
+                    </ul>
+                    <ion-icon name="menu-outline" class="menuToggle"></ion-icon>
+                </nav>
             </div>
         </div>    
     </header>
@@ -47,7 +149,7 @@
 <div class="contenedor-banner">
     <div class="banner">
         <div class="img-banner1">
-            <img src="{% static '/AutoPortal/AutoPortal_Main/static/images/imagenes_nuevas/logosinfondo.png' %}" alt=""> 
+            <img src="{% static '/IMG/logosinfondo.png' %}" alt=""> 
         </div>
         <div class="contenido-banner">  
             <span>Bienvenido</span>
@@ -55,7 +157,7 @@
             <p>Vehiculos / Vehiculos adaptados / Refacciones y mas.</p>    
         </div>
         <div class="img-banner2">
-            <img src="/IMG/Car driving-rafiki.png" alt="">
+            <img src="{% static '/IMG/Car driving-rafiki.png' %}" alt="">
         </div>
     </div>
 </div>
@@ -63,9 +165,91 @@
 >>>>>>> 76d0e5b66bce37300933d08126039cc021c91f5c
 
 
-<!-- ========================= SLIDER AUTOS PANTALLA PRINCIPAL =======================-->
-<div>
 
+
+<!-- *** carrousel de logos marcas automovil **** -->
+
+<div class="logos">
+    <div class="logos-slide">
+        <img src="{% static '/IMG/shoe.png' %}" alt="">
+        <img src="{% static '/IMG/marcas/logo-audi.jpg' %}" alt="">
+        <img src="{% static '/IMG/marcas/logo-bmw.jpg' %}" alt="">
+        <img src="{% static '/IMG/marcas/logo-chevrolet.jpg' %}" alt="">
+        <img src="{% static '/IMG/marcas/logo-dodge.hpg.png' %}" alt="">
+        <img src="{% static '/IMG/marcas/logo-ford.jpg' %}" alt="">
+        <img src="{% static '/IMG/marcas/logo-kia.jpg' %}"alt="">
+        <img src="{% static '/IMG/marcas/logo-mahindra.jpg' %}" alt="">
+        <img src="{% static '/IMG/marcas/logo-mazda.jpg' %}" alt="">
+        <img src="{% static '/IMG/marcas/logo-mercedes.jpg' %}" alt="">
+        <img src="{% static '/IMG/marcas/logo-mitsu-jpg.png' %}" alt="">
+        <img src="{% static '/IMG/marcas/logo-nissan.jpg' %}" alt="">
+        <img src="{% static '/IMG/marcas/logo-peugeot.jpg' %}" alt="">
+    </div>
+</div>
+
+
+
+
+
+
+<!--CONTENEDOR DE FORMULARIO ELIGE AUTO, MAS AD-->
+<div class="container-add">
+    <div class="form-container">
+        <form>
+            <div class="form-title">Busca tu vehículo</div>
+            <div class="form-group">
+                <label for="marca">Marca:</label>
+                <select id="marca" name="marca">
+                <option disabled selected value="">Escoja su marca</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Ford">Ford</option>
+                <option value="Chevrolet">Chevrolet</option>
+                </select>
+            </div>
+            <div class="form-group">
+            <label for="modelo">Modelo:</label>
+            <select id="modelo" name="modelo">
+                <option disabled selected value="">Escoja su modelo</option>
+                <option value="Sedan">Sedan</option>
+                <option value="SUV">SUV</option>
+                <option value="Pickup">Pickup</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="anno-min">Año mínimo:</label>
+            <select id="anno-min" name="anno-min">
+            <option disabled selected value="">Escoja el año minimo</option>    
+            <option value="2000">2000</option>
+            <option value="2005">2005</option>
+            <option value="2010">2010</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="anno-max">Año máximo:</label>
+            <select id="anno-max" name="anno-max">
+            <option disabled selected value="">Escoja el año maximo</option>    
+            <option value="2020">2020</option>
+            <option value="2025">2025</option>
+            <option value="2030">2030</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit">Buscar</button>
+        </div>
+        </form>
+    </div>
+    <div class="ad-container">
+        <img src="{% static '/IMG/tiposautos-add.jpg' %}" alt="Publicidad" class="ad-image">
+    </div>   
+</div>  
+
+
+
+
+<!-- ========================= SLIDER AUTOS PANTALLA PRINCIPAL =======================-->
+
+<div>
     <section class="slider-inicio">
         <div class="texto">
             <h1>Todas las soluciones para tus necesidades automotrices en un solo lugar.</h1>
@@ -75,9 +259,41 @@
                 nuestro catálogo en línea y descubre todo lo que tenemos para ofrecerte. ¡Haz de tu experiencia automotriz algo más 
                 fácil y confiable con nosotros!</p>
         </div>
+
+        <div class="categorias">
+            <div class="wrapper">
+                <h3 class="titulocategorias">Busque Por Categoria</h3>
+        
+                <div class="container-categorias">
+                    
+                    <div class="cat">
+                        <a href=""><img src="{% static '/IMG/iconos/caric.jpg' %}" alt=""></a>
+                    </div>
+        
+                    <div class="cat">
+                        <a href=""><img src="{% static '/IMG/iconos/camioetaic.jpg' %}" alt=""></a>
+                    </div>
+                    
+                    <div class="cat">
+                        <a href=""><img src="{% static '/IMG/iconos/moto.jpg' %}" alt=""></a>
+                    </div>
+        
+                    <div class="cat">
+                        <a href=""><img src="{% static '/IMG/iconos/suvic.jpg' %}" alt=""></a>
+                    </div>
+        
+                    <div class="cat">
+                    <a href=""><img src="{% static '/IMG/iconos/vanic.jpg' %}" alt=""></a>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+
+
         <div class="linea-separadora">
             <h1>Vehiculos mas vistos</h1>    <!-- ==cambiara a boton==-->
-            <p></p>
+            <button class="button1">Ver Todo Vehiculos </button>
         </div>
 
 
@@ -95,17 +311,15 @@
 
         <div class="glider-contain">
             <div class="glider">
-              
+            
                 <div class="cardslider-autos">
-           
-                    <!--pequeño cartel de descuento % pagina principal-->
-                    <span class="cartel-descuento"> -8% </span>
+        
         
                     <div class="p-img-container">
                         <div class="p-img">
                             <a href="#">
-                                <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
-                                <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                                <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                                <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
                             </a>    
                         </div>
                     </div>
@@ -116,25 +330,50 @@
                         <a href="#" class="titulo-slidercard" >
                             descripcion de modelo auto año
                         </a>
+                        <ul class="lista-card">
+
+                            <li class="lista-card-item">
+                            <ion-icon name="people-outline"></ion-icon>
+        
+                            <span class="lista-card-texto">4 personas</span>
+                            </li>
+        
+                            <li class="lista-card-item">
+                            <ion-icon name="flash-outline"></ion-icon>
+        
+                            <span class="lista-card-texto">diesel</span>
+                            </li>
+        
+                            <li class="lista-card-item">
+                            <ion-icon name="speedometer-outline"></ion-icon>
+        
+                            <span class="lista-card-texto">6.1km / litro</span>
+                            </li>
+        
+                            <li class="lista-card-item">
+                            <ion-icon name="hardware-chip-outline"></ion-icon>
+        
+                            <span class="lista-card-texto">manual</span>
+                            </li>
+        
+                        </ul>
                         <div class="cartel-precio">
                             <span class="p-precio">$10.000.000</span>
                             <a href="#" class="btn-verdetalle"> Ver detalle </a>
                         </div>
                     </div>
                 </div>
-              
+            
             
 
             <div class="cardslider-autos">
-           
-                <!--pequeño cartel de descuento % pagina principal-->
-                <span class="cartel-descuento"> -8% </span>
+        
     
                 <div class="p-img-container">
                     <div class="p-img">
                         <a href="#">
-                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
-                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                            <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                            <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
                         </a>    
                     </div>
                 </div>
@@ -145,6 +384,34 @@
                     <a href="#" class="titulo-slidercard" >
                         descripcion de modelo auto año
                     </a>
+                    <ul class="lista-card">
+
+                        <li class="lista-card-item">
+                        <ion-icon name="people-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">4 personas</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="flash-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">diesel</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="speedometer-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">6.1km / litro</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="hardware-chip-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">manual</span>
+                        </li>
+    
+                    </ul>
+
                     <div class="cartel-precio">
                         <span class="p-precio">$10.000.000</span>
                         <a href="#" class="btn-verdetalle"> Ver detalle </a>
@@ -153,15 +420,13 @@
             </div>
 
             <div class="cardslider-autos">
-           
-                <!--pequeño cartel de descuento % pagina principal-->
-                <span class="cartel-descuento"> -8% </span>
+        
     
                 <div class="p-img-container">
                     <div class="p-img">
                         <a href="#">
-                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
-                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                            <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                            <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
                         </a>    
                     </div>
                 </div>
@@ -172,6 +437,33 @@
                     <a href="#" class="titulo-slidercard" >
                         descripcion de modelo auto año
                     </a>
+                    <ul class="lista-card">
+
+                        <li class="lista-card-item">
+                        <ion-icon name="people-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">4 personas</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="flash-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">diesel</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="speedometer-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">6.1km / litro</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="hardware-chip-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">manual</span>
+                        </li>
+    
+                    </ul>
                     <div class="cartel-precio">
                         <span class="p-precio">$10.000.000</span>
                         <a href="#" class="btn-verdetalle"> Ver detalle </a>
@@ -180,15 +472,13 @@
             </div>
 
             <div class="cardslider-autos">
-           
-                <!--pequeño cartel de descuento % pagina principal-->
-                <span class="cartel-descuento"> -8% </span>
+
     
                 <div class="p-img-container">
                     <div class="p-img">
                         <a href="#">
-                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
-                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                            <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                            <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
                         </a>    
                     </div>
                 </div>
@@ -199,6 +489,33 @@
                     <a href="#" class="titulo-slidercard" >
                         descripcion de modelo auto año
                     </a>
+                    <ul class="lista-card">
+
+                        <li class="lista-card-item">
+                        <ion-icon name="people-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">4 personas</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="flash-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">diesel</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="speedometer-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">6.1km / litro</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="hardware-chip-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">manual</span>
+                        </li>
+    
+                    </ul>
                     <div class="cartel-precio">
                         <span class="p-precio">$10.000.000</span>
                         <a href="#" class="btn-verdetalle"> Ver detalle </a>
@@ -207,15 +524,13 @@
             </div>
 
             <div class="cardslider-autos">
-           
-                <!--pequeño cartel de descuento % pagina principal-->
-                <span class="cartel-descuento"> -8% </span>
+
     
                 <div class="p-img-container">
                     <div class="p-img">
                         <a href="#">
-                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
-                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                            <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                            <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
                         </a>    
                     </div>
                 </div>
@@ -226,6 +541,33 @@
                     <a href="#" class="titulo-slidercard" >
                         descripcion de modelo auto año
                     </a>
+                    <ul class="lista-card">
+
+                        <li class="lista-card-item">
+                        <ion-icon name="people-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">4 personas</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="flash-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">diesel</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="speedometer-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">6.1km / litro</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="hardware-chip-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">manual</span>
+                        </li>
+    
+                    </ul>
                     <div class="cartel-precio">
                         <span class="p-precio">$10.000.000</span>
                         <a href="#" class="btn-verdetalle"> Ver detalle </a>
@@ -234,15 +576,13 @@
             </div>
 
             <div class="cardslider-autos">
-           
-                <!--pequeño cartel de descuento % pagina principal-->
-                <span class="cartel-descuento"> -8% </span>
+
     
                 <div class="p-img-container">
                     <div class="p-img">
                         <a href="#">
-                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
-                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                            <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                            <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
                         </a>    
                     </div>
                 </div>
@@ -253,14 +593,41 @@
                     <a href="#" class="titulo-slidercard" >
                         descripcion de modelo auto año
                     </a>
+                    <ul class="lista-card">
+
+                        <li class="lista-card-item">
+                        <ion-icon name="people-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">4 personas</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="flash-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">diesel</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="speedometer-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">6.1km / litro</span>
+                        </li>
+    
+                        <li class="lista-card-item">
+                        <ion-icon name="hardware-chip-outline"></ion-icon>
+    
+                        <span class="lista-card-texto">manual</span>
+                        </li>
+    
+                    </ul>
                     <div class="cartel-precio">
                         <span class="p-precio">$10.000.000</span>
                         <a href="#" class="btn-verdetalle"> Ver detalle </a>
                     </div>
-                </div>  
+                </div>
             </div>
-          
-                 </div>
+        
+                </div>
         </div>
     </section>
 </div>
@@ -281,10 +648,10 @@
 <div>
 
     <section class="slider-inicio">
-       
+    
         <div class="linea-separadora">
             <h1>Repuestos mas vistos</h1>
-            <p></p>
+            <button class="button1">Ver Todo repuestos </button>
         </div>
 
 
@@ -300,17 +667,14 @@
 
         <div class="glider-contain">
             <div class="glider2">
-              
+            
                 <div class="cardslider-autos">
-           
-                    <!--pequeño cartel de descuento % pagina principal-->
-                    <span class="cartel-descuento"> -8% </span>
         
                     <div class="p-img-container">
                         <div class="p-img">
                             <a href="#">
-                                <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
-                                <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                                <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                                <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
                             </a>    
                         </div>
                     </div>
@@ -319,27 +683,24 @@
                             <span>marca</span>
                         </div>
                         <a href="#" class="titulo-slidercard" >
-                            descripcion de modelo auto año
+                            descripcion de repuesto
                         </a>
                         <div class="cartel-precio">
-                            <span class="p-precio">$10.000.000</span>
+                            <span class="p-precio">$400.000</span>
                             <a href="#" class="btn-verdetalle"> Ver detalle </a>
                         </div>
                     </div>
                 </div>
-              
+            
             
 
             <div class="cardslider-autos">
-           
-                <!--pequeño cartel de descuento % pagina principal-->
-                <span class="cartel-descuento"> -8% </span>
     
                 <div class="p-img-container">
                     <div class="p-img">
                         <a href="#">
-                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
-                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                            <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                            <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
                         </a>    
                     </div>
                 </div>
@@ -348,25 +709,22 @@
                         <span>marca</span>
                     </div>
                     <a href="#" class="titulo-slidercard" >
-                        descripcion de modelo auto año
+                        descripcion de repuesto
                     </a>
                     <div class="cartel-precio">
-                        <span class="p-precio">$10.000.000</span>
+                        <span class="p-precio">$400.000</span>
                         <a href="#" class="btn-verdetalle"> Ver detalle </a>
                     </div>
                 </div>
             </div>
 
             <div class="cardslider-autos">
-           
-                <!--pequeño cartel de descuento % pagina principal-->
-                <span class="cartel-descuento"> -8% </span>
     
                 <div class="p-img-container">
                     <div class="p-img">
                         <a href="#">
-                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
-                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                            <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                            <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
                         </a>    
                     </div>
                 </div>
@@ -375,25 +733,22 @@
                         <span>marca</span>
                     </div>
                     <a href="#" class="titulo-slidercard" >
-                        descripcion de modelo auto año
+                        descripcion de repuesto
                     </a>
                     <div class="cartel-precio">
-                        <span class="p-precio">$10.000.000</span>
+                        <span class="p-precio">$400.000</span>
                         <a href="#" class="btn-verdetalle"> Ver detalle </a>
                     </div>
                 </div>
             </div>
 
             <div class="cardslider-autos">
-           
-                <!--pequeño cartel de descuento % pagina principal-->
-                <span class="cartel-descuento"> -8% </span>
     
                 <div class="p-img-container">
                     <div class="p-img">
                         <a href="#">
-                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
-                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                            <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                            <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
                         </a>    
                     </div>
                 </div>
@@ -402,25 +757,22 @@
                         <span>marca</span>
                     </div>
                     <a href="#" class="titulo-slidercard" >
-                        descripcion de modelo auto año
+                        descripcion de repuesto
                     </a>
                     <div class="cartel-precio">
-                        <span class="p-precio">$10.000.000</span>
+                        <span class="p-precio">$400.000</span>
                         <a href="#" class="btn-verdetalle"> Ver detalle </a>
                     </div>
                 </div>
             </div>
 
             <div class="cardslider-autos">
-           
-                <!--pequeño cartel de descuento % pagina principal-->
-                <span class="cartel-descuento"> -8% </span>
     
                 <div class="p-img-container">
                     <div class="p-img">
                         <a href="#">
-                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
-                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                            <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                            <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
                         </a>    
                     </div>
                 </div>
@@ -429,25 +781,22 @@
                         <span>marca</span>
                     </div>
                     <a href="#" class="titulo-slidercard" >
-                        descripcion de modelo auto año
+                        descripcion de repuesto
                     </a>
                     <div class="cartel-precio">
-                        <span class="p-precio">$10.000.000</span>
+                        <span class="p-precio">$400.000</span>
                         <a href="#" class="btn-verdetalle"> Ver detalle </a>
                     </div>
                 </div>
             </div>
 
             <div class="cardslider-autos">
-           
-                <!--pequeño cartel de descuento % pagina principal-->
-                <span class="cartel-descuento"> -8% </span>
     
                 <div class="p-img-container">
                     <div class="p-img">
                         <a href="#">
-                            <img src="/IMG/autosbanner.jpg" class="p-img-frente" alt="frente">
-                            <img src="/IMG/coche-azul.jpg" class="p-img-lado" alt="lado">
+                            <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                            <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
                         </a>    
                     </div>
                 </div>
@@ -456,48 +805,68 @@
                         <span>marca</span>
                     </div>
                     <a href="#" class="titulo-slidercard" >
-                        descripcion de modelo auto año
+                        descripcion de repuesto
                     </a>
                     <div class="cartel-precio">
-                        <span class="p-precio">$10.000.000</span>
+                        <span class="p-precio">$400.000</span>
                         <a href="#" class="btn-verdetalle"> Ver detalle </a>
                     </div>
                 </div>  
             </div>
-          
-                 </div>
+        
+                </div>
         </div>
     </section>
 </div>
 
 
 
-
-
-
-
+<footer>
+    <div class="container-iconos-sociales">
+        <a href="" class="social-iconos"></a>
+        <a href="" class="social-iconos"></a>
+        <a href="" class="social-iconos"></a>
+        <a href="" class="social-iconos"></a>
+        <a href="" class="social-iconos"></a>
+    </div>
+    <ul class="footer-menu-container">
+        <li class="item-menu">Legal</li>
+        <li class="item-menu">Cockies</li>
+        <li class="item-menu">Privacidad</li>
+        <li class="item-menu">Reembolsos</li>
+        <li class="item-menu">Contacto</li>
+    </ul>
+    <span class="copyrgt" >&copy;2023, AutoPortal. Todos los derechos reservados </span>
+</footer>
 
 
 
 <!-- *** BARRA DE NAVEGACION SCRIPTS **** -->
-    <script type="module" src="{% static 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js' %}"></script>
-    <script nomodule src="{% static 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js' %}"></script>
-    
-    <script>
-        let navegacion = document.querySelector('.navegacion');
-        let menuToggle = document.querySelector('.menuToggle');
-        let contenedorNav = document.querySelector('.contenedorNav');
+<script type="module" src="{% static 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js' %}"></script>
+<script nomodule src="{% static 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js' %}"></script>
 
-        menuToggle.onclick = function(){
-            contenedorNav.classList.toggle('open')
-        }
-    </script>
+<script>
+    let navegacion = document.querySelector('.navegacion');
+    let menuToggle = document.querySelector('.menuToggle');
+    let contenedorNav = document.querySelector('.contenedorNav');
+
+    menuToggle.onclick = function(){
+        contenedorNav.classList.toggle('open')
+    }
+</script>
 <!--  *** BARRA DE NAVEGACION SCRIPTS END *** -->
 
 
 <!-- *** script del grider ***  -->
-<script src="{% static '/static/js/glider.min.js' %}"> </script>
+<script src="{% static '/jss/glider.min.js' %}"> </script>
 
+<script>
+    let subMenu = document.getElementById("subMenu");
+
+    function toggleMenu(){
+      subMenu.classList.toggle("open-menu");
+    }
+</script>
 
 <script>  
     new Glider(document.querySelector('.glider'), {
@@ -506,49 +875,49 @@
         draggable: true,
         dots: '.dots',
         arrows: {
-          prev: '.glider-prev',
-          next: '.glider-next'
+        prev: '.glider-prev',
+        next: '.glider-next'
         },
         responsive: [
         {
-          // screens greater than >= 775px
-          breakpoint: 1200,
-          settings: {
+        // screens greater than >= 775px
+        breakpoint: 1200,
+        settings: {
             // Set to `auto` and provide item width to adjust to viewport
             slidesToShow: 4,
             slidesToScroll: 2,
-          }
+        }
         },{
-          // screens greater than >= 1024px
-          breakpoint: 900,
-          settings: {
+        // screens greater than >= 1024px
+        breakpoint: 900,
+        settings: {
             slidesToShow: 3,
             slidesToScroll: 1,
-          }
+        }
         },{
             // screens greater than >= 1024px
             breakpoint: 640,
             settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
+            slidesToShow: 2,
+            slidesToScroll: 1,
             }
-          },{
+        },{
             // screens greater than >= 1024px
             breakpoint: 300,
             settings: {
-              slidesToShow: 1.5,
-              slidesToScroll: 1,
+            slidesToShow: 1.5,
+            slidesToScroll: 1,
             }
-          },{
+        },{
             // screens greater than >= 1024px
             breakpoint: 0,
             settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
+            slidesToShow: 1,
+            slidesToScroll: 1,
             }
-          },
-      ]
-      });
+        },
+    ]
+    });
 </script>
 
 <script>  // este glider es del 2do slider, de repuestos.
@@ -558,72 +927,73 @@
         draggable: true,
         dots: '.dots',
         arrows: {
-          prev: '.glider-prev2',
-          next: '.glider-next2'
+        prev: '.glider-prev2',
+        next: '.glider-next2'
         },
         responsive: [
         {
-          // screens greater than >= 775px
-          breakpoint: 1200,
-          settings: {
+        // screens greater than >= 775px
+        breakpoint: 1200,
+        settings: {
             // Set to `auto` and provide item width to adjust to viewport
             slidesToShow: 4,
             slidesToScroll: 2,
-          }
+        }
         },{
-          // screens greater than >= 1024px
-          breakpoint: 900,
-          settings: {
+        // screens greater than >= 1024px
+        breakpoint: 900,
+        settings: {
             slidesToShow: 3,
             slidesToScroll: 1,
-          }
+        }
         },{
             // screens greater than >= 1024px
             breakpoint: 640,
             settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
+            slidesToShow: 2,
+            slidesToScroll: 1,
             }
-          },{
+        },{
             // screens greater than >= 1024px
             breakpoint: 300,
             settings: {
-              slidesToShow: 1.5,
-              slidesToScroll: 1,
+            slidesToShow: 1.5,
+            slidesToScroll: 1,
             }
-          },{
+        },{
             // screens greater than >= 1024px
             breakpoint: 0,
             settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
+            slidesToShow: 1,
+            slidesToScroll: 1,
             }
-          },
-      ]
-      });
+        },
+    ]
+    });
+</script>
+
+
+
+<!-- *** script para duplicar sliderr ***  -->
+<script>
+    var copy = document.querySelector(".logos-slider").cloneNode(true);
+    document.querySelector('.logos').appendChild(copy);
 </script>
 <!-- *** FIN DE script del grider ***  -->
-    <footer>
-        <img src="/IMG/logo.PNG" alt="Logo" class="logofooter">
-        <div class="container-iconos-sociales">
-            <a href="" class="social-iconos"></a>
-            <a href="" class="social-iconos"></a>
-            <a href="" class="social-iconos"></a>
-            <a href="" class="social-iconos"></a>
-            <a href="" class="social-iconos"></a>
-        </div>
-        <ul class="footer-menu-container">
-            <li class="item-menu">Legal</li>
-            <li class="item-menu">Cockies</li>
-            <li class="item-menu">Privacidad</li>
-            <li class="item-menu">Reembolsos</li>
-            <li class="item-menu">Contacto</li>
-        </ul>
-        <span class="copyrgt" >&copy;2023, AutoPortal. Todos los derechos reservados </span>
-    </footer>
 
-</body>
+<script src="{% static '/AutoPortal/static/jss/carrito.js' %}"></script>    
+<script>
+    function showCart(x){
+        document.getElementById("products-id").style.display = "block";
+    }
+    function closeBtn(){
+            document.getElementById("products-id").style.display = "none";
+    }
+</script>     
     
 
+</body>
 </html>
+
+
 
