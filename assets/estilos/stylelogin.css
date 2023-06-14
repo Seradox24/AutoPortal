@@ -52,10 +52,8 @@ body{
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(15px);   /*  blur para la caja de login */
-    margin-top: 100px; /* Modifica este valor para subir la caja */
 
 }
-
 
 .login-box h2{
     font-size: 2em;
