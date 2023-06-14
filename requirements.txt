@@ -1,0 +1,7 @@
+django
+Pillow
+mysqlclient
+django-autoslug
+utilidades
+PyJWT
+python-slugify

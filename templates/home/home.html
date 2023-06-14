@@ -1,0 +1,425 @@
+{% extends '../layout/frontend.html' %} {% load utilidades %}
+{% load static %}
+{% block title %} Inicio {% endblock %}
+{% block content %}
+
+
+  <!-- ========================= BANNER PANTALLA PRINCIPAL =======================-->
+  <section>
+    <div class="contenedor-banner">
+      <div class="banner">
+        <div class="img-banner1">
+          <img src="{% static '/img/logosinfondo.png' %}" alt="">
+        </div>
+        <div class="contenido-banner">
+          <span>Bienvenido</span>
+          <h3>AutoPortal</h3>
+          <p>Vehiculos / Vehiculos adaptados / Refacciones y mas.</p>
+        </div>
+        <div class="img-banner2">
+          <img src="{% static '/IMG/Car driving-rafiki.png' %}" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ========================= FIN BANNER PANTALLA PRINCIPAL ======================================================= -->
+
+
+
+
+  <!-- CARROUSEL CATEGORIAS -->
+  <section>
+    <div class="logos">
+      <div class="logos-slide">
+        <img src="{% static '/img/logosinfondo.png' %}" alt="">
+        <img src="{% static '/img/logosinfondo.png' %}" alt="">
+        <img src="{% static '/img/logosinfondo.png' %}" alt="">
+        <img src="{% static '/img/logosinfondo.png' %}" alt="">
+        <img src="{% static '/img/logosinfondo.png' %}" alt="">
+        <img src="{% static '/img/logosinfondo.png' %}" alt="">
+        <img src="{% static '/img/logosinfondo.png' %}" alt="">
+        <img src="{% static '/img/logosinfondo.png' %}" alt="">
+        <img src="{% static '/img/logosinfondo.png' %}" alt="">
+        <img src="{% static '/img/logosinfondo.png' %}" alt="">
+        <img src="{% static '/img/logosinfondo.png' %}" alt="">
+      </div>
+    </div>
+  </section>
+  <!-- ========================= FIN CARROUSEL CATEGORIAS ======================================================= -->
+
+
+
+  <!--CONTENEDOR DE FORMULARIO ELIGE AUTO, MAS AD-->
+  <div class="container-add">
+    <div class="form-container">
+      <form>
+        <div class="form-title">Busca tu vehículo</div>
+        <div class="form-group">
+          <label for="marca">Marca:</label>
+          <select id="marca" name="marca">
+            <option disabled selected value="">Escoja su marca</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Ford">Ford</option>
+            <option value="Chevrolet">Chevrolet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="modelo">Modelo:</label>
+          <select id="modelo" name="modelo">
+            <option disabled selected value="">Escoja su modelo</option>
+            <option value="Sedan">Sedan</option>
+            <option value="SUV">SUV</option>
+            <option value="Pickup">Pickup</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="anno-min">Año mínimo:</label>
+          <select id="anno-min" name="anno-min">
+            <option disabled selected value="">Escoja el año minimo</option>
+            <option value="2000">2000</option>
+            <option value="2005">2005</option>
+            <option value="2010">2010</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="anno-max">Año máximo:</label>
+          <select id="anno-max" name="anno-max">
+            <option disabled selected value="">Escoja el año maximo</option>
+            <option value="2020">2020</option>
+            <option value="2025">2025</option>
+            <option value="2030">2030</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit">Buscar</button>
+        </div>
+      </form>
+    </div>
+    <div class="ad-container">
+      <img src="{% static '/IMG/tiposautos-add.jpg' %}" alt="Publicidad" class="ad-image">
+    </div>
+    <img src="{% static '/img/caminohd-fondo.jpg' %}" class="backgr-imagen">
+  </div>
+
+  <!-- ========================= FIN CONTENEDOR DE FORMULARIO ELIGE AUTO ======================================================= -->
+
+
+
+
+  <!-- ========================= SLIDER AUTOS PANTALLA PRINCIPAL =======================-->
+
+  <div>
+    <section class="slider-inicio">
+      <div class="texto-presentacion">
+        <h1>Todas las soluciones para tus necesidades automotrices en un solo lugar.</h1>
+        <p> Bienvenido a nuestra tienda en línea,
+          donde encontrarás una amplia selección de vehículos y refacciones de alta calidad a precios competitivos.
+         ¡Haz de tu experiencia automotriz algo más fácil y confiable con nosotros!</p>
+      </div>
+
+      <div class="categorias-esferas">
+        <div class="wrapper-categ">
+          <h3 class="titulocategorias">Busque Por Categoria</h3>
+
+          <div class="container-categorias">
+
+            <div class="cat">
+              <a href=""><img src="{% static '/IMG/iconos/caric.jpg' %}" alt=""></a>
+            </div>
+
+            <div class="cat">
+              <a href=""><img src="{% static '/IMG/iconos/camioetaic.jpg' %}" alt=""></a>
+            </div>
+
+            <div class="cat">
+              <a href=""><img src="{% static '/IMG/iconos/moto.jpg' %}" alt=""></a>
+            </div>
+
+            <div class="cat">
+              <a href=""><img src="{% static '/IMG/iconos/suvic.jpg' %}" alt=""></a>
+            </div>
+
+            <div class="cat">
+              <a href=""><img src="{% static '/IMG/iconos/vanic.jpg' %}" alt=""></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="linea-separadora">
+        <h1>Vehiculos mas vistos</h1> <!-- ==cambiara a boton==-->
+        <button class="button1">Ver Todo Vehiculos </button>
+      </div>
+
+
+      <div class="slider-btns">
+        <button aria-label="Previous" class="glider-prev">
+          <span></span>
+        </button>
+        <button aria-label="Next" class="glider-next">
+          <span>
+
+          </span>
+        </button>
+      </div>
+
+
+      <div class="glider-contain">
+        <div class="glider">
+          {% for dato in datos %}
+          <div class="cardslider-autos">
+
+
+            <div class="p-img-container">
+              <div class="p-img">
+                <a href="#">
+                  <img src="{% static '/upload/producto/' %}{{dato.foto}}" class="p-img-frente" alt="frente">
+                  <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                </a>
+              </div>
+            </div>
+            <div class="p-textocaja">
+              <div class="marca-modelo">
+                <span>{{dato.vehiculo.marca}}</span>
+              </div>
+              <a href="#" class="titulo-slidercard">
+                {{dato.titulo}}
+              </a>
+              <ul class="lista-card">
+
+                <li class="lista-card-item">
+                  <ion-icon name="people-outline"></ion-icon>
+
+                  <span class="lista-card-texto">{{dato.vehiculo.num_pasajeros}} personas</span>
+                </li>
+
+                <li class="lista-card-item">
+                  <ion-icon name="flash-outline"></ion-icon>
+
+                  <span class="lista-card-texto">{{dato.vehiculo.tipo_combustible}}</span>
+                </li>
+
+                <li class="lista-card-item">
+                  <ion-icon name="speedometer-outline"></ion-icon>
+
+                  <span class="lista-card-texto">{{dato.vehiculo.volumen_motor}}</span>
+                </li>
+
+                <li class="lista-card-item">
+                  <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                  <span class="lista-card-texto">{{dato.vehiculo.transmision}}</span>
+                </li>
+
+              </ul>
+              <div class="cartel-precio">
+                <span class="p-precio">${{dato.precio|numberFormat }}</span>
+                <a href="{% url 'productos_detalle' dato.id dato.slug %}" class="btn-verdetalle"> Ver detalle </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+
+    <!-- ========================= BANNER DE ABAJO, ENTRE SLIDERS =============== -->
+    <div class="banner-abajo">
+      <div class="contenedor-bannerbajo">
+        <h1><span>Todas tus marcas favoritas</span></h1>
+        <span class="cen">Encuentra repuestos de variedad de marcas</span>
+        <a class="btn-bannerbajo" href="#">Ver todo repuestos</a> 
+      </div>
+      <img src="{% static '/img/caminohd-fondo.jpg' %}" class="fondo-bannerbajo">
+    </div>
+    <!--***********************************BANNER DE ABAJO, ENTRE SLIDERS******************-->
+
+
+
+
+
+  <!-- ========================= SLIDER DE REPUESTOS =============== -->
+  <div>
+
+    <section class="slider-inicio">
+
+      <div class="linea-separadora">
+        <h1>Repuestos mas vistos</h1>
+        <button class="button1">Ver Todo repuestos </button>
+      </div>
+
+
+      <div class="slider-btns">
+        <button aria-label="Previous" class="glider-prev2">
+          <span></span>
+        </button>
+        <button aria-label="Next" class="glider-next2">
+          <span></span>
+        </button>
+      </div>
+
+
+      <div class="glider-contain">
+        <div class="glider2">
+          {% for dato2 in datos2 %}
+
+          <div class="cardslider-autos">
+            <div class="p-img-container">
+              <div class="p-img">
+                <a href="#">
+                  <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                  <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                </a>
+                </div>
+                </div>
+
+            <div class="p-textocaja">
+              <div class="marca-modelo">
+                <span>marca</span>
+              </div>
+              <a href="#" class="titulo-slidercard">
+                {{dato2.titulo}}
+              </a>
+              <div class="cartel-precio">
+                <span class="p-precio">$400.000</span>
+                <a href="{% url 'productos_detalle_repuesto' dato2.id dato2.slug %}" class="btn-verdetalle"> Ver detalle </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  
+  {% block bloques_js %}
+
+  <!-- toggle perfil navbar-->
+  <script src="{% static '/jss/scripts.js' %}"></script>
+  <script src="{% static '/jss/glider.min.js' %}"></script>
+
+  {% endblock %}
+  <!--primer slider con glider-->
+  <script>
+    new Glider(document.querySelector('.glider'), {
+      slidesToScroll: 1,
+      slidesToShow: 4,
+      draggable: true,
+      dots: '.dots',
+      arrows: {
+        prev: '.glider-prev',
+        next: '.glider-next'
+      },
+      responsive: [
+        {
+          // screens greater than >= 775px
+          breakpoint: 1200,
+          settings: {
+            // Set to `auto` and provide item width to adjust to viewport
+            slidesToShow: 4,
+            slidesToScroll: 2,
+          }
+        }, {
+          // screens greater than >= 1024px
+          breakpoint: 900,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          }
+        }, {
+          // screens greater than >= 1024px
+          breakpoint: 640,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          }
+        }, {
+          // screens greater than >= 1024px
+          breakpoint: 300,
+          settings: {
+            slidesToShow: 1.5,
+            slidesToScroll: 1,
+          }
+        }, {
+          // screens greater than >= 1024px
+          breakpoint: 0,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          }
+        },
+      ]
+    });
+  </script>
+  <!--segundo slider con glider, repuestos-->
+  <script>
+    new Glider(document.querySelector('.glider2'), {
+      slidesToScroll: 1,
+      slidesToShow: 4,
+      draggable: true,
+      dots: '.dots',
+      arrows: {
+        prev: '.glider-prev2',
+        next: '.glider-next2'
+      },
+      responsive: [
+        {
+          // screens greater than >= 775px
+          breakpoint: 1200,
+          settings: {
+            // Set to `auto` and provide item width to adjust to viewport
+            slidesToShow: 4,
+            slidesToScroll: 2,
+          }
+        }, {
+          // screens greater than >= 1024px
+          breakpoint: 900,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          }
+        }, {
+          // screens greater than >= 1024px
+          breakpoint: 640,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          }
+        }, {
+          // screens greater than >= 1024px
+          breakpoint: 300,
+          settings: {
+            slidesToShow: 1.5,
+            slidesToScroll: 1,
+          }
+        }, {
+          // screens greater than >= 1024px
+          breakpoint: 0,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          }
+        },
+      ]
+    });
+  </script>
+  <!-- ***fin scripts glider  ***  -->     
+        
+    
+
+
+
+{% endblock %}

@@ -1,0 +1,44 @@
+<style>
+    .floating-alert-container {
+        position: fixed;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .floating-alert {
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+    }
+</style>
+
+<div class="floating-alert-container">
+    {% if form.errors %}
+    <div class="alert alert-danger alert-dismissible fade show floating-alert" role="alert">
+        <p>Hay errores en el formulario: {{ form.errors }}</p>
+    </div>
+    {% endif %}
+
+    {% if messages %}
+    {% for msg in messages %}
+    <div class="alert alert-{{ msg.level_tag }} alert-dismissible fade show floating-alert" role="alert">
+        {{ msg.message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+<script>
+    setTimeout(function() {
+        var alerts = document.getElementsByClassName('floating-alert-container');
+        for (var i = 0; i < alerts.length; i++) {
+            alerts[i].remove();
+        }
+    }, 5000);
+</script>

@@ -1,0 +1,389 @@
+{% extends '../layout/frontend.html' %} 
+{% load static %}
+{% load utilidades %}
+{% block title %} Detalle producto {{datos.nombre}} {% endblock %}
+
+
+
+
+{% block styles %}
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">   
+    <link rel="stylesheet" href="{% static '/estilos/styleVistarepuesto.css' %}">
+{% endblock %}
+
+  
+{% block content %}
+    <div class = "card-contenedor">
+      <div class = "card">
+        <!-- imagenes prodcto -->
+        <div class = "product-imgs">
+          <div class = "img-display">
+            <div class = "img-showcase">
+              <img src = "{% static '/IMG/audi/audi1.jpg' %}" alt = "autito">
+              <img src = "{% static '/IMG/audi/audi2.jpg' %}" alt = "autito">
+              <img src = "{% static '/IMG/audi/audi3.jpg' %}" alt = "autito">
+              <img src = "{% static '/IMG/audi/audi4.jpg' %}" alt = "autito">
+              <img src = "{% static '/IMG/audi/audi5.jpg' %}" alt = "autito">  
+              <img src = "{% static '/IMG/audi/audi6.jpg' %}" alt = "autito">
+            </div>
+          </div>
+          <div class = "img-select">
+            <div class = "img-item">
+              <a href = "#" data-id = "1">
+                <img src = "{% static '/IMG/audi/audi1.jpg' %}" alt = "autito">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "2">
+                <img src = "{% static '/IMG/audi/audi2.jpg' %}" alt = "autito">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "3">
+                <img src = "{% static '/IMG/audi/audi3.jpg' %}" alt = "autito">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "4">
+                <img src = "{% static '/IMG/audi/audi4.jpg' %}" alt = "autito">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "5">
+                <img src = "{% static '/IMG/audi/audi5.jpg' %}" alt = "autito">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "6">
+                <img src = "{% static '/IMG/audi/audi6.jpg' %}" alt = "autito">
+              </a>
+            </div>
+          </div>
+        </div>
+        <!--**************************************************************-->
+
+
+
+
+        <!-- contenido card de la derecha, titulo etc del vehiculo -->
+        <div class = "product-content">
+          <h2 class = "product-title">Repuesto marca </h2>
+          <a href = "#" class = "Marca-prod">Marca</a>
+          
+
+          <div class = "precio-prod-cont">
+            <p class = "precio">Valor final:<span>  $ 400.000</span></p>
+          </div>
+
+        <!-- contenido input cantidad a comprar, mas boton -->
+          <div class="container-comprar-refac">
+            <div class="container-cantidad">
+              <input
+                type="number"
+                placeholder="1"
+                value="1"
+                min="1"
+                class="input-cantidad"
+              />
+              <div class="btn-incrementar-reducir">
+                <i class="fa-solid fa-chevron-up" id="incrementar"></i>
+                <i class="fa-solid fa-chevron-down" id="reducir"></i>
+              </div>
+            </div>
+            <button class="btn-añadir">
+              <i class="fa-solid fa-plus"></i>
+              Añadir al carrito
+            </button>
+          </div>
+
+        <!--**************************************************************-->
+
+          
+          <div  class = "detalles-prod">
+            <ul>
+              <li>Color: <span>Blanco</span></li>
+              <li>Disponiilidad: <span>en stock</span></li>
+              <li>Estado: <span>Nuevo</span></li>
+              <li>Envio: <span>A todo Chile (respectivo documento)</span></li>
+              <li>Garantia: <span>1 Año</span></li>
+            </ul>
+          </div>
+
+
+
+          <!-- seccion descripcion vehiculo con hidden -->
+
+          <div class="container-descripcion">
+            <div class="titulo-descripcion">
+              <h4>Descripcion</h4>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="texto-descripcion hidden">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga dolor iste voluptatem 
+              blanditiis ab quo?</p>
+            </div>
+          </div>
+          
+          <div class="container-info-adicional">
+            <div class="titulo-info-adicional">
+              <h4>Informacion Adicional</h4>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="texto-info-adicional hidden">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga dolor iste voluptatem 
+                blanditiis ab quo?</p>
+            </div>
+          </div>
+
+          <div class="container-social">
+            <span>compartir</span>
+            <div class="container-buttons-social">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+          </div>
+          <!-- *************************************************-->
+          
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    
+
+    <!-- PRODUCTOS RELACIONADOS SECCION, DE AQUI HACIA ABAJO-->
+
+    <div class="header-mas">
+        <span>Descubre</span>
+        <h2>Aun no te decides?</h2>
+        <p>Revisa nuestros repuestos mas vistos</p>
+    </div>
+
+    <div class="container-recom">   <!-- 1-. un container por fila de productos -->
+        <div class="cardslider-autos">
+            <div class="p-img-container">
+                <div class="p-img">
+                    <a href="#">
+                        <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                        <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                    </a>    
+                </div>
+            </div>
+
+            <div class="p-textocaja">
+                <div class="marca-modelo">
+                    <span>marca</span>
+                </div>
+                <a href="#" class="titulo-slidercard" >
+                  descripcion repuesto Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores autem accusamus sit.
+                </a>
+
+                <div class="cartel-precio">
+                    <span class="p-precio">Valor: $400.000</span>
+                    <a class="btn-añadir-cards" href="">
+                    <i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cardslider-autos">
+          <div class="p-img-container">
+              <div class="p-img">
+                  <a href="#">
+                      <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                      <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                  </a>    
+              </div>
+          </div>
+          <div class="p-textocaja">
+              <div class="marca-modelo">
+                  <span>marca</span>
+              </div>
+              <a href="#" class="titulo-slidercard" >
+                descripcion repuesto Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores autem accusamus sit.
+              </a>
+              <div class="cartel-precio">
+                <span class="p-precio">Valor: $400.000</span>
+                <a class="btn-añadir-cards" href="">
+                <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+          </div>
+      </div> 
+
+        <div class="cardslider-autos">
+            <div class="p-img-container">
+                <div class="p-img">
+                    <a href="#">
+                        <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                        <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                    </a>    
+                </div>
+            </div>
+            <div class="p-textocaja">
+                <div class="marca-modelo">
+                    <span>marca</span>
+                </div>
+                <a href="#" class="titulo-slidercard" >
+                  descripcion repuesto Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores autem accusamus sit.
+                </a>
+                <div class="cartel-precio">
+                  <span class="p-precio">Valor: $400.000</span>
+                  <a class="btn-añadir-cards" href="">
+                  <i class="fa-solid fa-cart-shopping"></i></a>
+              </div>
+            </div>
+        </div>
+
+        <div class="cardslider-autos">
+            <div class="p-img-container">
+                <div class="p-img">
+                    <a href="#">
+                        <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                        <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                    </a>    
+                </div>
+            </div>
+            <div class="p-textocaja">
+                <div class="marca-modelo">
+                    <span>marca</span>
+                </div>
+                <a href="#" class="titulo-slidercard" >
+                  descripcion repuesto Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores autem accusamus sit.
+                </a>
+                <div class="cartel-precio">
+                  <span class="p-precio">Valor: $400.000</span>
+                  <a class="btn-añadir-cards" href="">
+                  <i class="fa-solid fa-cart-shopping"></i></a>
+              </div>
+            </div>
+        </div> 
+    </div>
+
+    <!-------------------------------------------------------------------------->
+    <div class="container-recom"> <!-- 2-. un container por fila de productos -->
+        <div class="cardslider-autos">
+            <div class="p-img-container">
+                <div class="p-img">
+                    <a href="#">
+                        <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                        <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                    </a>    
+                </div>
+            </div>
+            <div class="p-textocaja">
+                <div class="marca-modelo">
+                    <span>marca</span>
+                </div>
+                <a href="#" class="titulo-slidercard" >
+                  descripcion repuesto Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores autem accusamus sit.
+                </a>
+                <div class="cartel-precio">
+                  <span class="p-precio">Valor: $400.000</span>
+                  <a class="btn-añadir-cards" href="">
+                  <i class="fa-solid fa-cart-shopping"></i></a>
+              </div>
+            </div>
+        </div>
+
+        <div class="cardslider-autos">
+          <div class="p-img-container">
+              <div class="p-img">
+                  <a href="#">
+                      <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                      <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                  </a>    
+              </div>
+          </div>
+          <div class="p-textocaja">
+              <div class="marca-modelo">
+                  <span>marca</span>
+              </div>
+              <a href="#" class="titulo-slidercard" >
+                descripcion repuesto Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores autem accusamus sit.
+              </a>
+              <div class="cartel-precio">
+                <span class="p-precio">Valor: $400.000</span>
+                <a class="btn-añadir-cards" href="">
+                <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+          </div>
+      </div>
+    
+
+
+        <div class="cardslider-autos">
+            <div class="p-img-container">
+                <div class="p-img">
+                    <a href="#">
+                        <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                        <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                    </a>    
+                </div>
+            </div>
+            <div class="p-textocaja">
+                <div class="marca-modelo">
+                    <span>marca</span>
+                </div>
+                <a href="#" class="titulo-slidercard" >
+                  descripcion repuesto Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores autem accusamus sit.
+                </a>
+                <div class="cartel-precio">
+                  <span class="p-precio">Valor: $400.000</span>
+                  <a class="btn-añadir-cards" href="">
+                  <i class="fa-solid fa-cart-shopping"></i></a>
+              </div>
+            </div>
+        </div>
+
+        
+
+        <div class="cardslider-autos">
+            <div class="p-img-container">
+                <div class="p-img">
+                    <a href="#">
+                        <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                        <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                    </a>    
+                </div>
+            </div>
+            <div class="p-textocaja">
+                <div class="marca-modelo">
+                    <span>marca</span>
+                </div>
+                <a href="#" class="titulo-slidercard" >
+                    descripcion repuesto Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores autem accusamus sit.
+                </a>
+                <div class="cartel-precio">
+                  <span class="p-precio">Valor: $400.000</span>
+                  <a class="btn-añadir-cards" href="">
+                  <i class="fa-solid fa-cart-shopping"></i></a>
+              </div>
+            </div>
+        </div> 
+    </div>
+    <div class="volver">
+      <input type="button" value="Volver a Categorias">
+    </div>
+
+
+
+
+    <!-- en django debo poner esta libreria de otra forma ver pag fontaweosome -->
+    
+    <script src="{% static '/jss/scriptVistaRepuesto.js' %}"></script>
+      <!-- toggle perfil navbar-->
+  <script src="{% static '/jss/scripts.js' %}"></script>
+  <script src="{% static '/jss/glider.min.js' %}"></script>
+  </body>
+</html>
+
+
+{% endblock %}

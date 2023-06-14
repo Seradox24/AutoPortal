@@ -1,0 +1,153 @@
+{% load static %}
+
+  <!-- header aca -->
+  <header class="header">
+    <div class="container-nav">
+      <div class="header-main">
+        <div class="logo">
+          <a href="{% url 'home_inicio' %}"><img src="{% static '/img/logosinfondo.png' %}"  alt=""></a>
+        </div>
+        <div class="open-nav-menu">
+          <span></span>
+        </div>
+        <div class="menu-overlay">
+        </div>
+        <!-- logo mas navegation empieza -->
+        <nav class="nav-menu">
+          <div class="close-nav-menu">
+            <img src="{% static 'img/close.svg' %}"  alt="close">
+          </div>
+
+          <ul class="menu"> <!-- menu navegacion opciones -->
+
+            <li class="menu-item menu-item-has-children">
+              <a href="#" data-toggle="sub-menu">Tiendas <i class="plus"></i></a>
+              <ul class="sub-menu">
+                <li class="menu-item"><a href="#">Repuestos</a></li>
+                <li class="menu-item"><a href="#">Vehiculos</a></li>
+              </ul>
+            </li>
+
+            <li class="menu-item menu-item-has-children">
+              <a href="#" data-toggle="sub-menu">Categorias<i class="plus"></i></a>
+              <ul class="sub-menu">
+                <li class="menu-item"><a href="#">Camionetas</a></li>
+                <li class="menu-item"><a href="#">Suv</a></li>
+                <li class="menu-item"><a href="#">Furgon</a></li>
+                <li class="menu-item"><a href="#">Automovil</a></li>
+                <li class="menu-item"><a href="#">Motocicletas</a></li>
+              </ul>
+            </li>
+
+            <li class="menu-item menu-item-has-children">
+              <a href="#" data-toggle="sub-menu">Marcas Vehiculos <i class="plus"></i></a>
+              <ul class="sub-menu">
+                <li class="menu-item"><a href="#">Ford</a></li>
+                <li class="menu-item"><a href="#">Mazda</a></li>
+                <li class="menu-item"><a href="#">BMW</a></li>
+                <li class="menu-item"><a href="#">Nissan</a></li>
+                <li class="menu-item"><a href="#">Chevrolet</a></li>
+                <li class="menu-item"><a href="#">Nissan</a></li>
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="#">Ingresar</a>
+            </li>
+            <li class="menu-item">
+              <!-- empieza carrito -->
+              <div class="cart-icon ">
+                <i class="fas fa-cart-arrow-down fa-2x"></i>
+              </div>
+              <div class="whole-cart-window hide">
+                <h2>Shopping Bag</h2>
+                <div class="cart-wrapper">
+                  <div class="cart-item">
+                    <img src="{% static '\img\pic5.jpeg' %}" >
+                    <div class="details">
+                      <h3>Item Name</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        <span class="quantity">Quantity: 1</span>
+                        <span class="price">Price: $23.44</span>
+                      </p>
+                    </div>
+                    <div class="cancel"><i class="fas fa-window-close"></i></div>
+                  </div>
+                  <!-- item 2 -->
+                  <div class="cart-item">
+                    <img src="{% static '\img\pic5.jpeg' %}" >
+                    <div class="details">
+                      <h3>Item Name</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        <span class="quantity">Quantity: 1</span>
+                        <span class="price">Price: $23.44</span>
+                      </p>
+                    </div>
+                    <div class="cancel"><i class="fas fa-window-close"></i></div>
+                  </div>
+                </div>
+                <div class="subtotal">Subtotal: $0.00</div>
+                <div class="checkout">Checkout</div>
+              </div>
+            </li> <!-- termina carrito -->
+            
+
+            <li class="menu-item">
+              <a href="#"><i class="fas fa-solid fa-user-astronaut fa-lg" onclick="toggleMenu()"></i></a>
+              <div class="sub-menu-wrap" id="menusub">
+                <div class="sub-menu-usuario">
+                  {% if user.is_authenticated %}
+                  <div class="user-info">
+                    <i class="fas fa-solid fa-user-astronaut fa-lg"></i>
+                    <h2>mueremuer</h2>
+                  </div>
+                  <hr>
+                  <a href="" class="sub-menu-link">
+                    <img src="{% static '/IMG/images/profile.png' %}"  alt="">
+                    <p>Perfil</p>
+                    <span>></span>
+                  </a>
+                  <a href="" class="sub-menu-link">
+                    <img src="{% static '/IMG/images/profile.png' %}" alt="">
+                    <p>Ordenes</p>
+                    <span>></span>
+                  </a>
+                  <a href="" class="sub-menu-link">
+                    <img src="{% static '/IMG/images/setting.png' %}"  alt="">
+                    <p>Historial</p>
+                    <span>></span>
+                  </a>
+                  <a href="" class="sub-menu-link">
+                    <img src="{% static '/IMG/images/help.png' %}"  alt="">
+                    <p>Direcciones</p>
+                    <span>></span>
+                  </a>
+                  <a href="javascript:void(0);" class="sub-menu-link" onclick="salir('{% url 'acceso_salir' %}')">
+                    <img src="{% static '/IMG/images/logout.png' %}" alt="">
+                    <p>Cerrar sesión</p>
+                    <span>></span>
+                </a>
+                  {% else %}
+                  <div class="user-info">
+                    <i class="fas fa-solid fa-user-astronaut fa-lg"></i>
+                    <h2>Invitado</h2>
+                  </div>
+                  <hr>
+                  <a href="{% url 'acceso_login' %}" class="sub-menu-link">
+                    <img src="{% static '/IMG/images/profile.png' %}"  alt="">
+                    <p>Ingresar</p>
+                    <span>></span>
+                  </a>
+
+                  {% endif %}
+                </div>
+              </div>
+            </li>
+
+
+          </ul>
+        </nav>
+        <!-- navigation menu end -->
+      </div>
+    </div>
+  </header>
+  <!-- header end -->

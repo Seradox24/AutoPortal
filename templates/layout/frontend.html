@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">{% load static %}{% load utilidades %}
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shop Homepage - {% block title %}{% endblock %}</title>
+        {% block navbar %}
+        <link rel="stylesheet" href="{% static '/estilos/styless.css' %}">
+        <link rel="stylesheet" href="{% static '/estilos/glider.min.css' %}">
+        <link rel="stylesheet" href="{% static '/estilos/boostrap/responsive.css' %}">
+        
+
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'mati/css/styles.css' %}?id={{ csrf_token }}" rel="stylesheet" />
+        <link href="{% static 'mati/css/jquery.alerts.min.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="{% static 'mati/fontawesome-free-5.15.4-web/css/all.css' %}" />
+        <link href="{% static 'mati/cookielaw/css/cookielaw.css'%}" rel="stylesheet" />
+        
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+
+
+
+
+        {% block styles %}
+
+        {% endblock %}
+    </head>
+    <body>
+        
+        {% include 'includes/navbar.html' %}  
+        <div class="navbar-space"></div> <!-- Espacio entre la barra de navegación y el contenido principal -->
+        {% endblock %}
+        
+      
+    
+        {% block content %}
+        
+        {% endblock %}
+
+        {% block footer %}
+        {% include 'includes/footer.html' %}   
+        {% endblock %}
+    
+     
+
+
+        <script src="{% static 'mati/js/jquery-2.0.0.min.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static 'mati/js/jquery.alerts.min.js' %}"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'mati/js/scripts.js' %}?id={{ csrf_token }}"></script>
+        
+         {% block bloques_js %}{% endblock %}
+    </body>
+</html>

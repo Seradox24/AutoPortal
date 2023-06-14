@@ -1,0 +1,126 @@
+{% extends '../layout/frontend.html' %} 
+{% load static %}
+{% load utilidades %}
+
+{% block navbar %}
+        
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/estilos/stylelogin.css' %}">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{% static 'mati/js/scripts.js' %}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{% static 'mati/css/jquery.alerts.min.css' %}" rel="stylesheet" />
+    
+
+    <style>     
+        .floating-button {
+            position: fixed;
+            
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 9999;
+        }
+        .space1{
+            padding-top: 20px;
+        }
+
+    </style>
+    
+
+    
+</head>
+<body>
+    
+    <section class="imgfondologin">
+        {% include "layout/flash.html" %}
+        <div class="login-box">
+            <form name="form_registro" method="post" action="{% url 'acceso_registro' %}">
+                {% csrf_token %}
+                <h2>Registrate</h2>
+                <div class="input-box form-group">
+                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    {{form.nombre}}
+                    <label>Nombre</label>
+                </div>
+                <div class="input-box form-group">
+                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    {{form.apellido}}
+                    <label>Apellido</label>
+                </div>
+
+                <div class="input-box form-group">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    {{form.correo}}
+                    <label>E-Mail</label>
+                </div>
+
+                <div class="input-box form-group">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <label for="password" >Contraseña</label>
+                    {{form.password}}
+                </div>
+                <div class="input-box form-group">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <label for="password" class="label">Repita Contraseña</label>
+                    {{form.password2}}
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn-ingresar " onclick="sendRegistro();"><i class="fas fa-envelope"></i> Registrarse </button>
+                    
+                </div> 
+                <a href="{% url 'acceso_login' %}" class="floating-button ">
+                    <ion-icon name="arrow-back-outline"></ion-icon>
+                    Volver
+                </a>
+            </form>
+        </div>
+
+        <img src="{% static '/img/fondologin2.jpg' %}" alt="">
+    </section>     
+    {% endblock %}
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+    <script>
+        // Cerrar el mensaje al hacer clic en el botón de cierre
+        $(".alert .close").on("click", function() {
+            $(this).closest(".alert").alert("close");
+        });
+    
+        // Cerrar el mensaje automáticamente después de 2 segundos
+        $(".alert").delay(2000).fadeOut("slow", function() {
+            $(this).alert("close");
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+{% block footer %}
+ 
+{% endblock %}
+    
