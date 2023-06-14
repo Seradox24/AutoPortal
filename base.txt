@@ -1,2 +1,716 @@
 pip install -r requirements.txt
 
+INSERT INTO region (id, nombre)
+VALUES (1, 'Arica y Parinacota'),
+       (2, 'Tarapacá'),
+       (3, 'Antofagasta'),
+       (4, 'Atacama'),
+       (5, 'Coquimbo'),
+       (6, 'Valparaíso'),
+       (7, 'Región Metropolitana de Santiago'),
+       (8, 'Libertador General Bernardo O''Higgins'),
+       (9, 'Maule'),
+       (10, 'Ñuble'),
+       (11, 'Biobío'),
+       (12, 'La Araucanía'),
+       (13, 'Los Ríos'),
+       (14, 'Los Lagos'),
+       (15, 'Aysén del General Carlos Ibáñez del Campo'),
+       (16, 'Magallanes y de la Antártica Chilena');
+
+INSERT INTO `comuna` (`id`, `nombre`, `region_id`) VALUES
+
+(1, 'Alto Hospicio', 1),
+
+(2, 'Iquique', 1),
+
+(3, 'Huara', 1),
+
+(4, 'Camiña', 1),
+
+(5, 'Colchane', 1),
+
+(6, 'Pica', 1),
+
+(7, 'Pozo Almonte', 1),
+
+(8, 'Tocopilla ', 2),
+
+(9, 'María Elena ', 2),
+
+(10, 'Calama ', 2),
+
+(11, 'Ollagüe ', 2),
+
+(12, 'San Pedro de Atacama', 2),
+
+(13, 'Antofagasta ', 2),
+
+(14, 'Mejillones ', 2),
+
+(15, 'Sierra Gorda ', 2),
+
+(16, 'Taltal', 2),
+
+(17, 'Chañaral ', 3),
+
+(18, 'Diego de Almagro ', 3),
+
+(19, 'Copiapó ', 3),
+
+(20, 'Caldera', 3),
+
+(21, 'Tierra Amarilla', 3),
+
+(22, 'Vallenar', 3),
+
+(23, 'Freirina', 3),
+
+(24, 'Huasco', 3),
+
+(25, 'Alto del Carmen', 3),
+
+(26, 'La Serena', 4),
+
+(27, 'La Higuera', 4),
+
+(28, 'Coquimbo', 4),
+
+(29, 'Andacollo', 4),
+
+(30, 'Vicuña', 4),
+
+(31, 'Paihuano', 4),
+
+(32, 'Ovalle', 4),
+
+(33, 'Río Hurtado', 4),
+
+(34, 'Monte Patria', 4),
+
+(35, 'Combarbalá', 4),
+
+(36, 'Punitaqui', 4),
+
+(37, 'Illapel', 4),
+
+(38, 'Salamanca', 4),
+
+(39, 'La Ligua', 5),
+
+(40, 'Petorca', 5),
+
+(41, 'Cabildo', 5),
+
+(42, 'Zapallar', 5),
+
+(43, 'Papudo', 5),
+
+(44, 'Los Andes', 5),
+
+(45, 'San Esteban', 5),
+
+(46, 'Calle Larga', 5),
+
+(47, 'Rinconada', 5),
+
+(48, 'San Felipe', 5),
+
+(49, 'Putaendo', 5),
+
+(50, 'Santa María', 5),
+
+(51, 'Panquehue', 5),
+
+(52, 'Llayllay', 5),
+
+(53, 'Catemu', 5),
+
+(54, 'Quillota', 5),
+
+(55, 'La Cruz', 5),
+
+(56, 'Calera', 5),
+
+(57, 'Nogales', 5),
+
+(58, 'Hijuelas', 5),
+
+(59, 'Limache', 5),
+
+(60, 'Olmué', 5),
+
+(61, 'Valparaíso', 5),
+
+(62, 'Viña del Mar', 5),
+
+(63, 'Quintero', 5),
+
+(64, 'Puchuncaví', 5),
+
+(65, 'Quilpué', 5),
+
+(66, 'Villa Alemana', 5),
+
+(67, 'Casablanca', 5),
+
+(68, 'Concón', 5),
+
+(69, 'Juan Fernández', 5),
+
+(70, 'San Antonio ', 5),
+
+(71, 'Cartagena', 5),
+
+(72, 'El Tabo', 5),
+
+(73, 'El Quisco', 5),
+
+(74, 'Algarrobo', 5),
+
+(75, 'Santo Domingo', 5),
+
+(76, 'Isla de Pascua', 5),
+
+(77, 'Rancagua', 6),
+
+(78, 'Graneros', 6),
+
+(79, 'Mostazal', 6),
+
+(80, 'Codegua', 6),
+
+(81, 'Machalí', 6),
+
+(82, 'Olivar', 6),
+
+(83, 'Requinoa', 6),
+
+(84, 'Rengo', 6),
+
+(85, 'Malloa', 6),
+
+(86, 'Quinta de Tilcoco', 6),
+
+(87, 'San Vicente', 6),
+
+(88, 'Pichidegua', 6),
+
+(89, 'Peumo', 6),
+
+(90, 'Coltauco', 6),
+
+(91, 'Coinco', 6),
+
+(92, 'Doñihue', 6),
+
+(93, 'Las Cabras', 6),
+
+(94, 'San Fernando', 6),
+
+(95, 'Chimbarongo', 6),
+
+(96, 'Placilla', 6),
+
+(97, 'Nancagua', 6),
+
+(98, 'Chépica', 6),
+
+(99, 'Santa Cruz', 6),
+
+(100, 'Lolol', 6),
+
+(101, 'Pumanque', 6),
+
+(102, 'Palmilla', 6),
+
+(103, 'Peralillo', 6),
+
+(104, 'Pichilemu', 6),
+
+(105, 'Navidad', 6),
+
+(106, 'Litueche', 6),
+
+(107, 'La Estrella', 6),
+
+(108, 'Marchihue', 6),
+
+(109, 'Paredones', 6),
+
+(110, 'Curicó', 7),
+
+(111, 'Teno', 7),
+
+(112, 'Romeral', 7),
+
+(113, 'Molina', 7),
+
+(114, 'Sagrada Familia', 7),
+
+(115, 'Hualañé', 7),
+
+(116, 'Licantén', 7),
+
+(117, 'Vichuquén', 7),
+
+(118, 'Rauco', 7),
+
+(119, 'Talca', 7),
+
+(120, 'Pelarco', 7),
+
+(121, 'Río Claro', 7),
+
+(122, 'San Clemente', 7),
+
+(123, 'Maule', 7),
+
+(124, 'San Rafael', 7),
+
+(125, 'Empedrado', 7),
+
+(126, 'Pencahue', 7),
+
+(127, 'Constitución', 7),
+
+(128, 'Curepto', 7),
+
+(129, 'Linares', 7),
+
+(130, 'Yerbas Buenas', 7),
+
+(131, 'Colbún', 7),
+
+(132, 'Longaví', 7),
+
+(133, 'Parral', 7),
+
+(134, 'Retiro', 7),
+
+(135, 'Villa Alegre', 7),
+
+(136, 'San Javier', 7),
+
+(137, 'Cauquenes', 7),
+
+(138, 'Pelluhue', 7),
+
+(139, 'Chanco', 7),
+
+(140, 'Chillán', 8),
+
+(141, 'San Carlos ', 8),
+
+(142, 'Ñiquén ', 8),
+
+(143, 'San Fabián ', 8),
+
+(144, 'Coihueco ', 8),
+
+(145, 'Pinto ', 8),
+
+(146, 'San Ignacio ', 8),
+
+(147, 'El Carmen ', 8),
+
+(148, 'Yungay ', 8),
+
+(149, 'Pemuco ', 8),
+
+(150, 'Bulnes ', 8),
+
+(151, 'Quillón ', 8),
+
+(152, 'Ránquil ', 8),
+
+(153, 'Portezuelo ', 8),
+
+(154, 'Coelemu ', 8),
+
+(155, 'Treguaco ', 8),
+
+(156, 'Cobquecura ', 8),
+
+(157, 'Quirihue ', 8),
+
+(158, 'Ninhue ', 8),
+
+(159, 'San Nicolás ', 8),
+
+(160, 'Chillán Viejo', 8),
+
+(161, 'Alto Biobío', 8),
+
+(162, 'Los Angeles ', 8),
+
+(163, 'Cabrero ', 8),
+
+(164, 'Tucapel ', 8),
+
+(165, 'Antuco ', 8),
+
+(166, 'Quilleco ', 8),
+
+(167, 'Santa Bárbara ', 8),
+
+(168, 'Quilaco ', 8),
+
+(169, 'Mulchén ', 8),
+
+(170, 'Negrete ', 8),
+
+(171, 'Nacimiento ', 8),
+
+(172, 'Laja ', 8),
+
+(173, 'San Rosendo ', 8),
+
+(174, 'Yumbel', 8),
+
+(175, 'Concepción ', 8),
+
+(176, 'Talcahuano ', 8),
+
+(177, 'Penco ', 8),
+
+(178, 'Tomé ', 8),
+
+(179, 'Florida ', 8),
+
+(180, 'Hualpén', 8),
+
+(181, 'Hualqui ', 8),
+
+(182, 'Santa Juana ', 8),
+
+(183, 'Lota ', 8),
+
+(184, 'Coronel ', 8),
+
+(185, 'San Pedro de la Paz ', 8),
+
+(186, 'Chiguayante', 8),
+
+(187, 'Lebu ', 8),
+
+(188, 'Arauco ', 8),
+
+(189, 'Curanilahue ', 8),
+
+(190, 'Los Alamos ', 8),
+
+(191, 'Cañete ', 8),
+
+(192, 'Contulmo ', 8),
+
+(193, 'Tirua ', 8),
+
+(194, 'Angol ', 9),
+
+(195, 'Renaico ', 9),
+
+(196, 'Collipulli ', 9),
+
+(197, 'Lonquimay ', 9),
+
+(198, 'Curacautín ', 9),
+
+(199, 'Ercilla ', 9),
+
+(200, 'Victoria ', 9),
+
+(201, 'Traiguén ', 9),
+
+(202, 'Lumaco ', 9),
+
+(203, 'Purén ', 9),
+
+(204, 'Los Sauces', 9),
+
+(205, 'Temuco ', 9),
+
+(206, 'Lautaro ', 9),
+
+(207, 'Perquenco ', 9),
+
+(208, 'Vilcún ', 9),
+
+(209, 'Cholchol', 9),
+
+(210, 'Cunco ', 9),
+
+(211, 'Melipeuco ', 9),
+
+(212, 'Curarrehue ', 9),
+
+(213, 'Pucón ', 9),
+
+(214, 'Villarrica ', 9),
+
+(215, 'Freire ', 9),
+
+(216, 'Pitrufquén ', 9),
+
+(217, 'Gorbea ', 9),
+
+(218, 'Loncoche ', 9),
+
+(219, 'Toltén ', 9),
+
+(220, 'Teodoro Schmidt ', 9),
+
+(221, 'Saavedra ', 9),
+
+(222, 'Carahue ', 9),
+
+(223, 'Nueva Imperial ', 9),
+
+(224, 'Galvarino ', 9),
+
+(225, 'Padre las Casas', 9),
+
+(226, 'Osorno ', 10),
+
+(227, 'San Pablo ', 10),
+
+(228, 'Puyehue ', 10),
+
+(229, 'Puerto Octay ', 10),
+
+(230, 'Purranque ', 10),
+
+(231, 'Río Negro ', 10),
+
+(232, 'San Juan de la Costa', 10),
+
+(233, 'Puerto Montt ', 10),
+
+(234, 'Puerto Varas ', 10),
+
+(235, 'Cochamó ', 10),
+
+(236, 'Calbuco ', 10),
+
+(237, 'Maullín ', 10),
+
+(238, 'Los Muermos ', 10),
+
+(239, 'Fresia ', 10),
+
+(240, 'Llanquihue ', 10),
+
+(241, 'Frutillar', 10),
+
+(242, 'Castro ', 10),
+
+(243, 'Ancud ', 10),
+
+(244, 'Quemchi ', 10),
+
+(245, 'Dalcahue ', 10),
+
+(246, 'Curaco de Vélez ', 10),
+
+(247, 'Quinchao ', 10),
+
+(248, 'Puqueldón ', 10),
+
+(249, 'Chonchi ', 10),
+
+(250, 'Queilén ', 10),
+
+(251, 'Quellón ', 10),
+
+(252, 'Chaitén ', 10),
+
+(253, 'Hualaihué', 10),
+
+(254, 'Futaleufú ', 10),
+
+(255, 'Palena', 10),
+
+(256, 'Coihaique ', 11),
+
+(257, 'Lago Verde ', 11),
+
+(258, 'Aisén ', 11),
+
+(259, 'Cisnes ', 11),
+
+(260, 'Guaitecas ', 11),
+
+(261, 'Chile Chico ', 11),
+
+(262, 'Río Ibánez ', 11),
+
+(263, 'Cochrane ', 11),
+
+(264, 'O\'Higgins ', 11),
+
+(265, 'Tortel', 11),
+
+(266, 'Natales ', 12),
+
+(267, 'Torres del Paine ', 12),
+
+(268, 'Punta Arenas ', 12),
+
+(269, 'Rio Verde ', 12),
+
+(270, 'Laguna Blanca ', 12),
+
+(271, 'San Gregorio ', 12),
+
+(272, 'Porvenir', 12),
+
+(273, 'Primavera', 12),
+
+(274, 'Timaukel', 12),
+
+(275, 'Cabo de Hornos', 12),
+
+(276, 'Antártica', 12),
+
+(277, 'Santiago', 13),
+
+(278, 'Independencia', 13),
+
+(279, 'Conchalí', 13),
+
+(280, 'Huechuraba', 13),
+
+(281, 'Recoleta', 13),
+
+(282, 'Providencia', 13),
+
+(283, 'Vitacura', 13),
+
+(284, 'Lo Barnechea', 13),
+
+(285, 'Las Condes', 13),
+
+(286, 'Ñuñoa', 13),
+
+(287, 'La Reina', 13),
+
+(288, 'Macul', 13),
+
+(289, 'Peñalolén', 13),
+
+(290, 'La Florida', 13),
+
+(291, 'San Joaquín', 13),
+
+(292, 'La Granja', 13),
+
+(293, 'La Pintana', 13),
+
+(294, 'San Ramón', 13),
+
+(295, 'San Miguel', 13),
+
+(296, 'La Cisterna', 13),
+
+(297, 'El Bosque', 13),
+
+(298, 'Pedro Aguirre Cerda', 13),
+
+(299, 'Lo Espejo', 13),
+
+(300, 'Estación Central', 13),
+
+(301, 'Cerrillos', 13),
+
+(302, 'Maipú', 13),
+
+(303, 'Quinta Normal', 13),
+
+(304, 'Lo Prado', 13),
+
+(305, 'Pudahuel', 13),
+
+(306, 'Cerro Navia', 13),
+
+(307, 'Renca', 13),
+
+(308, 'Quilicura', 13),
+
+(309, 'Colina', 13),
+
+(310, 'Lampa', 13),
+
+(311, 'Tiltil', 13),
+
+(312, 'Puente Alto', 13),
+
+(313, 'San José de Maipo', 13),
+
+(314, 'Pirque', 13);
+
+
+INSERT INTO pais (id, nombre)
+VALUES (1, 'Argentina'),
+       (2, 'Bolivia'),
+       (3, 'Brasil'),
+       (4, 'Chile'),
+       (5, 'Colombia'),
+       (6, 'Ecuador'),
+       (7, 'Perú'),
+       (8, 'Uruguay'),
+       (9, 'Venezuela');
+
+INSERT INTO genero (id, nombre)
+VALUES (1, 'Masculino'),
+       (2, 'Femenino'),
+       (3, 'No binario'),
+
+INSERT INTO estado(id, nombre)
+VALUES (1, 'activo'),
+       (2, 'no activo'),
+       (3, 'ingresado'),
+       (4, 'finalizado');
+       (5, 'cancelado');
+       (6, 'en curso');
+       (7, 'Otro');
+
+INSERT INTO estado(id, nombre)
+VALUES (1, 'activo'),
+       (2, 'no activo'),
+       (3, 'ingresado'),
+       (4, 'finalizado'),
+       (5, 'cancelado'),
+       (6, 'en curso'),
+       (7, 'Otro');
+
+INSERT INTO perfiles (id, nombre)
+VALUES (1, 'VENDEDOR'),
+       (2, 'ADMINISTRADOR'),
+       (3, 'CLIENTE'),
+       (4, 'INVITADO'),
+       (5, 'CONTADOR'),
+       (6, 'OTRO');
+
+INSERT INTO proveedor (id, nombre, slug)
+VALUES (1, 'Autowini', 'autowini'),
+       (2, 'Beforward', 'beforward'),
+       (3, 'Toyota Parts', 'toyota-parts'),
+       (4, 'Otro Proveedor', 'otro-proveedor'),
+       (5, 'Global Parts', 'global-parts'),
+       (6, 'AutoParts Inc.', 'autoparts-inc'),
+       (7, 'Parts4U', 'parts4u'),
+       (8, 'AutoWorld', 'autoworld'),
+       (9, 'Motor Supplies', 'motor-supplies'),
+       (10, 'Accessories Plus', 'accessories-plus');
+
+
+INSERT INTO producto_categoria (id,nombre, slug)
+VALUES (1,'Vehículo', 'vehiculo'),
+       (2,'Repuestos', 'repuestos');
+
+INSERT INTO home_sucursal (id, nombre, direccion, ciudad, telefono)
+VALUES (1, 'Heiwa Iquique', 'Av. Circunvalación Manzana F Sitio 68 D, Barrio Industrial Zofri Iquique', 'Iquique', '54651651564'),
+       (2, 'Alto Hospicio', 'Dirección de Alto Hospicio', 'Alto Hospicio', 'Teléfono de Alto Hospicio'),
+       (3, 'Viña del Mar', 'Dirección de Viña del Mar', 'Viña del Mar', 'Teléfono de Viña del Mar'),
+       (4, 'Punta Arenas', 'Dirección de Punta Arenas', 'Punta Arenas', 'Teléfono de Punta Arenas'),
+       (5, 'Arica', 'Dirección de Arica', 'Arica', 'Teléfono de Arica');

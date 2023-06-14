@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static '/estilos/stylelogin.css' %}">
+    <link rel="stylesheet" href="{% static '/estilos/stylelogin.css' %}">#tuyo
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="{% static 'mati/js/scripts.js' %}"></script>
@@ -33,7 +33,7 @@
             cursor: pointer;
             z-index: 9999;
         }
-        .space1{
+        .space{
             padding-top: 20px;
         }
 
@@ -47,6 +47,7 @@
     <section class="imgfondologin">
         {% include "layout/flash.html" %}
         <div class="login-box">
+            
             <form name="form_registro" method="post" action="{% url 'acceso_registro' %}">
                 {% csrf_token %}
                 <h2>Registrate</h2>
@@ -69,13 +70,15 @@
 
                 <div class="input-box form-group">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <label for="password" >Contraseña</label>
                     {{form.password}}
+                    <label for="password" >Contraseña</label>
+                    
                 </div>
                 <div class="input-box form-group">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <label for="password" class="label">Repita Contraseña</label>
                     {{form.password2}}
+                    <label for="password" class="label">Repita Contraseña</label>
+                    
                 </div>
                 <div class="form-group">
                     <button type="button" class="btn-ingresar " onclick="sendRegistro();"><i class="fas fa-envelope"></i> Registrarse </button>
@@ -87,7 +90,7 @@
                 </a>
             </form>
         </div>
-
+   
         <img src="{% static '/img/fondologin2.jpg' %}" alt="">
     </section>     
     {% endblock %}

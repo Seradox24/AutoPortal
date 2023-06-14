@@ -251,17 +251,17 @@ class Vehiculo(models.Model):
     condicion = models.CharField(max_length=20, choices=CONDICION_CHOICES, blank=True, null=True)
     tipo_vehiculo = models.CharField(max_length=20, choices=TIPO_VEHICULO_CHOICES)
     marca = models.CharField(max_length=20)
-    modelo = models.CharField(max_length=20)
+    modelo = models.CharField(max_length=50)
     volumen_motor = models.CharField(max_length=20, choices=VOLUMEN_MOTOR_CHOICES)
     volante = models.CharField(max_length=20,choices=TIPO_VOLANTE)
-    transmision = models.CharField(max_length=20)
+    transmision = models.CharField(max_length=20,choices=TIPO_TRANSMISION)
     tipo_combustible = models.CharField(max_length=10, choices=TIPO_COMBUSTIBLE)
     num_pasajeros = models.IntegerField()
     puertas = models.IntegerField(choices=PUERTAS_CHOICES)
     num_vin = models.CharField(max_length=100)
     color_exterior = models.CharField(max_length=20, choices=COLOR_EXTERIOR_CHOICES)
     costo_reserva = models.IntegerField(default=0)
-    proveedor = models.ForeignKey(Proveedor, models.DO_NOTHING, default=1)
+    
 
     def __str__(self):
         return self.marca + ' ' + self.modelo
@@ -275,7 +275,6 @@ class Repuesto(models.Model):
     peso_unitario = models.CharField(max_length=50)
     hecho_en = models.CharField(max_length=50)
     modelo_adecuado = models.CharField(max_length=50)
-    proveedor = models.ForeignKey(Proveedor, models.DO_NOTHING, default=1)
     slug = AutoSlugField(populate_from='nombre', default='default-slug')
     
     def __str__(self):
