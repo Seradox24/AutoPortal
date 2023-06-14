@@ -45,17 +45,8 @@ class Pais(models.Model):
 
 
 class Perfiles(models.Model):
-    TIPO_USUARIO = [
-        ('VENDEDOR', 'Vendedor'),
-        ('ADMINISTRADOR', 'Administrador'),
-        ('CLIENTE', 'Cliente'),
-        ('INVITADO', 'Invitado'),
-        ('CONTADOR', 'Contador'),
-        ('OTRO', 'Otro'),
-    ]
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100, null=True)
-    tipo_usuario = models.CharField(max_length=13, choices=TIPO_USUARIO, default='CLIENTE')
 
     def __str__(self):
         return self.nombre
@@ -144,6 +135,15 @@ class ProductoCategoria(models.Model):
         verbose_name_plural = 'Productos Categorías'
 
 
+class Sucursal(models.Model):
+    nombre = models.CharField(max_length=100)
+    direccion = models.CharField(max_length=200)
+    ciudad = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.nombre
+
 class Producto(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100, blank=True, null=True)
@@ -162,6 +162,7 @@ class Producto(models.Model):
     stock = models.PositiveIntegerField(default=1)
     vehiculo = models.ForeignKey('Vehiculo', on_delete=models.CASCADE, null=True, blank=True)
     repuesto = models.ForeignKey('Repuesto', on_delete=models.CASCADE, null=True, blank=True)
+    sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE, null=True, blank=True)
     foto=models.ImageField(upload_to="producto", default='200_200.png')
 
 
@@ -178,41 +179,93 @@ class Producto(models.Model):
         verbose_name = 'Producto'
         verbose_name_plural = 'Productos'
 
-
-
 class Vehiculo(models.Model):
-    # Opciones para el tipo de combustible
+    # Opciones para la condición del vehículo
+    CONDICION_CHOICES = [
+        ('NUEVO', 'Nuevo'),
+        ('USADO', 'Usado'),
+    ]
+
+    # Opciones para el tipo de vehículo
+    TIPO_VEHICULO_CHOICES = [
+        ('SEDAN', 'Sedán'),
+        ('SUV', 'SUV'),
+        ('CAMIONETA', 'Camioneta'),
+        ('HATCHBACK', 'Hatchback'),
+        ('COUPE', 'Coupé'),
+    ]
+
+    # Opciones para el volumen del motor
+    VOLUMEN_MOTOR_CHOICES = [
+        ('1.0', '1.0'),
+        ('1.5', '1.5'),
+        ('2.0', '2.0'),
+        ('2.5', '2.5'),
+    ]
+
+    # Opciones para la ubicación
+    UBICACION_CHOICES = [
+        ('IQUIQUE', 'Iquique'),
+        ('ALTO HOSPICIO', 'Alto Hospicio'),
+        ('OTRO', 'Otro'),
+    ]
+
+    # Opciones para el número de puertas
+    PUERTAS_CHOICES = [
+        (2, '2 puertas'),
+        (4, '4 puertas'),
+        (5, '5 puertas'),
+    ]
+
+    # Opciones para el color exterior
+    COLOR_EXTERIOR_CHOICES = [
+        ('ROJO', 'Rojo'),
+        ('AZUL', 'Azul'),
+        ('BLANCO', 'Blanco'),
+        ('NEGRO', 'Negro'),
+        ('PLATEADO', 'Plateado'),
+    ]
     TIPO_COMBUSTIBLE = [
         ('DIESEL', 'Diesel'),
         ('GASOLINA', 'Gasolina'),
         ('ELECTRICO', 'Eléctrico'),
         ('HIBRIDO', 'Híbrido'),
     ]
-    
+
+    # Opciones para el tipo de volante
+    TIPO_VOLANTE = [
+        ('IZQUIERDA', 'Izquierda'),
+        ('DERECHA', 'Derecha'),
+    ]
+
+    # Opciones para el tipo de transmisión
+    TIPO_TRANSMISION = [
+        ('MECANICA', 'Mecánica'),
+        ('AUTOMATICA', 'Automática'),
+    ]
+
     # Campos de la tabla "Vehiculos"
     numero_articulo = models.CharField(max_length=100)
     fecha_registro = models.DateField(auto_now_add=True)
     clicks = models.IntegerField(default=0)
-    condicion = models.CharField(max_length=20, blank=True, null=True)
-    tipo_vehiculo = models.CharField(max_length=20)
+    condicion = models.CharField(max_length=20, choices=CONDICION_CHOICES, blank=True, null=True)
+    tipo_vehiculo = models.CharField(max_length=20, choices=TIPO_VEHICULO_CHOICES)
     marca = models.CharField(max_length=20)
     modelo = models.CharField(max_length=20)
-    volumen_motor = models.CharField(max_length=20)
-    volante = models.CharField(max_length=20)
+    volumen_motor = models.CharField(max_length=20, choices=VOLUMEN_MOTOR_CHOICES)
+    volante = models.CharField(max_length=20,choices=TIPO_VOLANTE)
     transmision = models.CharField(max_length=20)
     tipo_combustible = models.CharField(max_length=10, choices=TIPO_COMBUSTIBLE)
     num_pasajeros = models.IntegerField()
-    ubicacion = models.CharField(max_length=100)
-    puertas = models.IntegerField()
+    puertas = models.IntegerField(choices=PUERTAS_CHOICES)
     num_vin = models.CharField(max_length=100)
-    color_exterior = models.CharField(max_length=20)
+    color_exterior = models.CharField(max_length=20, choices=COLOR_EXTERIOR_CHOICES)
     costo_reserva = models.IntegerField(default=0)
     proveedor = models.ForeignKey(Proveedor, models.DO_NOTHING, default=1)
 
-
-
     def __str__(self):
         return self.marca + ' ' + self.modelo
+
 
 class Repuesto(models.Model):
     tipo_parte = models.CharField(max_length=20)
@@ -293,14 +346,7 @@ class Contacto(models.Model):
         return f"Contacto de {self.usuario.nombre}: {self.tipo_contacto} - {self.valor_contacto}"
 
 
-class Sucursal(models.Model):
-    nombre = models.CharField(max_length=100)
-    direccion = models.CharField(max_length=200)
-    ciudad = models.CharField(max_length=100)
-    telefono = models.CharField(max_length=20)
 
-    def __str__(self):
-        return self.nombre
 
 
 class Slide(models.Model):

@@ -35,6 +35,9 @@ WEBPAY_URL=conf['webpay_url']
 WEBPAY_ID=conf['webpay_id']
 WEBPAY_SECRET=conf['webpay_secret']
 
+EMAIL_SECRET=conf['api_correo']
+EMAIL_SENDER = conf['email_sender']
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = conf['debug']
 
