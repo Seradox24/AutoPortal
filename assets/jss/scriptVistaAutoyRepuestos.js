@@ -39,7 +39,7 @@ toggleInfoAdicional.addEventListener('click',  () => {
 });
 /**************************************************************************/
 
-
+// Funciones Para aumentar cantidad del producto a comprar
 
 const inputQuantity = document.querySelector('.input-cantidad');
 const btnIncrement = document.querySelector('#incrementar');
