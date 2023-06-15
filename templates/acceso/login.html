@@ -40,7 +40,7 @@
                     <label for="password" class="label">Contraseña</label>
                 </div>
                 <div class="recordar-reset">
-                    <a href="">¿Olvidaste la Contraseña?</a>
+                    <a href="{% url 'acceso_reset' %}">¿Olvidaste la Contraseña?</a>
                 </div>
                 
                 <hr/> 
@@ -51,7 +51,7 @@
                 <div class="registrarse">
                     <p>¿Aun no tienes cuenta?, <a href="{% url 'acceso_registro' %}">registrate ahora!</a></p>
                 </div>
-                <a href="{% url 'acceso_login' %}" class="atrass">
+                <a href="{% url 'home_inicio' %}" class="atrass">
                     <ion-icon name="arrow-back-outline"></ion-icon>
                     Volver a la Tienda
                 </a>

@@ -16,8 +16,9 @@
 	"webpay_url":"https://webpay3gint.transbank.cl/rswebpaytransaction/api/webpay/v1.2/transactions",
 	"webpay_id":"597055555532",
 	"webpay_secret":"579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C",
-	"api_correo":"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",
-	"email_sender":"matias.poveda195@gmail.com"
+	"api_correo":"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",
+	"email_sender":"ma.inayao@duocuc.cl",
+	"email_sender2":"ma.inayao@duocuc.cl"
 	 
 
 

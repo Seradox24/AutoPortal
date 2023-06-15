@@ -123,3 +123,62 @@ def acceso_verificacion(request, token):
             raise Http404
     else:
         raise Http404
+    
+
+def acceso_restore(request, token):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/')
+    token_original=token
+    token=utilidades.traducirToken(token)
+    fecha = datetime.now()
+    despues = fecha + timedelta(days=1)
+    fecha_numero=int(datetime.timestamp(despues))
+    if fecha_numero>token['time']:
+        form = Formulario_Restore(request.POST or None)
+        if request.method =='POST':
+            if form.is_valid():
+                try:
+                    user=UsersMetadata.objects.filter(user_id=token['id']).get()
+                    if request.POST['password1'] != request.POST['password2']:
+                        
+                        mensaje = f"Las contraseñas ingresadas no coinciden"
+                        messages.add_message(request, messages.WARNING, mensaje)
+                        return HttpResponseRedirect('/acceso/reset')
+                    else:
+                        User.objects.filter(id=token['id']).update(password=make_password(request.POST['password1']))
+                        mensaje = f"Se ha restablecido tu contraseña exitosamente, ahora ya puedes loguearte de nuevo y disfrutar de todos nuestros cursos. No olvides no compartir tu contraseña con nadie."
+                        messages.add_message(request, messages.SUCCESS, mensaje)
+                        return HttpResponseRedirect('/acceso/login')
+                except UsersMetadata.DoesNotExist:
+                    raise Http404
+        return render(request, 'acceso/restore.html', {'form': form, 'token':token_original})
+    else:
+        raise Http404
+
+
+
+
+def acceso_reset(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/')
+    form = Formulario_Reset(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            try:
+                user = UsersMetadata.objects.filter(correo=request.POST['correo']).get()
+                token = utilidades.getToken({'id': user.user_id, 'time': int(time.time())})
+                url = f"{settings.BASE_URL}acceso/restore/{token}"
+                html = f"""Hola {user.user.first_name} {user.user.last_name}, has solicitado recuperar tu contraseña. Por motivos de seguridad, te enviamos el siguiente enlace para terminar el proceso, o cópialo y pégalo en la barra de direcciones de tu navegador favorito:
+                    <br />
+                    <br />
+                    <a href="{url}">{url}</a>
+                """
+                send_email(html, 'Tienda', request.POST['correo'])
+                mensaje = f"Se ha enviado un correo a {request.POST['correo']} con las instrucciones para restablecer tu contraseña."
+                messages.add_message(request, messages.SUCCESS, mensaje)
+                return HttpResponseRedirect('/acceso/reset')
+            except UsersMetadata.DoesNotExist:
+                mensaje = f"El correo electrónico {request.POST['correo']} no corresponde a ninguno de nuestros usuarios."
+                messages.add_message(request, messages.WARNING, mensaje)
+                return HttpResponseRedirect('/acceso/reset')
+    return render(request, 'acceso/reset.html', {'form': form})
