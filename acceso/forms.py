@@ -27,7 +27,7 @@ class Formulario_Reset(forms.Form):
 
 
 class Formulario_Restore(forms.Form):
-    password1 = forms.CharField(widget=PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Contraseña'}))
+    password1 = forms.CharField(widget=PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Nueva Contraseña'}))
     password2 = forms.CharField(widget=PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Repetir Contraseña'}))
 
 def __init__(self, *args, **kwargs):

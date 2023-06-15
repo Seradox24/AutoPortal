@@ -8,10 +8,11 @@ urlpatterns = [
 	#path('acceso/verificacion/<str:token>', acceso_verificacion, name="acceso_verificacion"),
 	#path('verificacion/<str:token>', acceso_verificacion, name="acceso_verificacion"),
 	path('reset/', acceso_reset, name="acceso_reset"),
+	path('restore/<str:token>', acceso_restore, name="acceso_restore"),
 	
 
 
 	#path('reset', acceso_reset, name="acceso_reset"),
-	path('restore/<str:token>', acceso_restore, name="acceso_restore"),
+	#path('restore/<str:token>', acceso_restore, name="acceso_restore"),
 	path('salir', acceso_salir, name="acceso_salir"),
 ]

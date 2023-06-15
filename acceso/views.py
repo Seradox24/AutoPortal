@@ -123,7 +123,6 @@ def acceso_verificacion(request, token):
             raise Http404
     else:
         raise Http404
-    
 
 def acceso_restore(request, token):
     if request.user.is_authenticated:
