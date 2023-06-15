@@ -1,0 +1,293 @@
+{% extends '../layout/frontend.html' %} 
+
+{% load static %}
+
+
+{% block styles %}
+    <link href="{% static 'estilos/boostrap/ui.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'estilos/boostrap/responsive.css' %} " rel="stylesheet" media="only screen and (max-width: 1200px)" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">  
+	<link href="{% static 'estilos/boostrap/bootstrap.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+    
+{% block content %}
+	<!-- ========================= SECTION CONTENT ========================= -->
+    <div style="margin: 100px;"></div>
+	<section class="section-content padding-y">
+		<div class="container">
+
+			<div class="row">
+				<aside class="col-md-3">
+
+
+					<div class="card">
+						<article class="filter-group">
+							<header class="card-header">
+								<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true">
+									<i class="icon-control fa fa-chevron-down"></i>
+									<h6 class="title">Categorias</h6>
+								</a>
+							</header>
+							<div class="filter-content collapse show mx-auto" style="width: 250px;" id="collapse_1">
+								<div class="card-body">
+									<ul class="list-menu">
+										<li>
+											<a href="#" data-toggle="collapse" data-target="#autosSubMenu"
+												aria-expanded="false" aria-controls="autosSubMenu">Ruedas</a>
+											<ul class="sub-menu collapse" id="autosSubMenu">
+												<li><a href="#">Sedán</a></li>
+												<li><a href="#">Hatchback</a></li>
+												<li><a href="#">SUV</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="#" data-toggle="collapse" data-target="#camionetasSubMenu"
+												aria-expanded="false" aria-controls="camionetasSubMenu">Frenos</a>
+											<ul class="sub-menu collapse" id="camionetasSubMenu">
+												<li><a href="#">Pickup</a></li>
+												<li><a href="#">SUV</a></li>
+												<li><a href="#">Todo Terreno</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="#" data-toggle="collapse" data-target="#MotosSubMenu"
+												aria-expanded="false" aria-controls="MotosSubMenu">Vocinas</a>
+											<ul class="sub-menu collapse" id="MotosSubMenu">
+												<li><a href="#">Pickup</a></li>
+												<li><a href="#">SUV</a></li>
+												<li><a href="#">Todo Terreno</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="#" data-toggle="collapse" data-target="#SUVSubMenu"
+												aria-expanded="false" aria-controls="SUVSubMenu">Luces</a>
+											<ul class="sub-menu collapse" id="SUVSubMenu">
+												<li><a href="#">Sedán</a></li>
+												<li><a href="#">Hatchback</a></li>
+												<li><a href="#">SUV</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href="#" data-toggle="collapse" data-target="#furgonSubMenu"
+												aria-expanded="false" aria-controls="furgonSubMenu">Motores</a>
+											<ul class="sub-menu collapse" id="furgonSubMenu">
+												<li><a href="#">Pickup</a></li>
+												<li><a href="#">SUV</a></li>
+												<li><a href="#">Todo Terreno</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Todo</a></li>
+									</ul>
+								</div>
+							</div>
+						</article>
+
+
+						<article class="filter-group">
+							<header class="card-header">
+								<a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true"
+									class="">
+									<i class="icon-control fa fa-chevron-down"></i>
+									<h6 class="title">Rango de precio</h6>
+								</a>
+							</header>
+							<div class="filter-content collapse show" id="collapse_3">
+								<div class="card-body">
+
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											<label>Min</label>
+											<!-- <input class="form-control" placeholder="$0" type="number"> -->
+											<select class="mr-2 form-control">
+												<option value="0">$0</option>
+												<option value="50">$50</option>
+												<option value="100">$100</option>
+												<option value="150">$150</option>
+												<option value="200">$200</option>
+												<option value="500">$500</option>
+												<option value="1000">$1000</option>
+											</select>
+										</div>
+										<div class="form-group text-right col-md-6">
+											<label>Max</label>
+											<select class="mr-2 form-control">
+												<option value="50">$50</option>
+												<option value="100">$100</option>
+												<option value="150">$150</option>
+												<option value="200">$200</option>
+												<option value="500">$500</option>
+												<option value="1000">$1000</option>
+												<option value="2000">$2000+</option>
+											</select>
+										</div>
+									</div> <!-- form-row.// -->
+									<button class="btn btn-block btn-primary">Buscar</button>
+								</div><!-- card-body.// -->
+							</div>
+						</article> <!-- filter-group .// -->
+
+					</div> <!-- card.// -->
+
+				</aside> <!-- col.// -->
+
+
+
+
+				<main class="col-md-9">
+
+					<header class="border-bottom mb-4 pb-3">
+						<div class="form-inline">
+							<span class="mr-md-auto">32 Vehiculos encontrados...</span>
+
+						</div>
+					</header><!-- sect-heading -->
+
+
+
+
+
+					<div class="row ">
+						<div class="col-md-6 "  >
+							<figure class="card card-product-grid ">
+								<div class="img-wrap">
+									<img src="{% static 'IMG/rueda.jpg' %}">
+
+								</div> <!-- img-wrap.// -->
+								<figcaption class="info-wrap">
+									<div class="h-100">
+										<a href="#" class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates mollitia rerum fugit?</a>
+										<div class="price-wrap ">
+											<p class="card-price"><strong>Valor: </strong>$99.99</p>
+										</div> <!-- price-wrap.// -->
+									</div>
+									<button class="btn btn-block">Comprar</button>
+								</figcaption>
+							</figure>
+						</div> <!-- col.// -->
+
+
+
+
+						<div class="col-md-6 "  >
+							<figure class="card card-product-grid ">
+								<div class="img-wrap">
+									<img src="{% static 'IMG/rueda.jpg' %}">
+
+								</div> <!-- img-wrap.// -->
+								<figcaption class="info-wrap">
+									<div class="h-100">
+										<a href="#" class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates mollitia rerum fugit?</a>
+										<div class="price-wrap ">
+											<p class="card-price"><strong>Valor: </strong>$99.99</p>
+										</div> <!-- price-wrap.// -->
+									</div>
+									<button class="btn btn-block">Comprar</button>
+								</figcaption>
+							</figure>
+						</div> <!-- col.// -->
+
+
+						<div class="col-md-6 "  >
+							<figure class="card card-product-grid ">
+								<div class="img-wrap">
+									<img src="{% static 'IMG/rueda.jpg' %}">
+
+								</div> <!-- img-wrap.// -->
+								<figcaption class="info-wrap">
+									<div class="h-100">
+										<a href="#" class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates mollitia rerum fugit?</a>
+										<div class="price-wrap ">
+											<p class="card-price"><strong>Valor: </strong>$99.99</p>
+										</div> <!-- price-wrap.// -->
+									</div>
+									<button class="btn btn-block">Comprar</button>
+								</figcaption>
+							</figure>
+						</div> <!-- col.// -->
+
+
+
+						<div class="col-md-6 "  >
+							<figure class="card card-product-grid ">
+								<div class="img-wrap">
+									<img src="{% static 'IMG/rueda.jpg' %}">
+
+								</div> <!-- img-wrap.// -->
+								<figcaption class="info-wrap">
+									<div class="h-100">
+										<a href="#" class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates mollitia rerum fugit?</a>
+										<div class="price-wrap ">
+											<p class="card-price"><strong>Valor: </strong>$99.99</p>
+										</div> <!-- price-wrap.// -->
+									</div>
+									<button class="btn btn-block">Comprar</button>
+								</figcaption>
+							</figure>
+						</div> <!-- col.// -->
+
+
+
+						<div class="col-md-6 "  >
+							<figure class="card card-product-grid ">
+								<div class="img-wrap">
+									<img src="{% static 'IMG/rueda.jpg' %}">
+
+								</div> <!-- img-wrap.// -->
+								<figcaption class="info-wrap">
+									<div class="h-100">
+										<a href="#" class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates mollitia rerum fugit?</a>
+										<div class="price-wrap ">
+											<p class="card-price"><strong>Valor: </strong>$99.99</p>
+										</div> <!-- price-wrap.// -->
+									</div>
+									<button class="btn btn-block">Comprar</button>
+								</figcaption>
+							</figure>
+						</div> <!-- col.// -->
+
+
+
+						<div class="col-md-6 "  >
+							<figure class="card card-product-grid ">
+								<div class="img-wrap">
+									<img src="{% static 'IMG/rueda.jpg' %}">
+
+								</div> <!-- img-wrap.// -->
+								<figcaption class="info-wrap">
+									<div class="h-100">
+										<a href="#" class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates mollitia rerum fugit?</a>
+										<div class="price-wrap ">
+											<p class="card-price"><strong>Valor: </strong>$99.99</p>
+										</div> <!-- price-wrap.// -->
+									</div>
+									<button class="btn btn-block">Comprar</button>
+								</figcaption>
+							</figure>
+						</div> <!-- col.// -->
+
+
+						<nav class="mt-4">
+							<ul class="pagination">
+								<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+								<li class="page-item active"><a class="page-link" href="#">1</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+							</ul>
+						</nav>
+
+				</main> <!-- col.// -->
+
+			</div>
+
+		</div> <!-- container .//  -->
+	</section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'jss/scripts.js' %}"></script>
+</body>
+
+</html>
+
+{% endblock %}

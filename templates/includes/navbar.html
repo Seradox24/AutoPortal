@@ -23,8 +23,8 @@
             <li class="menu-item menu-item-has-children">
               <a href="#" data-toggle="sub-menu">Tiendas <i class="plus"></i></a>
               <ul class="sub-menu">
-                <li class="menu-item"><a href="#">Repuestos</a></li>
-                <li class="menu-item"><a href="#">Vehiculos</a></li>
+                <li class="menu-item"><a href="{% url 'tiendaRepuestos' %}">Repuestos</a></li>
+                <li class="menu-item"><a href="{% url 'tiendaVehiculos' %}">Vehiculos</a></li>
               </ul>
             </li>
 
@@ -50,9 +50,11 @@
                 <li class="menu-item"><a href="#">Nissan</a></li>
               </ul>
             </li>
+            {% if not user.is_authenticated %}
             <li class="menu-item">
-              <a href="#">Ingresar</a>
+              <a href="{% url 'acceso_login' %}">Ingresar</a>
             </li>
+            {% endif %}
             <li class="menu-item">
               <!-- empieza carrito -->
               <div class="cart-icon ">
@@ -90,12 +92,12 @@
               </div>
             </li> <!-- termina carrito -->
             
-
+            {% if user.is_authenticated %}
             <li class="menu-item">
               <a href="#"><i class="fas fa-solid fa-user-astronaut fa-lg" onclick="toggleMenu()"></i></a>
               <div class="sub-menu-wrap" id="menusub">
                 <div class="sub-menu-usuario">
-                  {% if user.is_authenticated %}
+                  
                   <div class="user-info">
                     <i class="fas fa-solid fa-user-astronaut fa-lg"></i>
                     <h2>mueremuer</h2>
@@ -126,17 +128,7 @@
                     <p>Cerrar sesión</p>
                     <span>></span>
                 </a>
-                  {% else %}
-                  <div class="user-info">
-                    <i class="fas fa-solid fa-user-astronaut fa-lg"></i>
-                    <h2>Invitado</h2>
-                  </div>
-                  <hr>
-                  <a href="{% url 'acceso_login' %}" class="sub-menu-link">
-                    <img src="{% static '/IMG/images/profile.png' %}"  alt="">
-                    <p>Ingresar</p>
-                    <span>></span>
-                  </a>
+                 
 
                   {% endif %}
                 </div>

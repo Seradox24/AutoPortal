@@ -22,3 +22,9 @@ def productos_detalle_repuesto(request, id, slug):
     fotos=ProductoFotos.objects.filter(producto_id=id).all()
     return render(request, 'productos/detalle_repuesto.html', {'datos':datos, 'relacionados': relacionados, 'fotos': fotos})
 
+
+def tiendaVehiculos(request):
+    return render(request, 'tienda/categoriasVehiculos.html')
+
+def tiendaRepuestos(request):
+    return render(request, 'tienda/categoriasRepuestos.html')
