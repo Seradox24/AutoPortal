@@ -1,0 +1,542 @@
+{% extends '../layout/frontend.html' %} 
+{% load static %}
+{% load utilidades %}
+{% block title %} Detalle producto {{datos.nombre}} {% endblock %}
+
+{% block styles %}
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">   
+    <link rel="stylesheet" href="{% static '/estilos/stylesVistaAuto.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class = "card-contenedor">
+  <div class = "card">
+    <!-- imagenes prodcto -->
+    <div class = "product-imgs">
+
+      <div class = "img-display">
+        <div class = "img-showcase">
+          {% for foto in fotos%}
+          <img src = "{% static 'upload/producto/' %}{{foto.foto}}" alt = "autito">
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class = "img-select">
+        {% for foto in fotos%}
+        <div class = "img-item">
+          <a href = "#" data-id = "{{ forloop.counter }}">
+            <img src = "{% static 'upload/producto/' %}{{foto.foto}}" alt = "autito">
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  
+    <!--**************************************************************-->
+
+
+
+
+    <!-- contenido card de la derecha, titulo etc del vehiculo -->
+    <div class = "product-content">
+      <h2 class = "product-title">{{datos.titulo}}</h2>
+      <a href = "#" class = "Marca-prod">{{datos.vehiculo.marca}}</a>
+      
+
+      <div class = "precio-prod-cont">
+        <p class = "precio">Valor final:<span>  $ {{datos.precio|numberFormat}}</span></p>
+      </div>
+      <div  class = "detalles-prod">
+        <ul>
+          <li>Color: <span>{{datos.vehiculo.color_exterior}}</span></li>
+          <li>Disponiilidad: <span>{{datos.stock}}</span></li>
+          <li>Estado: <span>{{datos.vehiculo.condicion}}</span></li>
+          <li>Envio: <span>A todo Chile (respectivo documento)</span></li>
+          <li>Garantia: <span>Sin Garantia</span></li>
+        </ul>
+      </div>
+
+
+
+      <!-- seccion descripcion vehiculo con hidden -->
+
+      <div class="container-descripcion">
+        <div class="titulo-descripcion">
+          <h4>Descripcion</h4>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="texto-descripcion hidden">
+          <p>{{datos.descripcion}}</p>
+        </div>
+      </div>
+      
+      <div class="container-info-adicional">
+        <div class="titulo-info-adicional">
+          <h4>Informacion Adicional</h4>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="texto-info-adicional hidden">
+          <p>{{datos.adiccional}}</p>
+        </div>
+      </div>
+
+      <div class="container-social">
+        <span>compartir</span>
+        <div class="container-buttons-social">
+            <a href=""><i class="fa-brands fa-facebook"></i></a>
+            <a href=""><i class="fa-brands fa-twitter"></i></a>
+            <a href=""><i class="fa-brands fa-instagram"></i></a>
+            <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="contenedor-card-lista">
+        <ul class="lista-card1">
+
+          <li class="lista-card-item1">
+            <ion-icon name="people-outline"></ion-icon>
+
+            <span class="lista-card-texto1">{{datos.vehiculo.num_pasajeros}}</span>
+          </li>
+
+          <li class="lista-card-item1">
+            <ion-icon name="flash-outline"></ion-icon>
+
+            <span class="lista-card-texto1">{{datos.vehiculo.tipo_combustible}}</span>
+          </li>
+
+          <li class="lista-card-item1">
+            <ion-icon name="speedometer-outline"></ion-icon>
+
+            <span class="lista-card-texto1">{{datos.vehiculo.volumen_motor}}</span>
+          </li>
+
+          <li class="lista-card-item1">
+            <ion-icon name="hardware-chip-outline"></ion-icon>
+
+            <span class="lista-card-texto1">{{datos.vehiculo.transmision}}</span>
+          </li>
+
+        </ul>
+      </div>  
+      <!-- *************************************************-->
+      {% if datos.stock is 0 %}
+      <div class="d-flex justify-content-center">
+      <span class="alert alert-danger">PRODUCTO SIN STOCK</span>
+    </div>
+      {% else %}
+      <div class="d-flex">
+        Cantidad
+      </div>
+      <div class="d-flex">
+                             
+         <select class="form-control form-control-sm" id="cantidad" >
+  
+        {% with ''|center:datos.stock as range %}
+       {% for _ in range %}
+      <option value="{{ forloop.counter }}">
+      {{ forloop.counter }}
+    </option>
+     {% endfor %} 
+          {% endwith %}
+        </select>
+      </div>
+      <hr/>
+      <div class="d-flex">
+        <a href="javascript:void(0);" class="boton_cotizar" onclick="agregarAlCarro();" title="Agregar al carro"><i class="fas fa-cart-plus"></i> Agregar al carro</a>
+      </div>
+       {% endif %}
+      <div class="d-flex">
+        <a href="https://api.whatsapp.com/send?phone=123212&text=Hola%20necesito%20informaci%C3%B3n%20del%20producto%20{{datos.nombre}}" class="boton_cotizar_whatsapp" title="Consultar por whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Pedir por whatsapp</a>
+          </div>
+
+
+
+    </div>
+    
+  </div>
+  
+</div>
+
+<div class="container-formu-agendar">
+  <div class="content">
+    <div class="lado-izq">
+      <img src="{% static '/IMG/Car driving-rafiki.png' %}" alt="kkkumsacaco">
+    </div>
+    <div class="lado-der">
+      <div class="texto-cabecera">Formulario de contacto</div>
+      <p>Si estas interesado en el vehiculo te invitamos a llenar el siguiente formulario para que estemos en contacto</p>
+    <form  class="formu" action="#">
+      <div class="input-box">
+        <input type="text" placeholder="Ingresa tu nombre">
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Ingresa tus apellidos">
+      </div>
+      <div class="input-box">
+          <input type="text" placeholder="Ingresa tu Correo">
+        </div>
+        <div class="input-box">
+          <input type="text" placeholder="Ingresa tu Celular">
+        </div>
+      <div class="input-boxgordo mensaje">
+        <textarea placeholder="Ingresa tu mensaje aqui" name="" id="" cols="40" rows="10"></textarea>
+      </div>
+    </form>
+    <div class="button">
+      <input type="button" value="Enviar" >
+    </div>
+  </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- PRODUCTOS RELACIONADOS SECCION, DE AQUI HACIA ABAJO-->
+
+<div class="header-mas">
+    <span>Descubre</span>
+    <h2>Aun no te decides?</h2>
+    <p>Revisa nuestros vehiculos mas vistos</p>
+</div>
+
+<div class="container-recom">
+    <div class="cardslider-autos">
+        <div class="p-img-container">
+            <div class="p-img">
+                <a href="#">
+                    <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                    <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                </a>    
+            </div>
+        </div>
+        <div class="p-textocaja">
+            <div class="marca-modelo">
+                <span>marca</span>
+            </div>
+            <a href="#" class="titulo-slidercard" >
+                descripcion de modelo auto año
+            </a>
+            <ul class="lista-card">
+
+                <li class="lista-card-item">
+                <ion-icon name="people-outline"></ion-icon>
+
+                <span class="lista-card-texto">4 personas</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="flash-outline"></ion-icon>
+
+                <span class="lista-card-texto">diesel</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="speedometer-outline"></ion-icon>
+
+                <span class="lista-card-texto">6.1km / litro</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                <span class="lista-card-texto">manual</span>
+                </li>
+
+            </ul>
+
+            <div class="cartel-precio">
+                <span class="p-precio">Valor: $10.000.000</span>
+                <a href="#" class="btn-verdetalle"> Ver detalle </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="cardslider-autos">
+
+      
+
+        <div class="p-img-container">
+            <div class="p-img">
+                <a href="#">
+                    <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                    <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                </a>    
+            </div>
+        </div>
+        <div class="p-textocaja">
+            <div class="marca-modelo">
+                <span>marca</span>
+            </div>
+            <a href="#" class="titulo-slidercard" >
+                descripcion de modelo auto año
+            </a>
+            <ul class="lista-card">
+
+                <li class="lista-card-item">
+                <ion-icon name="people-outline"></ion-icon>
+
+                <span class="lista-card-texto">4 personas</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="flash-outline"></ion-icon>
+
+                <span class="lista-card-texto">diesel</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="speedometer-outline"></ion-icon>
+
+                <span class="lista-card-texto">6.1km / litro</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                <span class="lista-card-texto">manual</span>
+                </li>
+
+            </ul>
+            <div class="cartel-precio">
+                <span class="p-precio">Valor: $10.000.000</span>
+                <a href="#" class="btn-verdetalle"> Ver detalle </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="cardslider-autos">
+
+        <!--pequeño cartel de descuento % pagina principal-->
+
+        <div class="p-img-container">
+            <div class="p-img">
+                <a href="#">
+                    <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                    <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                </a>    
+            </div>
+        </div>
+        <div class="p-textocaja">
+            <div class="marca-modelo">
+                <span>marca</span>
+            </div>
+            <a href="#" class="titulo-slidercard" >
+                descripcion de modelo auto año
+            </a>
+            <ul class="lista-card">
+
+                <li class="lista-card-item">
+                <ion-icon name="people-outline"></ion-icon>
+
+                <span class="lista-card-texto">4 personas</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="flash-outline"></ion-icon>
+
+                <span class="lista-card-texto">diesel</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="speedometer-outline"></ion-icon>
+
+                <span class="lista-card-texto">6.1km / litro</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                <span class="lista-card-texto">manual</span>
+                </li>
+
+            </ul>
+            <div class="cartel-precio">
+                <span class="p-precio">Valor: $10.000.000</span>
+                <a href="#" class="btn-verdetalle"> Ver detalle </a>
+            </div>
+        </div>
+    </div> 
+</div>
+
+<div class="container-recom">
+    <div class="cardslider-autos">
+        <div class="p-img-container">
+            <div class="p-img">
+                <a href="#">
+                    <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                    <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                </a>    
+            </div>
+        </div>
+        <div class="p-textocaja">
+            <div class="marca-modelo">
+                <span>marca</span>
+            </div>
+            <a href="#" class="titulo-slidercard" >
+                descripcion de modelo auto año
+            </a>
+            <ul class="lista-card">
+
+                <li class="lista-card-item">
+                <ion-icon name="people-outline"></ion-icon>
+
+                <span class="lista-card-texto">4 personas</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="flash-outline"></ion-icon>
+
+                <span class="lista-card-texto">diesel</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="speedometer-outline"></ion-icon>
+
+                <span class="lista-card-texto">6.1km / litro</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                <span class="lista-card-texto">manual</span>
+                </li>
+
+            </ul>
+            <div class="cartel-precio">
+                <span class="p-precio">Valor: $10.000.000</span>
+                <a href="#" class="btn-verdetalle"> Ver detalle </a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="cardslider-autos">
+        <div class="p-img-container">
+            <div class="p-img">
+                <a href="#">
+                    <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                    <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                </a>    
+            </div>
+        </div>
+        <div class="p-textocaja">
+            <div class="marca-modelo">
+                <span>marca</span>
+            </div>
+            <a href="#" class="titulo-slidercard" >
+                descripcion de modelo auto año
+            </a>
+            <ul class="lista-card">
+
+                <li class="lista-card-item">
+                <ion-icon name="people-outline"></ion-icon>
+
+                <span class="lista-card-texto">4 personas</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="flash-outline"></ion-icon>
+
+                <span class="lista-card-texto">diesel</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="speedometer-outline"></ion-icon>
+
+                <span class="lista-card-texto">6.1km / litro</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                <span class="lista-card-texto">manual</span>
+                </li>
+
+            </ul>
+
+            <div class="cartel-precio">
+                <span class="p-precio">Valor: $10.000.000</span>
+                <a href="#" class="btn-verdetalle"> Ver detalle </a>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="cardslider-autos">
+        <div class="p-img-container">
+            <div class="p-img">
+                <a href="#">
+                    <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
+                    <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                </a>    
+            </div>
+        </div>
+        <div class="p-textocaja">
+            <div class="marca-modelo">
+                <span>marca</span>
+            </div>
+            <a href="#" class="titulo-slidercard" >
+                descripcion de modelo auto año
+            </a>
+            <ul class="lista-card">
+
+                <li class="lista-card-item">
+                <ion-icon name="people-outline"></ion-icon>
+
+                <span class="lista-card-texto">4 personas</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="flash-outline"></ion-icon>
+
+                <span class="lista-card-texto">diesel</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="speedometer-outline"></ion-icon>
+
+                <span class="lista-card-texto">6.1km / litro</span>
+                </li>
+
+                <li class="lista-card-item">
+                <ion-icon name="hardware-chip-outline"></ion-icon>
+
+                <span class="lista-card-texto">manual</span>
+                </li>
+
+            </ul>
+            <div class="cartel-precio">
+                <span class="p-precio">Valor: $10.000.000</span>
+                <a href="#" class="btn-verdetalle"> Ver detalle </a>
+            </div>
+        </div>
+    </div> 
+       
+</div>
+
+
+<div class="volver">
+  <input type="button" value="Volver a Categorias">
+</div>
+
+
+
+
+
+<script src="{% static '/jss/scriptVistaAutoRep.js' %}"></script>
+  <!-- toggle perfil navbar-->
+  <script src="{% static '/jss/scripts.js' %}"></script>
+  <script src="{% static '/jss/glider.min.js' %}"></script>
+
+
+{% endblock %}
