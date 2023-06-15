@@ -80,6 +80,8 @@ body{
     transition: .5s;      /* mueve hacia arriba label correo y contraseña al cliquear input */
 }
 
+
+
 .input-box input:focus~label,  /* mueve hacia arriba label correo y contraseña al cliquear input */
 .input-box input:valid~label{
     top: -5px;
@@ -95,6 +97,19 @@ body{
     color: #fff;
     padding: 0 35px 0 5px; /* no choca caracter con icono, padding pequeño entre caracter e icono*/
 }
+
+
+.aaaaa {
+    width: 100%;
+    height: 50px;
+    background:transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #fff;
+    padding: 0 35px 0 5px; /* no choca caracter con icono, padding pequeño entre caracter e icono*/
+}
+
 
 .input-box .icon{
     position: absolute;
@@ -129,6 +144,7 @@ body{
 
 
 .btn-ingresar{
+    margin-bottom: 70px;
     width: 100%;
     height: 40px;
     background: #fff;
@@ -145,7 +161,7 @@ body{
     font-size: .9em;
     color: #fff;
     text-align: center;
-    margin: 25px 0 10px;
+    margin: 25px 0 10px;    
 }
 
 .registrarse p a {
@@ -166,8 +182,7 @@ body{
     color: white;
     text-decoration: none;
     font-weight: 600;
-    margin-left: 75px;
-    margin-top: 1000px;
+    margin-left: 100px; 
 }
 
 
@@ -175,10 +190,11 @@ body{
 @media (max-width: 360px){
     .login-box {
         width: 100%;
-        height: 100vh;
+        height: 100%;
         border: none;
         border-radius: 0;
         backdrop-filter: blur(10px);
+        margin: 0;
     }
 
     
@@ -186,5 +202,3 @@ body{
         width: 290px;
     }
 }
-
-
