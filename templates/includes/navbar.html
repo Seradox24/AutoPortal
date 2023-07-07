@@ -27,70 +27,28 @@
                 <li class="menu-item"><a href="{% url 'tiendaVehiculos' %}">Vehiculos</a></li>
               </ul>
             </li>
-
+            
             <li class="menu-item menu-item-has-children">
               <a href="#" data-toggle="sub-menu">Categorias<i class="plus"></i></a>
               <ul class="sub-menu">
-                <li class="menu-item"><a href="#">Camionetas</a></li>
-                <li class="menu-item"><a href="#">Suv</a></li>
-                <li class="menu-item"><a href="#">Furgon</a></li>
-                <li class="menu-item"><a href="#">Automovil</a></li>
-                <li class="menu-item"><a href="#">Motocicletas</a></li>
+                {% for categoria in categorias %}
+								  
+								  
+                <li class="menu-item"><a href="{% url 'tiendaVehiculos_productos_por_categoria' categoria.slug %}">{{categoria.nombre}}</a></li>
+                {% endfor %}  
               </ul>
             </li>
 
-            <li class="menu-item menu-item-has-children">
-              <a href="#" data-toggle="sub-menu">Marcas Vehiculos <i class="plus"></i></a>
-              <ul class="sub-menu">
-                <li class="menu-item"><a href="#">Ford</a></li>
-                <li class="menu-item"><a href="#">Mazda</a></li>
-                <li class="menu-item"><a href="#">BMW</a></li>
-                <li class="menu-item"><a href="#">Nissan</a></li>
-                <li class="menu-item"><a href="#">Chevrolet</a></li>
-                <li class="menu-item"><a href="#">Nissan</a></li>
-              </ul>
-            </li>
+            
             {% if not user.is_authenticated %}
             <li class="menu-item">
               <a href="{% url 'acceso_login' %}">Ingresar</a>
             </li>
             {% endif %}
-            <li class="menu-item">
+            <li href="{% url 'dash_base' %}" class="menu-item">
               <!-- empieza carrito -->
-              <div class="cart-icon ">
-                <i class="fas fa-cart-arrow-down fa-2x"></i>
-              </div>
-              <div class="whole-cart-window hide">
-                <h2>Shopping Bag</h2>
-                <div class="cart-wrapper">
-                  <div class="cart-item">
-                    <img src="{% static '\img\pic5.jpeg' %}" >
-                    <div class="details">
-                      <h3>Item Name</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        <span class="quantity">Quantity: 1</span>
-                        <span class="price">Price: $23.44</span>
-                      </p>
-                    </div>
-                    <div class="cancel"><i class="fas fa-window-close"></i></div>
-                  </div>
-                  <!-- item 2 -->
-                  <div class="cart-item">
-                    <img src="{% static '\img\pic5.jpeg' %}" >
-                    <div class="details">
-                      <h3>Item Name</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        <span class="quantity">Quantity: 1</span>
-                        <span class="price">Price: $23.44</span>
-                      </p>
-                    </div>
-                    <div class="cancel"><i class="fas fa-window-close"></i></div>
-                  </div>
-                </div>
-                <div class="subtotal">Subtotal: $0.00</div>
-                <div class="checkout">Checkout</div>
-              </div>
-            </li> <!-- termina carrito -->
+             
+            
             
             {% if user.is_authenticated %}
             <li class="menu-item">
@@ -100,29 +58,39 @@
                   
                   <div class="user-info">
                     <i class="fas fa-solid fa-user-astronaut fa-lg"></i>
-                    <h2>mueremuer</h2>
+                    <h2>Hola, {{user.first_name | upper }}</h2>
                   </div>
-                  <hr>
-                  <a href="" class="sub-menu-link">
-                    <img src="{% static '/IMG/images/profile.png' %}"  alt="">
-                    <p>Perfil</p>
-                    <span>></span>
+                  <hr> 
+                 
+                    <a href="{% url 'dash_base' %}" class="sub-menu-link">
+                      <img src="{% static '/IMG/images/profile.png' %}"  alt="">
+                      <p>Perfil</p>
+                      <span>></span>
+                   
                   </a>
-                  <a href="" class="sub-menu-link">
+                  
+                  <a href="{% url 'dash_ordenes' %}" class="sub-menu-link">
                     <img src="{% static '/IMG/images/profile.png' %}" alt="">
                     <p>Ordenes</p>
                     <span>></span>
                   </a>
-                  <a href="" class="sub-menu-link">
+
+                  <a href="{% url 'carro_inicio' %}" class="sub-menu-link">
+                    <img src="{% static '/IMG/images/carrito.png' %}" alt="">
+                    <p>carrito</p>
+                    <span>></span>
+                  </a>
+
+
+
+                  {% if user.is_superuser or user.is_staff %}
+                  <a href="{% url 'admin:index' %}" class="sub-menu-link">
                     <img src="{% static '/IMG/images/setting.png' %}"  alt="">
-                    <p>Historial</p>
+                    <p>Administración</p>
                     <span>></span>
                   </a>
-                  <a href="" class="sub-menu-link">
-                    <img src="{% static '/IMG/images/help.png' %}"  alt="">
-                    <p>Direcciones</p>
-                    <span>></span>
-                  </a>
+                  {% endif %}
+
                   <a href="javascript:void(0);" class="sub-menu-link" onclick="salir('{% url 'acceso_salir' %}')">
                     <img src="{% static '/IMG/images/logout.png' %}" alt="">
                     <p>Cerrar sesión</p>

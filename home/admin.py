@@ -2,6 +2,11 @@ from django.contrib import admin
 from django.contrib.admin import AdminSite
 from home.models import *
 from utilidades import formularios
+from PyPDF2 import PdfReader
+from django.urls import reverse
+from django.utils.html import format_html
+
+
 
 
 # Register your models here.
@@ -50,9 +55,10 @@ class ProductoCategoriaAdmin(admin.ModelAdmin):
 
 
 class ProductoAdmin(admin.ModelAdmin):
-    list_display = ('id', formularios.set_producto_categoria, formularios.set_estado, 'nombre',  formularios.get_descripcion, formularios.get_foto_producto, 'stock','precio')
-    search_fields = ('id', 'nombre, descripcion')
+    list_display = ('id', formularios.set_producto_categoria, formularios.set_estado, 'nombre',  formularios.get_descripcion, formularios.get_foto_producto,formularios.get_descripcion, 'stock','precio')
+    search_fields = ('id', 'nombre', 'descripcion')  # Corrección aquí
     list_per_page = 20
+
 
 
 class ProductoFotosAdmin(admin.ModelAdmin):
@@ -81,9 +87,17 @@ admin.site.register(UsersMetadata, UsersMetadataAdmin)
 admin.site.register(ProductoCategoria, ProductoCategoriaAdmin)
 admin.site.register(Proveedor, ProveedorAdmin)
 admin.site.register(Producto, ProductoAdmin)
-admin.site.register(Carrito, CarritoAdmin)
+#admin.site.register(Carrito, CarritoAdmin)
 admin.site.register(Metadata, MetadataAdmin)
+
+class ProductoFotosAdmin(admin.ModelAdmin):
+    list_display = ('id', formularios.set_producto, formularios.get_foto_producto_galeria)
+    list_per_page = 20
+
+# Registra el modelo ProductoFotos junto con la clase ProductoFotosAdmin
 admin.site.register(ProductoFotos, ProductoFotosAdmin)
+
+
 admin.site.site_header = 'Administración Tienda'
 admin.site.index_title = 'Administración Tienda'
 admin.site.site_title = 'Administración Tienda'
@@ -91,9 +105,35 @@ admin.site.register(Vehiculo)
 admin.site.register(Repuesto)
 admin.site.register(Sucursal)
 admin.site.register(Contacto)
-admin.site.register(Aprobacion)
-admin.site.register(Documento)
+
+
+class AprobacionAdmin(admin.ModelAdmin):
+    list_display = ['documento', 'vendedor', 'fecha_revision', 'aprobado', 'ver_documento']
+    list_filter = ['aprobado']
+    search_fields = ['documento__nombre', 'vendedor__nombre']
+
+    def ver_documento(self, obj):
+        if obj.documento.archivo:
+            documento_url = obj.documento.archivo.url
+            return format_html('<a href="{}" target="_blank">Ver Documento</a>', documento_url)
+        return "N/A"
+
+    ver_documento.short_description = 'Documento'
+
+admin.site.register(Aprobacion, AprobacionAdmin)
+
+class DocumentoAdmin(admin.ModelAdmin):
+    
+    list_display = ['nombre', 'archivo', ]
+
+
+admin.site.register(Documento, DocumentoAdmin)
+
+
 admin.site.register(Comuna)
 admin.site.register(Region)
-
+admin.site.register(Marca)
+admin.site.register(Modelo)
+admin.site.register(VehiculoCategoria)
+admin.site.register(RepuestoCategoria)
 

@@ -84,7 +84,7 @@ set_producto_categoria.short_description = 'Categoría'
 def set_producto(obj):
     return obj.producto.nombre
 set_producto.short_description = 'Producto'
-
+ 
 
 def set_correo(obj):
     return obj.user.username

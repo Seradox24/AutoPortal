@@ -1,5 +1,5 @@
 {% extends '../layout/frontend.html' %} {% load static %}{% load utilidades %}{% block title %} Verificación del pago {% endblock %}{% block content %}
- 
+<div class="navbar-space"></div> <!-- Espacio entre la barra de navegación y el contenido principal -->
   <div class="container">
       
     <div class="row">
@@ -32,6 +32,9 @@
         <li class="list-group-item d-flex justify-content-between">
           <span>Total</span>
           <strong class="color_negro">${{suma|numberFormat}}</strong>
+          
+
+          
         </li>
       </ul>
 
@@ -95,4 +98,6 @@
     </div>
 
   </div> 
+
+  <script src="{% static 'jss/scripts.js' %}"></script>
 {% endblock %}

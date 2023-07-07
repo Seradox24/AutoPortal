@@ -1,0 +1,32 @@
+
+<nav class="mt-4">
+    <ul class="pagination">
+        {% if datos.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ datos.previous_page_number }}">Anterior</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Anterior</a>
+        </li>
+        {% endif %}
+
+        {% for numero in numeros %}
+        {% if numero == page  %} 
+<li class="page-item active"><a class="page-link" href="?page={{numero}}">{{numero}}</a>    </li>
+{% else %}
+<li class="page-item"><a class="page-link" href="?page={{numero}}">{{numero}}</a></li>
+{% endif %} 
+        {% endfor %}
+
+        {% if datos.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ datos.next_page_number }}">Siguiente</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Siguiente</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>

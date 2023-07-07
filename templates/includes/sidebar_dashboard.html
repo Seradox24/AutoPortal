@@ -1,0 +1,24 @@
+
+<!--   aca acondiciono a que el sidebar active, se muestre dependiendo de la ruta en la que se esta   -->
+<!--   osea, boton de listgroup se pone en azul dependiendo de la vista en la que me encuentro  -->
+<aside class="col-md-3">
+    <!--   SIDEBAR   -->
+    <ul class="list-group">
+        <a class="list-group-item "href="{% url 'dash_base' %}"> Perfil de Usuario </a>
+        <a class="list-group-item "href="{% url 'dash_ordenes' %}"> Ordenes  </a>
+        <a class="list-group-item "href="{% url 'dash_editarper' %}"> Editar Perfil </a>
+        <a class="list-group-item "href="{% url 'cambiar_contraseña' %}"> Cambiar Contraseña </a>
+        <a class="list-group-item "href="{% url 'dash_admin' %}"> Agregar Documento Liberacion</a>
+    <!--<a class="list-group-item "href="{% url 'dash_admin_repuestos' %}"> Repuestos </a>
+        <a class="list-group-item "href="{% url 'dash_admin_vehiculo' %}"> Vehiculos</a>-->
+        
+    </ul>
+    <br>
+    <a class="btn btn-light btn-block" href="{% url 'acceso_salir' %}"> <i class="fa fa-power-off"></i> <span class="text">Cerrar sesion</span> </a> 
+    <!--   SIDEBAR .//END   -->
+</aside>
+
+
+
+
+

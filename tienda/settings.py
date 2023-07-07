@@ -38,6 +38,8 @@ WEBPAY_SECRET=conf['webpay_secret']
 EMAIL_SECRET=conf['api_correo']
 EMAIL_SENDER = conf['email_sender']
 
+CMF_SECRET= conf['cmf_api']
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = conf['debug']
 
@@ -47,14 +49,21 @@ ALLOWED_HOSTS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home'
+    'home',
+    'perfil',
+    'crispy_forms',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = ['bootstrap5', 'uni_form']
+CRISPY_TEMPLATE_PACK = 'bootstrap5'  # Establece el paquete de plantilla que deseas utilizar
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -107,6 +116,7 @@ DATABASES = {
         'PORT': conf['puerto'],
         'OPTIONS': {
           'autocommit': True,
+          'sql_mode': 'STRICT_TRANS_TABLES',
         },
     }
 }
@@ -157,3 +167,30 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "cerulean",
+}
+
+JAZZMIN_SETTINGS = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "AutoPortal Administracion",
+
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "Backend AutoPortal",
+
+    # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_brand": "Backend AutoPortal",
+
+    # Logo to use for your site, must be present in static files, used for brand on top left
+    "site_logo": "/IMG/logosf.png",
+    "site_logo_classes": "img-circle",
+    
+    "copyright": "Desarrollado por <a href='https://www.AutoPortal.cl/' target='_blank'>AutoPortal</a>",
+    "show_sidebar": True,
+    "changeform_format": "horizontal_tabs",
+    "user_avatar": None,
+
+    
+}

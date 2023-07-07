@@ -50,7 +50,7 @@
 
 
   <!--CONTENEDOR DE FORMULARIO ELIGE AUTO, MAS AD-->
-  <div class="container-add">
+  {% comment %} <div class="container-add">
     <div class="form-container">
       <form>
         <div class="form-title">Busca tu vehículo</div>
@@ -100,7 +100,7 @@
       <img src="{% static '/IMG/tiposautos-add.jpg' %}" alt="Publicidad" class="ad-image">
     </div>
     <img src="{% static '/img/caminohd-fondo.jpg' %}" class="backgr-imagen">
-  </div>
+  </div> {% endcomment %}
 
   <!-- ========================= FIN CONTENEDOR DE FORMULARIO ELIGE AUTO ======================================================= -->
 
@@ -118,7 +118,7 @@
          ¡Haz de tu experiencia automotriz algo más fácil y confiable con nosotros!</p>
       </div>
 
-      <div class="categorias-esferas">
+      {% comment %} <div class="categorias-esferas">
         <div class="wrapper-categ">
           <h3 class="titulocategorias">Busque Por Categoria</h3>
 
@@ -146,12 +146,12 @@
 
           </div>
         </div>
-      </div>
+      </div> {% endcomment %}
 
 
       <div class="linea-separadora">
-        <h1>Vehiculos mas vistos</h1> <!-- ==cambiara a boton==-->
-        <button class="button1">Ver Todo Vehiculos </button>
+        <h1>Últimos vehículos agregados</h1> <!-- ==cambiara a boton==-->
+        <a href="{% url 'tiendaVehiculos' %}"><button class="button1"  >Ver Todo repuestos</button></a>
       </div>
 
 
@@ -175,9 +175,9 @@
 
             <div class="p-img-container">
               <div class="p-img">
-                <a href="#">
-                  <img src="{% static '/upload/' %}{{dato.foto}}" class="p-img-frente" alt="frente">
-                  <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                <a href="{% url 'productos_detalle' dato.id dato.slug %}">
+                  <img src="{% static '/upload/producto/' %}{{dato.foto}}" class="p-img-frente" alt="frente">
+                  <img src="{% static '/upload/producto/' %}{{dato.foto}}" class="p-img-lado" alt="lado">
                 </a>
               </div>
             </div>
@@ -185,7 +185,7 @@
               <div class="marca-modelo">
                 <span>{{dato.vehiculo.marca}}</span>
               </div>
-              <a href="#" class="titulo-slidercard">
+              <a href="{% url 'productos_detalle' dato.id dato.slug %}" class="titulo-slidercard">
                 {{dato.titulo}}
               </a>
               <ul class="lista-card">
@@ -253,7 +253,7 @@
 
       <div class="linea-separadora">
         <h1>Repuestos mas vistos</h1>
-        <button class="button1">Ver Todo repuestos </button>
+        <a href="{% url 'tiendaRepuestos' %}"><button class="button1"  >Ver Todo repuestos</button></a>
       </div>
 
 
@@ -275,8 +275,8 @@
             <div class="p-img-container">
               <div class="p-img">
                 <a href="#">
-                  <img src="{% static '/IMG/autosbanner.jpg' %}" class="p-img-frente" alt="frente">
-                  <img src="{% static '/IMG/coche-azul.jpg' %}" class="p-img-lado" alt="lado">
+                  <img src="{% static '/upload/producto/' %}{{dato2.foto}}" class="p-img-frente" alt="frente">
+                  <img src="{% static '/upload/producto/' %}{{dato2.foto}}" class="p-img-lado" alt="lado">
                 </a>
                 </div>
                 </div>

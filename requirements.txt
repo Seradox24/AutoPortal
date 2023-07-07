@@ -6,3 +6,7 @@ utilidades
 PyJWT
 python-slugify
 sendgrid
+requests
+django-crispy-forms
+django-jazzmin
+PyPDF2

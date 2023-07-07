@@ -64,16 +64,27 @@ def paginacion(total, request):
     paginator = Paginator(total, settings.TOTAL_PAGINAS)
     page = request.GET.get('page')
     datos = paginator.get_page(page)
-    numeros=[]
-    if len(datos)>=settings.TOTAL_PAGINAS:
+    numeros = []
+
+    if len(datos) >= settings.TOTAL_PAGINAS:
         for ultima in range(1, datos.paginator.num_pages):
             numeros.append(ultima)
-        numeros.append(ultima+1)
-    return [datos, numeros, page]
+        if numeros:
+            ultima = numeros[-1]
+            numeros.append(ultima + 1)
+
+    ultima = False if not numeros else True
+
+    return [datos, numeros, page, ultima]
+
+
 
 
 def numberFormat(numero):
-    if numero == None:
+    if numero is None:
         return 0
     else:
-        return "{:,}".format(numero).replace(",",".")
+        return "{:,}".format(numero).replace(",", ".")
+
+
+        

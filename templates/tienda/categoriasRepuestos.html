@@ -1,4 +1,4 @@
-{% extends '../layout/frontend.html' %} 
+{% extends '../layout/frontend.html' %} {% load utilidades %}
 
 {% load static %}
 
@@ -32,52 +32,10 @@
 							<div class="filter-content collapse show mx-auto" style="width: 250px;" id="collapse_1">
 								<div class="card-body">
 									<ul class="list-menu">
-										<li>
-											<a href="#" data-toggle="collapse" data-target="#autosSubMenu"
-												aria-expanded="false" aria-controls="autosSubMenu">Ruedas</a>
-											<ul class="sub-menu collapse" id="autosSubMenu">
-												<li><a href="#">Sedán</a></li>
-												<li><a href="#">Hatchback</a></li>
-												<li><a href="#">SUV</a></li>
-											</ul>
-										</li>
-										<li>
-											<a href="#" data-toggle="collapse" data-target="#camionetasSubMenu"
-												aria-expanded="false" aria-controls="camionetasSubMenu">Frenos</a>
-											<ul class="sub-menu collapse" id="camionetasSubMenu">
-												<li><a href="#">Pickup</a></li>
-												<li><a href="#">SUV</a></li>
-												<li><a href="#">Todo Terreno</a></li>
-											</ul>
-										</li>
-										<li>
-											<a href="#" data-toggle="collapse" data-target="#MotosSubMenu"
-												aria-expanded="false" aria-controls="MotosSubMenu">Vocinas</a>
-											<ul class="sub-menu collapse" id="MotosSubMenu">
-												<li><a href="#">Pickup</a></li>
-												<li><a href="#">SUV</a></li>
-												<li><a href="#">Todo Terreno</a></li>
-											</ul>
-										</li>
-										<li>
-											<a href="#" data-toggle="collapse" data-target="#SUVSubMenu"
-												aria-expanded="false" aria-controls="SUVSubMenu">Luces</a>
-											<ul class="sub-menu collapse" id="SUVSubMenu">
-												<li><a href="#">Sedán</a></li>
-												<li><a href="#">Hatchback</a></li>
-												<li><a href="#">SUV</a></li>
-											</ul>
-										</li>
-										<li>
-											<a href="#" data-toggle="collapse" data-target="#furgonSubMenu"
-												aria-expanded="false" aria-controls="furgonSubMenu">Motores</a>
-											<ul class="sub-menu collapse" id="furgonSubMenu">
-												<li><a href="#">Pickup</a></li>
-												<li><a href="#">SUV</a></li>
-												<li><a href="#">Todo Terreno</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Todo</a></li>
+										{% for categoria in categorias %}
+										<li><a href="{% url 'tiendaRepuestos_productos_por_categoria' categoria.slug %}">{{categoria.nombre}}</a></li>
+										{% endfor %} 
+										<li><a href="{% url 'tiendaRepuestos' %}">Todo</a></li>
 									</ul>
 								</div>
 							</div>
@@ -133,12 +91,12 @@
 
 
 
-
+				
 				<main class="col-md-9">
 
 					<header class="border-bottom mb-4 pb-3">
 						<div class="form-inline">
-							<span class="mr-md-auto">32 Vehiculos encontrados...</span>
+							<span class="mr-md-auto">{{ num_productos }} Vehiculos encontrados...</span>
 
 						</div>
 					</header><!-- sect-heading -->
@@ -147,135 +105,31 @@
 
 
 
+					{% for dato in datos%}
 					<div class="row ">
 						<div class="col-md-6 "  >
 							<figure class="card card-product-grid ">
 								<div class="img-wrap">
-									<img src="{% static 'IMG/rueda.jpg' %}">
+									<img src="{% static '/upload/producto/' %}{{dato.foto}}" class="img-fluid" alt="Imagen del producto">
 
 								</div> <!-- img-wrap.// -->
 								<figcaption class="info-wrap">
 									<div class="h-100">
-										<a href="#" class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates mollitia rerum fugit?</a>
+										<a href="#" class="title">{{dato.titulo}}</a>
 										<div class="price-wrap ">
-											<p class="card-price"><strong>Valor: </strong>$99.99</p>
+											<p class="card-price"><strong>Valor: </strong>${{dato.precio|numberFormat }}</p>
 										</div> <!-- price-wrap.// -->
 									</div>
-									<button class="btn btn-block">Comprar</button>
+									<a href="{% url 'productos_detalle_repuesto' dato.id dato.slug %}" class="btn btn-primary btn-block text-center">Ver más</a>
 								</figcaption>
 							</figure>
 						</div> <!-- col.// -->
 
 
+						{% endfor %}
+						{% include '../layout/pagina.html' %}
 
-
-						<div class="col-md-6 "  >
-							<figure class="card card-product-grid ">
-								<div class="img-wrap">
-									<img src="{% static 'IMG/rueda.jpg' %}">
-
-								</div> <!-- img-wrap.// -->
-								<figcaption class="info-wrap">
-									<div class="h-100">
-										<a href="#" class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates mollitia rerum fugit?</a>
-										<div class="price-wrap ">
-											<p class="card-price"><strong>Valor: </strong>$99.99</p>
-										</div> <!-- price-wrap.// -->
-									</div>
-									<button class="btn btn-block">Comprar</button>
-								</figcaption>
-							</figure>
-						</div> <!-- col.// -->
-
-
-						<div class="col-md-6 "  >
-							<figure class="card card-product-grid ">
-								<div class="img-wrap">
-									<img src="{% static 'IMG/rueda.jpg' %}">
-
-								</div> <!-- img-wrap.// -->
-								<figcaption class="info-wrap">
-									<div class="h-100">
-										<a href="#" class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates mollitia rerum fugit?</a>
-										<div class="price-wrap ">
-											<p class="card-price"><strong>Valor: </strong>$99.99</p>
-										</div> <!-- price-wrap.// -->
-									</div>
-									<button class="btn btn-block">Comprar</button>
-								</figcaption>
-							</figure>
-						</div> <!-- col.// -->
-
-
-
-						<div class="col-md-6 "  >
-							<figure class="card card-product-grid ">
-								<div class="img-wrap">
-									<img src="{% static 'IMG/rueda.jpg' %}">
-
-								</div> <!-- img-wrap.// -->
-								<figcaption class="info-wrap">
-									<div class="h-100">
-										<a href="#" class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates mollitia rerum fugit?</a>
-										<div class="price-wrap ">
-											<p class="card-price"><strong>Valor: </strong>$99.99</p>
-										</div> <!-- price-wrap.// -->
-									</div>
-									<button class="btn btn-block">Comprar</button>
-								</figcaption>
-							</figure>
-						</div> <!-- col.// -->
-
-
-
-						<div class="col-md-6 "  >
-							<figure class="card card-product-grid ">
-								<div class="img-wrap">
-									<img src="{% static 'IMG/rueda.jpg' %}">
-
-								</div> <!-- img-wrap.// -->
-								<figcaption class="info-wrap">
-									<div class="h-100">
-										<a href="#" class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates mollitia rerum fugit?</a>
-										<div class="price-wrap ">
-											<p class="card-price"><strong>Valor: </strong>$99.99</p>
-										</div> <!-- price-wrap.// -->
-									</div>
-									<button class="btn btn-block">Comprar</button>
-								</figcaption>
-							</figure>
-						</div> <!-- col.// -->
-
-
-
-						<div class="col-md-6 "  >
-							<figure class="card card-product-grid ">
-								<div class="img-wrap">
-									<img src="{% static 'IMG/rueda.jpg' %}">
-
-								</div> <!-- img-wrap.// -->
-								<figcaption class="info-wrap">
-									<div class="h-100">
-										<a href="#" class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates mollitia rerum fugit?</a>
-										<div class="price-wrap ">
-											<p class="card-price"><strong>Valor: </strong>$99.99</p>
-										</div> <!-- price-wrap.// -->
-									</div>
-									<button class="btn btn-block">Comprar</button>
-								</figcaption>
-							</figure>
-						</div> <!-- col.// -->
-
-
-						<nav class="mt-4">
-							<ul class="pagination">
-								<li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
-								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
-							</ul>
-						</nav>
+						
 
 				</main> <!-- col.// -->
 
@@ -286,6 +140,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{% static 'jss/scripts.js' %}"></script>
+
+
+	<script src="{% static 'jss/scripts.js' %}"></script>
+<script src="{% static 'jss/scriptboostrap.js' %}"></script>
+<script src="{% static 'jss/bootstrap.bundle.min.js' %}"></script>
+
+
+
 </body>
 
 </html>

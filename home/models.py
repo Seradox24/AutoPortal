@@ -86,7 +86,7 @@ class Comuna(models.Model):
 
 class UsersMetadata(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, models.DO_NOTHING)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='usersmetadata')
     estado = models.ForeignKey(Estado, models.DO_NOTHING)
     genero = models.ForeignKey(Genero, models.DO_NOTHING)
     perfiles = models.ForeignKey(Perfiles, models.DO_NOTHING)
@@ -97,6 +97,7 @@ class UsersMetadata(models.Model):
     telefono = models.CharField(max_length=100, blank=True, null=True)
     direccion = models.CharField(max_length=100, blank=True, null=True)
     foto = models.ImageField(upload_to='usuarios', blank=True, null=True)
+    
 
 
     def __str__(self):
@@ -134,6 +135,48 @@ class ProductoCategoria(models.Model):
         verbose_name = 'Producto Categoría'
         verbose_name_plural = 'Productos Categorías'
 
+class VehiculoCategoria(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100, blank=True, null=True)
+    slug = AutoSlugField(populate_from='nombre')
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        db_table = 'vehiculo_categoria'
+        verbose_name = 'Vehiculo Categoría'
+        verbose_name_plural = 'Vehiculos Categorías'
+
+
+class Marca(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100, blank=True, null=True)
+    slug = AutoSlugField(populate_from='nombre')
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        db_table = 'marca'
+        verbose_name = 'Marca'
+        verbose_name_plural = 'Marcas'
+
+
+class Modelo(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100, blank=True, null=True)
+    slug = AutoSlugField(populate_from='nombre')
+    marca = models.ForeignKey(Marca, on_delete=models.CASCADE,default='Sin marca' )
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        db_table = 'modelo'
+        verbose_name = 'Modelo'
+        verbose_name_plural = 'Modelos'
+
 
 class Sucursal(models.Model):
     nombre = models.CharField(max_length=100)
@@ -166,6 +209,7 @@ class Producto(models.Model):
     foto=models.ImageField(upload_to="producto", default='200_200.png')
 
 
+
     def __str__(self):
         return self.nombre
 
@@ -179,20 +223,12 @@ class Producto(models.Model):
         verbose_name = 'Producto'
         verbose_name_plural = 'Productos'
 
+
 class Vehiculo(models.Model):
     # Opciones para la condición del vehículo
     CONDICION_CHOICES = [
         ('NUEVO', 'Nuevo'),
         ('USADO', 'Usado'),
-    ]
-
-    # Opciones para el tipo de vehículo
-    TIPO_VEHICULO_CHOICES = [
-        ('SEDAN', 'Sedán'),
-        ('SUV', 'SUV'),
-        ('CAMIONETA', 'Camioneta'),
-        ('HATCHBACK', 'Hatchback'),
-        ('COUPE', 'Coupé'),
     ]
 
     # Opciones para el volumen del motor
@@ -213,6 +249,7 @@ class Vehiculo(models.Model):
     # Opciones para el número de puertas
     PUERTAS_CHOICES = [
         (2, '2 puertas'),
+        (3, '3 puertas'),
         (4, '4 puertas'),
         (5, '5 puertas'),
     ]
@@ -249,9 +286,9 @@ class Vehiculo(models.Model):
     fecha_registro = models.DateField(auto_now_add=True)
     clicks = models.IntegerField(default=0)
     condicion = models.CharField(max_length=20, choices=CONDICION_CHOICES, blank=True, null=True)
-    tipo_vehiculo = models.CharField(max_length=20, choices=TIPO_VEHICULO_CHOICES)
-    marca = models.CharField(max_length=20)
-    modelo = models.CharField(max_length=50)
+    tipo_vehiculo = models.ForeignKey('VehiculoCategoria', on_delete=models.DO_NOTHING)
+    marca = models.ForeignKey(Marca, on_delete=models.DO_NOTHING,default=1)
+    modelo = models.ForeignKey(Modelo, on_delete=models.DO_NOTHING, default='1')
     volumen_motor = models.CharField(max_length=20, choices=VOLUMEN_MOTOR_CHOICES)
     volante = models.CharField(max_length=20,choices=TIPO_VOLANTE)
     transmision = models.CharField(max_length=20,choices=TIPO_TRANSMISION)
@@ -263,11 +300,23 @@ class Vehiculo(models.Model):
     costo_reserva = models.IntegerField(default=0)
     
 
+
+    class Meta:
+        db_table = 'vehiculo'
+        verbose_name = 'Vehiculo'
+        verbose_name_plural = 'Vehiculos'
+
+
+    
+
     def __str__(self):
-        return self.marca + ' ' + self.modelo
+        return f"{self.marca.nombre} {self.modelo}"
+
+        
 
 
 class Repuesto(models.Model):
+    nombre = models.CharField(max_length=50, default='')
     tipo_parte = models.CharField(max_length=20)
     categoria = models.CharField(max_length=50)
     num_repuesto = models.CharField(max_length=50)
@@ -275,11 +324,25 @@ class Repuesto(models.Model):
     peso_unitario = models.CharField(max_length=50)
     hecho_en = models.CharField(max_length=50)
     modelo_adecuado = models.CharField(max_length=50)
+    tipo_repuesto = models.ForeignKey('RepuestoCategoria', on_delete=models.DO_NOTHING, null=True)
     slug = AutoSlugField(populate_from='nombre', default='default-slug')
     
     def __str__(self):
         return self.nombre
 
+
+class RepuestoCategoria(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100, blank=True, null=True)
+    slug = AutoSlugField(populate_from='nombre')
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        db_table = 'repuesto_categoria'
+        verbose_name = 'repuesto Categoría'
+        verbose_name_plural = 'repuesto Categorías'
 
 
 class ProductoFotos(models.Model):
@@ -308,26 +371,7 @@ class ProductoRecomendados(models.Model):
         verbose_name = 'Producto recomendados'
         verbose_name_plural = 'Productos recomendados'
 
-class Documento(models.Model):
-    nombre = models.CharField(max_length=100)
-    descripcion = models.CharField(max_length=200,default='')
-    archivo = models.FileField(upload_to='documentos/')
-    users_metadata = models.ForeignKey(UsersMetadata, models.DO_NOTHING, default=1, related_name='documentos')
-    fecha_creacion = models.DateTimeField(auto_now_add=True)
-    users_metadata = models.ForeignKey(UsersMetadata, models.DO_NOTHING, default=1)
-    def __str__(self):
-        return self.nombre
 
-
-class Aprobacion(models.Model):
-    documento = models.ForeignKey(Documento, on_delete=models.CASCADE, related_name='aprobaciones')
-    vendedor = models.ForeignKey(UsersMetadata, on_delete=models.CASCADE, limit_choices_to={'tipo_usuario': 'VENDEDOR'})
-    fecha_aprobacion = models.DateTimeField(blank=True, null=True)
-    aprobado = models.BooleanField(default=False)
-    comentario = models.TextField(blank=True, null=True)
-    
-    def __str__(self):
-        return self.documento.nombre + ' - ' + self.vendedor.nombre
 
 
 class Contacto(models.Model):
@@ -419,7 +463,29 @@ class OrdenDeCompraDetalle(models.Model):
         verbose_name = 'Orden de compra detalle'
         verbose_name_plural = 'Órdenes de compra detalle'
 
+class Documento(models.Model):
+    nombre = models.CharField(max_length=100)
+    descripcion = models.CharField(max_length=200,default='')
+    archivo = models.FileField(upload_to='documentos/')
+    users_metadata = models.ForeignKey(UsersMetadata, models.DO_NOTHING, default=1, related_name='documentos')
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    ordenDeCompra = models.ForeignKey(OrdenDeCompra, models.DO_NOTHING, null=True, default=None)
+    estado = models.ForeignKey(Estado, models.DO_NOTHING, null=True, default=None)
 
+
+    def __str__(self):
+        return self.nombre
+
+
+class Aprobacion(models.Model):
+    documento = models.ForeignKey(Documento, on_delete=models.CASCADE, related_name='aprobaciones')
+    vendedor = models.ForeignKey(UsersMetadata, on_delete=models.CASCADE)
+    fecha_revision = models.DateTimeField(blank=True, null=True)
+    aprobado = models.BooleanField(default=False)
+    comentario = models.TextField(blank=True, null=True)
+    
+    def __str__(self):
+        return self.documento.nombre + ' - ' + str(self.vendedor)
 
 ####metadata
 class Metadata(models.Model):
