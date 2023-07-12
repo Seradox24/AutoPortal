@@ -7,7 +7,7 @@
            
             
                 <h2 class="card-title mt-2">Verificación del pago</h2>
-                <p >Para ir a pagar necesitamos algunos datos tuyos para poder realizar el envío de los productos. <strong>Es muy importante que indiques de forma correcta los datos de tu dirección de envío, para que tu pedido te llegue de manera correcta y se eviten retrasos.</strong></p>
+                <p >Para ir a pagar necesitamos algunos datos tuyos para poder realizar el envío de los productos. <strong>Es muy importante que indiques de forma correcta los datos de tu dirección de envío, para que tu pedido te llegue de manera correcta y se eviten retrasos.</strong></p><strong>Valor del dolar hoy : {{valor_dolar}}</strong>
                 {% include 'layout/flash.html' %}
            
           <hr /> 
@@ -32,6 +32,8 @@
         <li class="list-group-item d-flex justify-content-between">
           <span>Total</span>
           <strong class="color_negro">${{suma|numberFormat}}</strong>
+          <span>Total dolar</span>
+          <strong class="color_negro">${{valor_dolar_float}}</strong>
           
 
           

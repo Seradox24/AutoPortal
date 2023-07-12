@@ -93,39 +93,40 @@ def carro_modificar_cantidad(request, id, cantidad):
     return HttpResponseRedirect('/carro')
 
 
+import decimal
+
 @logueado()
 def carro_pagar(request):
+    api_key = apicmf
+    url = 'https://api.cmfchile.cl/api-sbifv3/recursos_api/dolar'
+    params = {
+        'apikey': api_key,
+        'formato': 'json'
+    }
+    response = requests.get(url, params=params)
+    datadl = response.json()
+    valor_dolar = datadl['Dolares'][0]['Valor']
+    decimal_separator = locale.localeconv()['decimal_point']
+    valor_dolar_float = decimal.Decimal(valor_dolar.replace(',', decimal_separator))
 
-
-
-    #api_key = apicmf
-    #url = 'https://api.cmfchile.cl/api-sbifv3/recursos_api/dolar'
-    #params = {
-    #    'apikey': api_key,
-    #    'formato': 'json'
-    #}
-    #response = requests.get(url, params=params)
-    #datadl = response.json()
-    #valor_dolar = datadl['Dolares'][0]['Valor']
-    #decimal_separator = locale.localeconv()['decimal_point']
-    #valor_dolar_float = locale.atof(valor_dolar.replace(',', decimal_separator))
- 
-
-    cuantos=Carrito.objects.filter(users_metadata_id=request.session['users_metadata_id']).count()
-    if cuantos==0:
+    cuantos = Carrito.objects.filter(users_metadata_id=request.session['users_metadata_id']).count()
+    if cuantos == 0:
         return HttpResponseRedirect('/carro')
-    datos=Carrito.objects.filter(users_metadata_id=request.session['users_metadata_id']).order_by('-id').all()
-    
-    suma=0
+    datos = Carrito.objects.filter(users_metadata_id=request.session['users_metadata_id']).order_by('-id').all()
+
+    suma = 0
     for dato in datos:
-        valor=dato.cantidad*dato.producto.precio
-        suma=suma+valor
-        #valor_dolar_float = suma/valor_dolar_float 
-        #valor_dolar_str = str(int(valor_dolar_float))
-        #sumatf = round(suma * valor_dolar)
-    usuario=UsersMetadata.objects.filter(id=request.session['users_metadata_id']).get()
-    comunas=Comuna.objects.all()
-    return render(request, 'carro/pagar.html', {'datos': datos, 'suma': suma, 'usuario': usuario, 'comunas': comunas, 'cuantos': cuantos})
+        valor = dato.cantidad * dato.producto.precio
+        suma += valor
+
+    valor_dolar_float = suma / valor_dolar_float
+    valor_dolar_formatted = '{:,.2f}'.format(valor_dolar_float)
+
+    usuario = UsersMetadata.objects.filter(id=request.session['users_metadata_id']).get()
+    comunas = Comuna.objects.all()
+    return render(request, 'carro/pagar.html', {'datos': datos, 'suma': suma, 'usuario': usuario, 'comunas': comunas, 'cuantos': cuantos, 'total_dolar': valor_dolar_formatted,'valor_dolar_float':valor_dolar_formatted,'valor_dolar':valor_dolar})
+
+
 
 
 @logueado()
@@ -220,7 +221,7 @@ def carro_webpay_respuesta(request):
         """
         
         send_email(html, 'Tienda', usuario.correo)
-        send_email(html, 'Tienda', 'mi.inayao@duocuc.cl')
+        send_email(html, 'Tienda', 'ma.inayao@duocuc.cl')
         messages.add_message(request, messages.SUCCESS, f'La orden de compra N° {orden.id} ha sido generada exitosamente. Tu número de transacción de Transbank es {token}. Nos pondremos en contacto contigo a la brevedad para coordinar el envío de los productos. Gracias por tu compra!!!')
         return HttpResponseRedirect('/carro')
     
